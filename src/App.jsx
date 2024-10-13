@@ -10,7 +10,8 @@ function App() {
         <Route path="/kitchen-dashboard" element={"<KitchenDashboard />"} />
         <Route path="/manager-dashboard" element={"<ManagerDashboard />"} />
         <Route path="/profile" element={"<Profile />"} />
-        <Route path="/new-menu-item" element={"<NewMenuItem />"} />
+        <Route path="/new-menu-item" element={"<" +
+          "AddMenuItem />"} />
         <Route path="/login" element={"<Login />"} />
       </Routes>
     </>
