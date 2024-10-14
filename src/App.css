@@ -12,3 +12,25 @@
   flex-grow: 1;
   height: 100vh;
 }
+
+.main-content, sidebar-content {
+  scrollbar-width: thin; /* Options: auto, thin, none */
+  scrollbar-color: #d55959 #e7e7e7; /* thumb color and track color */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #d55959;
+}
+
+

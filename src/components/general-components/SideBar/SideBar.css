@@ -32,14 +32,12 @@
 }
 
 @media screen and (min-width: 1200px) {
-
   .sidebar {
     display: flex;
     flex-basis: calc(379rem /16);
   }
+
   .sidebar-content {
     display: flex;
   }
-
-
 }
