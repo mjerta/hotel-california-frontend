@@ -14,8 +14,18 @@
 
 .hamburger-img {
   height: 2rem;
-  top: 1rem;
-  left: 1rem;
+  top: 2rem;
+  left: 2rem;
+  position: absolute;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.profile-img {
+  display: none;
+  height: 4rem;
+  bottom: 2em;
+  left: 2rem;
   position: absolute;
   cursor: pointer;
   z-index: 3;
@@ -30,5 +40,9 @@
 
   .navigation-content {
     display: flex;
+  }
+
+  .profile-img {
+    display: unset;
   }
 }
