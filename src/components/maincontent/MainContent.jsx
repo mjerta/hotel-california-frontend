@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "./MaintContent.css"
+import "./MainContent.css"
 function MainContent({className}) {
   return (
     <div className={className}>

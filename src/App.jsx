@@ -6,14 +6,20 @@ import KitchenDashboard from "./pages/kitchen-dashboard/KitchenDashboard.jsx";
 import ManagerDashboard from "./pages/manager-dashboard/ManagerDashboard.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import AddMenuItem from "./pages/add-menu-item/AddMenuItem.jsx";
+import {useContext} from "react";
+import Overlay from "./components/Overlay/Overlay.jsx";
+import {OverlayContext} from "./context/OverlayProvider.jsx";
 
 function App() {
-
+  const {isOverlayOpen} = useContext(OverlayContext);
   return (
 
     <>
       <div className="wrapper">
-        <Navigation className={"navigation"}/>
+        <Navigation
+          className={"navigation"}
+        />
+        {isOverlayOpen && (<Overlay/>)}
         <main className="main-container">
           <Routes>
             <Route path="/" element={<MenuPage/>}/>
