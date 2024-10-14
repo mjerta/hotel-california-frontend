@@ -3,6 +3,7 @@
   background-color: green;
   height: 100vh;
   position: relative;
+  overflow-y: auto;
 }
 
 .sidebar-full-screen {

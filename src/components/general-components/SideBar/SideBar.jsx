@@ -15,12 +15,12 @@ function SideBar({variant}) {
           className={"shoppingcard-img"}
           src={shoppingcard} alt=""
         />
-        {/*<div className={`overlay ${classname ? classname : ''}`}>*/}
         <div
           className={`sidebar-content`}
         >
           <h1>up</h1>
           <h1>bottom</h1>
+
         </div>
       </aside>
     </>
