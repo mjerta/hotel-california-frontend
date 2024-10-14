@@ -9,12 +9,12 @@ function SideBar({variant}) {
 
   return (
     <>
+      <img
+        onClick={() => setOpenSideBar(prev => !prev)}
+        className={`shoppingcard-img ${openSideBar ? "shopping-card-img-enforce" : ""}`}
+        src={shoppingcard} alt=""
+      />
       <aside className={`sidebar ${variant} ${openSideBar ? "sidebar-full-screen" : ""}`}>
-        <img
-          onClick={() => setOpenSideBar(prev => !prev)}
-          className={"shoppingcard-img"}
-          src={shoppingcard} alt=""
-        />
         <div
           className={`sidebar-content`}
         >
