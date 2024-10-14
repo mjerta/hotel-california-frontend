@@ -1,0 +1,50 @@
+.sidebar {
+  flex-shrink: 0;
+  background-color: green;
+  height: 100vh;
+  position: relative;
+  overflow-y: auto;
+}
+
+.sidebar-full-screen {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  overflow: hidden;
+}
+.sidebar-content {
+  display: none;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.shoppingcard-img {
+  height: 4rem;
+  bottom: 1rem;
+  right: 1rem;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media screen and (min-width: 1200px) {
+  .sidebar {
+    display: flex;
+    flex-basis: calc(379rem /16);
+  }
+
+  .sidebar-content {
+    display: flex;
+  }
+
+
+  .shoppingcard-img {
+    display: none;
+  }
+
+  .shopping-card-img-enforce {
+    display: flex;
+  }
+}

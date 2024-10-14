@@ -1,0 +1,48 @@
+.navigation {
+  position: relative;
+  flex-shrink: 0;
+  background-color: #dc9d36;
+  height: 100vh;
+}
+
+.navigation-content {
+  display: none;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-img {
+  height: 2rem;
+  top: 2rem;
+  left: 2rem;
+  position: absolute;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.profile-img {
+  display: none;
+  height: 4rem;
+  bottom: 2em;
+  left: 2rem;
+  position: absolute;
+  cursor: pointer;
+  z-index: 3;
+}
+
+@media screen and (min-width: 1200px) {
+
+  .navigation {
+    display: flex;
+    flex-basis: calc(138rem / 16);
+  }
+
+  .navigation-content {
+    display: flex;
+  }
+
+  .profile-img {
+    display: unset;
+  }
+}
