@@ -3,5 +3,11 @@
   flex-basis: 1440px;
   background-color: #dcb740;
   display: flex;
+  min-height: 100vh;
 }
 
+.main-container {
+  display: flex;
+  flex-grow: 1;
+  height: 100vh;
+}

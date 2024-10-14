@@ -4,8 +4,11 @@ import "./Navigation.css"
 function Navigation({className}) {
   return (
     <nav  className={className}>
-
-    {/*  hamburger component  - maybe imported*/}
+      <div className="navigation-content">
+        <h1>up</h1>
+        <h1>bottom</h1>
+      </div>
+      {/*  hamburger component  - maybe imported*/}
 
     {/*  profile button*/}
 
