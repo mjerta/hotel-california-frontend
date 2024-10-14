@@ -7,3 +7,27 @@
   background-color: yellow;
   z-index: 2;
 }
+
+ul {
+  display: flex;
+  list-style-type: none;
+  text-decoration: none;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  & a,
+  & a:visited{
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.default-menu-link {
+  border: none;
+}
+
+.active-menu-link{
+  border-bottom: 2px solid black;
+}
