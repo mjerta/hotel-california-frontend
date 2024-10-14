@@ -1,8 +1,9 @@
 import React from 'react';
+import "./Navigation.css"
 
-function Navigation() {
+function Navigation({className}) {
   return (
-    <div>
+    <nav  className={className}>
 
     {/*  hamburger component  - maybe imported*/}
 
@@ -13,7 +14,7 @@ function Navigation() {
     {/*  on mobile the little side bar will be reduced to only the hamburger on the left side*/}
 
 
-    </div>
+    </nav>
   )
 }
 

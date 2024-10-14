@@ -1,8 +1,9 @@
 import React from 'react';
 
-function Menu() {
+function MenuPage() {
   return (
     <div>
+
 
 
     {/*  Middle main component*/}
@@ -25,4 +26,4 @@ function Menu() {
   )
 }
 
-export default Menu;
+export default MenuPage;
