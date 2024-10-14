@@ -1,6 +1,6 @@
 import React from 'react';
-import MainContent from "../../components/maincontent/MainContent.jsx";
-import SideBar from "../../components/SideBar/SideBar.jsx";
+import MainContent from "../../components/general-components/maincontent/MainContent.jsx";
+import SideBar from "../../components/general-components/SideBar/SideBar.jsx";
 
 function MenuPage() {
   return (

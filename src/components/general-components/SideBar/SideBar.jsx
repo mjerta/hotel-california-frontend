@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import shoppingcard from "../../assets/shopping-btn.svg"
+import shoppingcard from "../../../assets/shopping-btn.svg"
 
 import "./SideBar.css"
 
@@ -8,7 +8,7 @@ function SideBar() {
 
   return (
     <>
-      <div className={`sidebar ${opensideBar ? "sidebar-full-screen" : ""}`}>
+      <aside className={`sidebar ${opensideBar ? "sidebar-full-screen" : ""}`}>
         <img
           onClick={() => setOpensideBar(prev => !prev)}
           className={"shoppingcard-img"}
@@ -21,7 +21,7 @@ function SideBar() {
           <h1>up</h1>
           <h1>bottom</h1>
         </div>
-      </div>
+      </aside>
     </>
   )
 }

@@ -1,13 +1,13 @@
 import './App.css'
 import {Route, Routes} from "react-router-dom";
-import Navigation from "./components/navigation/Navigation.jsx";
+import Navigation from "./components/general-components/navigation/Navigation.jsx";
 import MenuPage from "./pages/menu/MenuPage.jsx";
 import KitchenDashboard from "./pages/kitchen-dashboard/KitchenDashboard.jsx";
 import ManagerDashboard from "./pages/manager-dashboard/ManagerDashboard.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import AddMenuItem from "./pages/add-menu-item/AddMenuItem.jsx";
 import {useContext} from "react";
-import Overlay from "./components/Overlay/Overlay.jsx";
+import Overlay from "./components/general-components/Overlay/Overlay.jsx";
 import {OverlayContext} from "./context/OverlayProvider.jsx";
 
 function App() {

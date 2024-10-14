@@ -1,6 +1,6 @@
 import "./Navigation.css"
-import hamburger from "./../../assets/hamburger-menu.svg";
-import {OverlayContext} from "../../context/OverlayProvider.jsx";
+import hamburger from "../../../assets/hamburger-menu.svg";
+import {OverlayContext} from "../../../context/OverlayProvider.jsx";
 import {useContext} from "react";
 
 function Navigation({className}) {
