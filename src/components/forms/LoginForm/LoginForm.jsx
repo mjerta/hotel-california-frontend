@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 
 function LoginForm() {
   const [error, setError] = useState("");
@@ -11,6 +11,9 @@ function LoginForm() {
   const [success, setSuccess] = useState("");
   const { saveToken } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation()
+  const redirectPath = location.state?.redirectPath; // Default to home if not provided
+
 
   async function onSubmit(data) {
     try {
@@ -25,7 +28,10 @@ function LoginForm() {
       console.log("Login succesful: ", response.data.jwt)
 
       setTimeout(() => {
-        navigate(-1)
+        console.log(redirectPath)
+        console.log("navigate back")
+        const destination = redirectPath || -1;
+        navigate(destination)
       }, 1000)
     } catch (e) {
       // validate this a bit better with conditionals
