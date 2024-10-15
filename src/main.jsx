@@ -4,14 +4,17 @@ import App from './App.jsx'
 import './index.css'
 import {BrowserRouter as Router} from "react-router-dom";
 import OverlayProvider from "./context/OverlayProvider.jsx";
+import AuthenticationProvider from "./context/AuthenticationProvider.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
       {/* Provider to keep state of the menu that is open or not*/}
-      <OverlayProvider>
-        <App/>
-      </OverlayProvider>
+      <AuthenticationProvider>
+        <OverlayProvider>
+          <App/>
+        </OverlayProvider>
+      </AuthenticationProvider>
     </Router>
   </StrictMode>,
 )

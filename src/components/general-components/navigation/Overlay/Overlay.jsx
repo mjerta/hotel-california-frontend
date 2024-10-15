@@ -3,9 +3,11 @@ import React, {useContext} from 'react';
 import "./Overlay.css"
 import {NavLink} from "react-router-dom";
 import {OverlayContext} from "../../../../context/OverlayProvider.jsx";
+import {AuthContext} from "../../../../context/AuthenticationProvider.jsx";
 
 function Overlay({classname}) {
   const {toggleOverlay} = useContext(OverlayContext);
+  const {token, removeToken} = useContext(AuthContext)
   return (
     <div className={`overlay ${classname ? classname : ''}`}>
       <ul>
@@ -49,14 +51,23 @@ function Overlay({classname}) {
             Add Menu
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            onClick={toggleOverlay}
-            className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-            to="/login">
-            Login
-          </NavLink>
-        </li>
+        {token ?
+          (
+            <li onClick={removeToken}>
+              logout
+            </li>
+          ) :
+          (
+            <li>
+              <NavLink
+                onClick={toggleOverlay}
+                className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
+                to="/login">
+                Login
+              </NavLink>
+            </li>
+          )
+        }
         <li>
           <NavLink
             onClick={toggleOverlay}

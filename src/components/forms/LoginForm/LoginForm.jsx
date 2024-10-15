@@ -1,12 +1,14 @@
 import "./LoginForm.css"
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 
 function LoginForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
+  const { saveToken } = useContext(AuthContext);
 
   async function onSubmit(data) {
     try {
@@ -16,6 +18,7 @@ function LoginForm() {
           password: data.password
         }
       )
+      saveToken(response.data.jwt)
       console.log("Login succesful: ", response.data.jwt)
     } catch (e) {
       console.error(e)
