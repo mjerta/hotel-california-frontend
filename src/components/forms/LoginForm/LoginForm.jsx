@@ -3,12 +3,14 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
+import {useNavigate} from "react-router-dom";
 
 function LoginForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const { saveToken } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   async function onSubmit(data) {
     try {
@@ -18,14 +20,18 @@ function LoginForm() {
           password: data.password
         }
       )
+      setSuccess("Login was successful")
       saveToken(response.data.jwt)
       console.log("Login succesful: ", response.data.jwt)
+
+      setTimeout(() => {
+        navigate(-1)
+      }, 1000)
     } catch (e) {
       // validate this a bit better with conditionals
       console.error(e)
       setError(e.response.data.error);
     } finally {
-      setSuccess("Login was successful")
       setLoading(false);
     }
   }
