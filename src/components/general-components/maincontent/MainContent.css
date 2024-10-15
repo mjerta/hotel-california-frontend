@@ -4,4 +4,5 @@
   background-color: red;
   overflow-y: auto;
   padding: 4rem;
+  flex-direction: column;
 }

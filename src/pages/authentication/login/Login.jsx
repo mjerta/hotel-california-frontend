@@ -1,10 +1,18 @@
 import "./Login.css"
+import MainContent
+  from "../../../components/general-components/maincontent/MainContent.jsx";
+import LoginForm from "../../../components/forms/LoginForm/LoginForm.jsx";
 
 function Login() {
   return (
-    <div>
+    <>
 
-    </div>
+      <MainContent className={"main-content"}>
+        <h1>Login</h1>
+        <LoginForm/>
+      </MainContent>
+    </>
+
   )
 }
 

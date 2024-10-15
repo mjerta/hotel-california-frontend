@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 
 import "./Overlay.css"
 import {NavLink} from "react-router-dom";
-import {OverlayContext} from "../../../context/OverlayProvider.jsx";
+import {OverlayContext} from "../../../../context/OverlayProvider.jsx";
 
 function Overlay({classname}) {
   const {toggleOverlay} = useContext(OverlayContext);

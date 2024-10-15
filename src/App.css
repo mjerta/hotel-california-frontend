@@ -13,6 +13,7 @@
   height: 100vh;
 }
 
+
 .main-content,
 .sidebar {
   scrollbar-width: thin; /* Options: auto, thin, none */

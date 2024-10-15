@@ -7,7 +7,7 @@ import ManagerDashboard from "./pages/manager-dashboard/ManagerDashboard.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import AddMenuItem from "./pages/add-menu-item/AddMenuItem.jsx";
 import {useContext} from "react";
-import Overlay from "./components/general-components/Overlay/Overlay.jsx";
+import Overlay from "./components/general-components/navigation/Overlay/Overlay.jsx";
 import {OverlayContext} from "./context/OverlayProvider.jsx";
 import Login from "./pages/authentication/login/Login.jsx";
 import Register from "./pages/authentication/register/Register.jsx";
