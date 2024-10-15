@@ -3,14 +3,20 @@ import hamburger from "../../../assets/hamburger-menu.svg";
 import profileImg from "../../../assets/user-circle.svg";
 import {OverlayContext} from "../../../context/OverlayProvider.jsx";
 import {useContext} from "react";
+import {useNavigate} from "react-router-dom";
 
 function Navigation({className}) {
   const {toggleOverlay} = useContext(OverlayContext);
+  const navigate = useNavigate();
+
+  function handleProfileClick() {
+    navigate("/profile");
+  }
   return (
     <nav className={className}>
       <img onClick={toggleOverlay} className={"hamburger-img"} src={hamburger}
            alt=""/>
-      <img className={"profile-img"} src={profileImg}/>
+      <img onClick={handleProfileClick} className={"profile-img"} src={profileImg} alt={"profile image"}/>
       <div className="navigation-content">
       </div>
         {/*  hamburger component  - maybe imported*/}

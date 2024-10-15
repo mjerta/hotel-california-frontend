@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 
 import "./Overlay.css"
 import {NavLink} from "react-router-dom";
@@ -68,7 +68,7 @@ function Overlay({classname}) {
                 <NavLink
                   onClick={toggleOverlay}
                   className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                  to="/whitening">
+                  to="/profile">
                   Profile
                 </NavLink>
               </li>
