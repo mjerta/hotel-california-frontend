@@ -21,6 +21,7 @@ function LoginForm() {
       saveToken(response.data.jwt)
       console.log("Login succesful: ", response.data.jwt)
     } catch (e) {
+      // validate this a bit better with conditionals
       console.error(e)
       setError(e.response.data.error);
     } finally {

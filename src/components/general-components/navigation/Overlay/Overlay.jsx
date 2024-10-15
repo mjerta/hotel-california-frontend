@@ -53,29 +53,35 @@ function Overlay({classname}) {
         </li>
         {token ?
           (
-            <li onClick={removeToken}>
-              logout
+            <li>
+              <NavLink
+                onClick={() => {removeToken(); toggleOverlay()}}
+                to="/">
+                logout
+              </NavLink>
             </li>
           ) :
           (
-            <li>
-              <NavLink
-                onClick={toggleOverlay}
-                className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                to="/login">
-                Login
-              </NavLink>
-            </li>
+            <>
+              <li>
+                <NavLink
+                  onClick={toggleOverlay}
+                  className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
+                  to="/login">
+                  Login
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  onClick={toggleOverlay}
+                  className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
+                  to="/register">
+                  Register
+                </NavLink>
+              </li>
+            </>
           )
         }
-        <li>
-          <NavLink
-            onClick={toggleOverlay}
-            className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-            to="/register">
-            Register
-          </NavLink>
-        </li>
       </ul>
     </div>
   )
