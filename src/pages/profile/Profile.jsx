@@ -1,6 +1,8 @@
-import React from 'react';
+import useAuthGuard from "../../custom-hooks/useauthguard/useAuthGuard.jsx";
 
 function Profile() {
+  useAuthGuard("/profile", "ROLE_USER");
+
   return (
     <div>
     {/*  main-middle component*/}
