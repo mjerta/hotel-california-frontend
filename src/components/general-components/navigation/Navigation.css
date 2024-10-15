@@ -28,7 +28,7 @@
   left: 2rem;
   position: absolute;
   cursor: pointer;
-  z-index: 3;
+  z-index: 2;
 }
 
 @media screen and (min-width: 1200px) {

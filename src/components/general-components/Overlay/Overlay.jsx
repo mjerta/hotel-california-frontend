@@ -45,7 +45,7 @@ function Overlay({classname}) {
           <NavLink
             onClick={toggleOverlay}
             className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-            to="/whitening">
+            to="/new-menu-item">
             Add Menu
           </NavLink>
         </li>
@@ -53,7 +53,7 @@ function Overlay({classname}) {
           <NavLink
             onClick={toggleOverlay}
             className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-            to="/whitening">
+            to="/login">
             Login
           </NavLink>
         </li>
@@ -61,7 +61,7 @@ function Overlay({classname}) {
           <NavLink
             onClick={toggleOverlay}
             className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-            to="/whitening">
+            to="/register">
             Register
           </NavLink>
         </li>

@@ -9,6 +9,8 @@ import AddMenuItem from "./pages/add-menu-item/AddMenuItem.jsx";
 import {useContext} from "react";
 import Overlay from "./components/general-components/Overlay/Overlay.jsx";
 import {OverlayContext} from "./context/OverlayProvider.jsx";
+import Login from "./pages/authentication/login/Login.jsx";
+import Register from "./pages/authentication/register/Register.jsx";
 
 function App() {
   const {isOverlayOpen} = useContext(OverlayContext);
@@ -27,7 +29,9 @@ function App() {
             <Route path="/manager-dashboard" element={<ManagerDashboard/>}/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/new-menu-item" element={<AddMenuItem/>}/>
-            <Route path="/login" element={"<Login />"}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/register" element={<Register />}/>
+
           </Routes>
         </main>
       </div>
