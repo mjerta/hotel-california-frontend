@@ -54,7 +54,7 @@ function LoginForm() {
       <h3>{authMessage && authMessage}</h3>
       <h3>{success && success}</h3>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form autoComplete={"off"} onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
           <input
