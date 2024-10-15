@@ -13,6 +13,9 @@ function LoginForm() {
   const navigate = useNavigate();
   const location = useLocation()
   const redirectPath = location.state?.redirectPath; // Default to home if not provided
+  const initialAuthMessage = location.state?.message;
+  const [authMessage, setAuthMessage] = useState(initialAuthMessage);
+
 
 
   async function onSubmit(data) {
@@ -23,6 +26,7 @@ function LoginForm() {
           password: data.password
         }
       )
+      setAuthMessage(false)
       setSuccess("Login was successful")
       saveToken(response.data.jwt)
       console.log("Login succesful: ", response.data.jwt)
@@ -47,6 +51,7 @@ function LoginForm() {
     <>
       <h3>{loading && "loading"}</h3>
       <h3>{error && error}</h3>
+      <h3>{authMessage && authMessage}</h3>
       <h3>{success && success}</h3>
 
       <form onSubmit={handleSubmit(onSubmit)}>

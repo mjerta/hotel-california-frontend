@@ -4,18 +4,26 @@ import hasUserRole from "../../helpers/hasUserRole.jsx";
 import {useNavigate} from "react-router-dom";
 
 function AddMenuItem() {
-  const {token, roles} = useContext(AuthContext)
+  const {roles, } = useContext(AuthContext)
   const navigate = useNavigate();
-
-
 
   // this will prevent an unauthorized user of the application to be able to use this page
   useEffect(() => {
-    if (!token) {
-      navigate("/login", { state: { redirectPath: "/new-menu-item" } });
+    if (!localStorage.getItem('jwt')) {
+      navigate("/login", {
+        state: {
+          redirectPath: "/new-menu-item",
+          message: "You must log in to access this page."
+        }
+      });
     } else if (!hasUserRole("ROLE_MANAGER", roles)) {
       // If the user does not have the required role, redirect
-      navigate("/login", { state: { redirectPath: "/new-menu-item" } });
+      navigate("/login", {
+        state: {
+          redirectPath: "/new-menu-item",
+          message: "You are logged in however dont have access to this page. Please use the right credentials"
+        }
+      });
 
     }
   }, []);
