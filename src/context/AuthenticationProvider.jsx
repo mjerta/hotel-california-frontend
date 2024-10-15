@@ -1,32 +1,72 @@
-import { createContext, useState, useEffect } from 'react';
+import {createContext, useState, useEffect} from 'react';
+import {jwtDecode} from "jwt-decode";
 
-// Create AuthContext
 export const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
+// states
+const AuthProvider = ({children}) => {
+  const [authState, setAuthState] = useState({
+    token: null,
+    decodedToken: null,
+    roles: [],
+    username: null,
+  });
 
-  // Retrieve the token from localStorage when the provider mounts
+  // on start up - get token from local storage
   useEffect(() => {
     const storedToken = localStorage.getItem('jwt');
     if (storedToken) {
-      setToken(storedToken);
+      setAuthState((prevState) => ({
+        ...prevState,
+        token: storedToken,
+        decodedToken: decodeToken(storedToken),
+        roles: decodeToken(storedToken).authorities,
+        username: decodeToken(storedToken).sub,
+      }));
     }
-  }, []);  // Empty dependency array means this effect runs only once when the component mounts
+  }, []);
 
-  // Function to update token and store it in localStorage
+  // token will be saved in states and in local storage
   const saveToken = (jwtToken) => {
-    setToken(jwtToken);
+    setAuthState((prevState) => ({
+      ...prevState,
+      token: jwtToken,
+      decodedToken: decodeToken(jwtToken),
+      roles: decodeToken(jwtToken).authorities,
+      username: decodeToken(jwtToken).sub,
+    }));
     localStorage.setItem('jwt', jwtToken);  // Optionally store the token
   };
 
+  // reset states and localstorage
   const removeToken = () => {
-    setToken(null);
+    setAuthState({
+      token: null,
+      decodedToken: null,
+      roles: [],
+      username: null,
+    });
     localStorage.removeItem('jwt');
   };
 
+  // function to decode token
+  const decodeToken = (jwtToken) => {
+    try {
+      return jwtDecode(jwtToken);
+    } catch (error) {
+      console.error('Invalid JWT Token', error);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ token, saveToken, removeToken }}>
+    <AuthContext.Provider value={{
+      saveToken,
+      removeToken,
+      token: authState.token,
+      roles: authState.roles,
+      username: authState.username,
+      decodedToken: authState.decodedToken
+    }}>
       {children}
     </AuthContext.Provider>
   );
