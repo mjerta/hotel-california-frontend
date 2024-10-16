@@ -9,7 +9,6 @@ function Register() {
     <MainContent className={"main-content"}>
       <h1>Register</h1>
       <RegisterForm/>
-
     </MainContent>
     </>
   )
