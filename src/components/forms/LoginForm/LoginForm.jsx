@@ -6,13 +6,17 @@ import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 import {useNavigate, useLocation} from "react-router-dom";
 
 function LoginForm() {
+  const baseUrl = import.meta.env.VITE_API_URL;
+  const { saveToken } = useContext(AuthContext);
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
-  const { saveToken } = useContext(AuthContext);
+
   const navigate = useNavigate();
+
   const location = useLocation()
-  const redirectPath = location.state?.redirectPath; // Default to home if not provided
+  const redirectPath = location.state?.redirectPath;
   const initialAuthMessage = location.state?.message;
   const [authMessage, setAuthMessage] = useState(initialAuthMessage);
 
@@ -21,15 +25,14 @@ function LoginForm() {
   async function onSubmit(data) {
     try {
       setLoading(true)
-      const response = await axios.post("http://localhost:8080/api/v1/login", {
+      const response = await axios.post(`${baseUrl}/api/v1/login`, {
           username: data.username,
           password: data.password
         }
       )
-      setAuthMessage(false)
-      setSuccess("Login was successful")
+      setAuthMessage(false) // If this was set it will be false so its not be visible for that 1 second
+      setSuccess("Login was successful") // later maybe have an constant file with responses I can just call
       saveToken(response.data.jwt)
-      console.log("Login succesful: ", response.data.jwt)
 
       setTimeout(() => {
         console.log(redirectPath)
@@ -38,9 +41,12 @@ function LoginForm() {
         navigate(destination)
       }, 1000)
     } catch (e) {
-      // validate this a bit better with conditionals
-      console.error(e)
-      setError(e.response.data.error);
+      if (e.status === 401) {
+        setError("Unauthorized - no valid credentials") // later maybe have an constant file with responses I can just call
+      } else if (e.status === 403) {
+        setError("This endpoint is restricted") // later maybe have an constant file with responses I can just call
+      }
+      console.error(e.message)
     } finally {
       setLoading(false);
     }
