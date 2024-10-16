@@ -1,4 +1,3 @@
-import React from 'react';
 import MainContent
   from "../../components/general-components/maincontent/MainContent.jsx";
 import SideBar from "../../components/general-components/sidebar/SideBar.jsx";
@@ -23,7 +22,7 @@ function MenuPage() {
         {/*  Button component   - web confirmed  a cookie will be set of the order reference or the id depending the user is logged in or not - an interval of 10 or 20 seconds will be set*/}
       </MainContent>
       <SideBar
-        variant={"sidebar-small"}
+        className={"sidebar-small"}
       />
     </>
   );

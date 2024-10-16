@@ -4,7 +4,7 @@ import shoppingcard from "../../../assets/shopping-btn.svg"
 import "./SideBar.css"
 import "./Variants.css"
 
-function SideBar({variant}) {
+function SideBar({className, children}) {
   const [openSideBar, setOpenSideBar] = useState(false);
 
   return (
@@ -14,13 +14,12 @@ function SideBar({variant}) {
         className={`shoppingcard-img ${openSideBar ? "shopping-card-img-enforce" : ""}`}
         src={shoppingcard} alt=""
       />
-      <aside className={`sidebar ${variant} ${openSideBar ? "sidebar-full-screen" : ""}`}>
+      <aside
+        className={`sidebar ${className} ${openSideBar ? "sidebar-full-screen" : ""}`}>
         <div
           className={`sidebar-content`}
         >
-          <h1>up</h1>
-          <h1>bottom</h1>
-
+          {children}
         </div>
       </aside>
     </>
