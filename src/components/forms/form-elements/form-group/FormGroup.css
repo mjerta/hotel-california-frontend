@@ -1,0 +1,23 @@
+.form-group {
+  display: flex;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+
+  & label , & input {
+    padding: 1rem
+  }
+
+  & label {
+    flex-basis:10rem;
+  }
+
+  & input {
+    flex-grow: 1;
+    border-radius: var(--default-radius);
+  }
+}
+
+.error-message {
+  text-align: center;
+  height: 1rem;
+}

@@ -1,0 +1,4 @@
+.login-button {
+  align-self: center;
+  padding: var(--default-padding-buttom);
+}

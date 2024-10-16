@@ -1,6 +1,8 @@
-import React from 'react';
+import useAuthGuard from "../../custom-hooks/useauthguard/useAuthGuard.jsx";
 
 function ManagerDashboard() {
+  useAuthGuard("/manager-dashboard", "ROLE_MANAGER");
+
   return (
     <div>
       {/*  Middle main component*/}

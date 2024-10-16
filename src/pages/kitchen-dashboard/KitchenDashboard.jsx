@@ -1,6 +1,9 @@
-import React from 'react';
+import useAuthGuard from "../../custom-hooks/useauthguard/useAuthGuard.jsx";
 
 function KitchenDashboard() {
+
+  useAuthGuard("/kitchen-dashboard", "ROLE_STAFF");
+
   return (
     <div>
     {/*  the whole data arrat wil be reloaded with new data every 10 or 20 seconds*/}

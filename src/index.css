@@ -11,3 +11,15 @@
   /*align-items: center;*/
   justify-content: center;
 }
+
+:root {
+  --default-radius: .3rem;
+  --default-padding-buttom: .7rem 3rem;
+
+
+  --default-padding-box: 1.5rem;
+
+
+  --register-login-bg-color: #f9f9f9;
+  --regist-login-border-color: #3498db;
+}

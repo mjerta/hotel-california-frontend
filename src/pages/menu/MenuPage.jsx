@@ -1,12 +1,12 @@
 import React from 'react';
 import MainContent
   from "../../components/general-components/maincontent/MainContent.jsx";
-import SideBar from "../../components/general-components/SideBar/SideBar.jsx";
+import SideBar from "../../components/general-components/sidebar/SideBar.jsx";
 
 function MenuPage() {
   return (
     <>
-      <MainContent className="main-content">
+      <MainContent>
         {/*  Middle main component*/}
         {/*  Search bar component* - will filter and set the state of the array of the menuitems available */}
         {/*  Map over menuItem component*/}
