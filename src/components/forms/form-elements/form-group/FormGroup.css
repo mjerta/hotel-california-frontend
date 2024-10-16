@@ -1,6 +1,6 @@
 .form-group {
   display: flex;
-  padding: 2rem;
+  padding: 1rem 0;
   flex-wrap: wrap;
 
   & label , & input {
@@ -15,4 +15,9 @@
     flex-grow: 1;
     border-radius: var(--default-radius);
   }
+}
+
+.error-message {
+  text-align: center;
+  height: 1rem;
 }

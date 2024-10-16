@@ -3,30 +3,29 @@
   flex-shrink: 0;
   background-color: #dc9d36;
   height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  flex-direction: column;
 }
 
-.navigation-content {
-  display: none;
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: space-between;
+
+.image-wrapper {
+  width: calc(138rem / 16);
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .hamburger-img {
   height: 2rem;
-  top: 2rem;
-  left: 2rem;
-  position: absolute;
   cursor: pointer;
   z-index: 3;
 }
 
 .profile-img {
   display: none;
-  height: 4rem;
-  bottom: 2em;
-  left: 2rem;
-  position: absolute;
   cursor: pointer;
   z-index: 2;
 }
@@ -45,4 +44,14 @@
   .profile-img {
     display: unset;
   }
+
+  .image-wrapper {
+    position: static;
+  }
+
+  .image-wrapper {
+    width: 100%;
+  }
+
+
 }

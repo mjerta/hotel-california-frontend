@@ -9,10 +9,11 @@ function FormGroup({type, labelAndID, labelText, register, errors, name, classNa
           type={type}
           id={labelAndID}
           {...register}
+          autoComplete={"off"}
         />
-        {errors && errors[name] &&
-          <p className="error-message">{errors[name].message}</p>}
       </div>
+      {errors && errors[name] &&
+        <p className="error-message">{errors[name].message}</p>}
     </>
   )
 }

@@ -6,11 +6,12 @@ import SubmitButton from "../form-elements/submit-button/SubmitButton.jsx";
 import axios from "axios";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import FormGroupButton
+  from "../form-elements/form-group-button/FormGroupButton.jsx";
 
 function RegisterForm() {
   const baseUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
-
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -59,9 +60,9 @@ function RegisterForm() {
   return (
     <>
       <h3>{loading && "loading..."}</h3>
-      <h3>{error && error}</h3> {/* Display the error message */}
+      <h3>{error && error}</h3>
       <h3>{success && success}</h3>
-      <DefaultForm onSubmit={handleSubmit(onSubmit)}>
+      <DefaultForm header={"Register"} onSubmit={handleSubmit(onSubmit)}>
         <FormGroup
           type={"text"}
           labelText={"Username: "}
@@ -166,9 +167,7 @@ function RegisterForm() {
           })}
           errors={errors}
         />
-        <SubmitButton
-          text={"submit"}
-        />
+        <FormGroupButton/>
       </DefaultForm>
     </>
   )

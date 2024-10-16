@@ -6,7 +6,8 @@ import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 import {useNavigate, useLocation} from "react-router-dom";
 import DefaultForm from "../default-form/DefaultForm.jsx";
 import FormGroup from "../form-elements/form-group/FormGroup.jsx";
-import SubmitButton from "../form-elements/submit-button/SubmitButton.jsx";
+import FormGroupButton
+  from "../form-elements/form-group-button/FormGroupButton.jsx";
 
 function LoginForm() {
   const baseUrl = import.meta.env.VITE_API_URL;
@@ -59,7 +60,7 @@ function LoginForm() {
       <h3>{error && error}</h3>
       <h3>{authMessage && authMessage}</h3>
       <h3>{success && success}</h3>
-      <DefaultForm onSubmit={handleSubmit(onSubmit)}>
+      <DefaultForm header={"Login"} onSubmit={handleSubmit(onSubmit)}>
         <FormGroup
           type={"text"}
           labelText={"Username: "}
@@ -84,9 +85,7 @@ function LoginForm() {
           })}
           errors={errors}
         />
-        <SubmitButton
-          text={"submit"}
-        />
+        <FormGroupButton/>
       </DefaultForm>
     </>
   )
