@@ -1,0 +1,21 @@
+.search-input {
+  flex-basis: 90%;
+  flex-shrink: 1;
+  font-size: 1.5rem;
+  border-radius: var(--default-radius);
+  padding: 1rem;
+  word-wrap: break-word;
+
+
+  &::before {
+
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .search-input {
+    padding: 1.5rem 1rem 1.5rem 3.5em;
+
+  }
+
+}

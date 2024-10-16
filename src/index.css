@@ -23,3 +23,9 @@
   --register-login-bg-color: #f9f9f9;
   --regist-login-border-color: #3498db;
 }
+
+@media screen and (min-width: 300px) {
+  html {
+    font-size: clamp(12px,4vw, 16px);
+  }
+}
