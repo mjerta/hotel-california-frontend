@@ -4,6 +4,7 @@ import axios from "axios";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 import {useNavigate, useLocation} from "react-router-dom";
+import DefaultForm from "../default-form/DefaultForm.jsx";
 
 function LoginForm() {
   const baseUrl = import.meta.env.VITE_API_URL;
@@ -60,7 +61,7 @@ function LoginForm() {
       <h3>{authMessage && authMessage}</h3>
       <h3>{success && success}</h3>
 
-      <form autoComplete={"off"} onSubmit={handleSubmit(onSubmit)}>
+      <DefaultForm onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
           <input
@@ -93,7 +94,7 @@ function LoginForm() {
         <button type="submit" className="login-button">
           Login
         </button>
-      </form>
+      </DefaultForm>
     </>
   )
 }
