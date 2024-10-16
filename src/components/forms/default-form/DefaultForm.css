@@ -1,0 +1,17 @@
+.form-container {
+  border: 2px solid var(--regist-login-border-color);
+  border-radius: var(--default-radius);
+  padding: var(--default-padding-box);
+  background-color: var(--register-login-bg-color);
+}
+
+legend {
+  font-size: 2rem;
+  font-weight: bold; /* Make the legend bold */
+}
+
+.default-form {
+  display: flex;
+  flex-direction: column;
+  min-width:50%;
+}

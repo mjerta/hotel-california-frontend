@@ -6,7 +6,7 @@ import SideBar from "../../components/general-components/sidebar/SideBar.jsx";
 function MenuPage() {
   return (
     <>
-      <MainContent className="main-content">
+      <MainContent>
         {/*  Middle main component*/}
         {/*  Search bar component* - will filter and set the state of the array of the menuitems available */}
         {/*  Map over menuItem component*/}

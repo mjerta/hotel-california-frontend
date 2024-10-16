@@ -6,7 +6,7 @@ import RegisterForm
 function Register() {
   return (
     <>
-    <MainContent className={"main-content"}>
+    <MainContent>
       <h1>Register</h1>
       <RegisterForm/>
     </MainContent>

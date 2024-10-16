@@ -1,0 +1,18 @@
+.form-group {
+  display: flex;
+  padding: 2rem;
+  flex-wrap: wrap;
+
+  & label , & input {
+    padding: 1rem
+  }
+
+  & label {
+    flex-basis:10rem;
+  }
+
+  & input {
+    flex-grow: 1;
+    border-radius: var(--default-radius);
+  }
+}

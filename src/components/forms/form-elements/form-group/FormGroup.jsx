@@ -1,9 +1,9 @@
 import "./FormGroup.css"
 
-function FormGroup({type, labelAndID, labelText, register, errors, name}) {
+function FormGroup({type, labelAndID, labelText, register, errors, name, className}) {
   return (
     <>
-      <div className="form-group">
+      <div className={`form-group${className ? className: ''}`}>
         <label htmlFor={labelAndID}>{labelText}</label>
         <input
           type={type}
