@@ -1,8 +1,8 @@
 import "./DefaultForm.css"
-function DefaultForm({children, onsubmit, className}) {
+function DefaultForm({children, onSubmit, className}) {
   return (
     <>
-      <form className={`default-form ${className ? className: ''}`} autoComplete={"off"} onSubmit={onsubmit}>
+      <form className={`default-form ${className ? className: ''}`} autoComplete={"off"} onSubmit={onSubmit}>
         {children}
       </form>
 

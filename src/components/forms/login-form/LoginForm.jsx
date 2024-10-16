@@ -5,10 +5,11 @@ import {useContext, useState} from "react";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 import {useNavigate, useLocation} from "react-router-dom";
 import DefaultForm from "../default-form/DefaultForm.jsx";
+import FormGroup from "../form-elements/form-group/FormGroup.jsx";
 
 function LoginForm() {
   const baseUrl = import.meta.env.VITE_API_URL;
-  const { saveToken } = useContext(AuthContext);
+  const {saveToken} = useContext(AuthContext);
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,8 +21,6 @@ function LoginForm() {
   const redirectPath = location.state?.redirectPath;
   const initialAuthMessage = location.state?.message;
   const [authMessage, setAuthMessage] = useState(initialAuthMessage);
-
-
 
   async function onSubmit(data) {
     try {
@@ -36,8 +35,6 @@ function LoginForm() {
       saveToken(response.data.jwt)
 
       setTimeout(() => {
-        console.log(redirectPath)
-        console.log("navigate back")
         const destination = redirectPath || -1;
         navigate(destination)
       }, 1000)
@@ -54,43 +51,38 @@ function LoginForm() {
   }
 
   const {register, handleSubmit, formState: {errors}} = useForm();
+
   return (
     <>
       <h3>{loading && "loading"}</h3>
       <h3>{error && error}</h3>
       <h3>{authMessage && authMessage}</h3>
       <h3>{success && success}</h3>
-
       <DefaultForm onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            {...register("username", {
-              required: "Username is required",
-            })}
-          />
-          {errors.username &&
-            <p className="error-message">{errors.username.message}</p>}
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="text"
-            id="password"
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 8,
-                message: "Password must be at least 8 characters"
-              }
-
-            })}
-          />
-          {errors.password &&
-            <p className="error-message">{errors.password.message}</p>}
-        </div>
+        <FormGroup
+          type={"text"}
+          labelText={"Username: "}
+          labelAndID={"username"}
+          name={"username"}
+          register={register("username", {
+            required: "Username is required",
+          })}
+          errors={errors}
+        />
+        <FormGroup
+          type={"text"}
+          labelText={"Password: "}
+          labelAndID={"password"}
+          name={"password"}
+          register={register("password", {
+            required: "Password is required",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters"
+            }
+          })}
+          errors={errors}
+        />
         <button type="submit" className="login-button">
           Login
         </button>
