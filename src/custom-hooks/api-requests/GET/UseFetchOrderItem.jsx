@@ -1,8 +1,10 @@
 // useFetchOrderItem.js
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import { OrderContext } from "./OrderProvider.jsx";
 
-const useFetchOrderItem = (id) => {
+function useFetchOrderItem(id) {
   const baseUrl = import.meta.env.VITE_API_URL; // Get base URL from environment variable
   const [orderItemData, setOrderItemData] = useState({
     name: "",
@@ -41,6 +43,6 @@ const useFetchOrderItem = (id) => {
   }, []);
 
   return { orderItemData, loading, error }; // Return data, loading state, and error
-};
+}
 
 export default useFetchOrderItem;
