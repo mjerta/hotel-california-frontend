@@ -9,12 +9,14 @@ function OrderProvider({children}) {
     setCurrentOrder([...currentOrder, id]);
   }
 
-  return <OrderContext.Provider value={{
-    currentOrder: currentOrder,
-    addMealToOrder,
-  }}>
-    {children}
-  </OrderContext.Provider>;
+  return (
+    <OrderContext.Provider value={{
+      currentOrder: currentOrder,
+      addMealToOrder,
+    }}>
+      {children}
+    </OrderContext.Provider>
+  )
 }
 
 export default OrderProvider;

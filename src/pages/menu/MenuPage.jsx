@@ -6,6 +6,12 @@ import SearchSection
 import FoodMenuOverview
   from "../../components/menu-components/food-menu-overview/FoodMenuOverview.jsx";
 import {useState} from "react";
+import OrderOverview
+  from "../../components/menu-components/order-overview/OrderOverview.jsx";
+import ExtraDetails
+  from "../../components/menu-components/extra-details/ExtraDetails.jsx";
+import ReceiptOverview
+  from "../../components/menu-components/receipt-overview/ReceiptOverview.jsx";
 
 function MenuPage() {
   const [currentOrder, setCurrentOrder] = useState([]);
@@ -39,6 +45,10 @@ function MenuPage() {
         className={"sidebar-small"}
         currentOrder={currentOrder}
       >
+        <ExtraDetails/>
+        <OrderOverview/>
+        <ReceiptOverview/>
+
       </SideBar>
     </>
   );

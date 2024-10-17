@@ -4,6 +4,9 @@
   height: 100vh;
   position: relative;
   overflow-y: auto;
+  padding: 5rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
 }
 
 .sidebar-full-screen {
@@ -11,14 +14,22 @@
   width: 100%;
   left: 0;
   overflow: hidden;
-}
-.sidebar-content {
-  display: none;
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 5rem 0 1rem 0;
+
 }
 
+.sidebar-content {
+  display: none;
+  border: 1px solid;
+  flex-basis: 50%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem
+}
+
+.open-sidebar-content {
+  display: flex;
+}
 
 .shoppingcard-img {
   height: 4rem;
@@ -29,16 +40,26 @@
   z-index: 1;
 }
 
+
 @media screen and (min-width: 1200px) {
   .sidebar {
-    display: flex;
-    flex-basis: calc(379rem /16);
+    flex-basis: calc(379rem / 16);
+    padding: 2rem 1rem;
+  }
+
+  .sidebar-full-screen {
+    padding: 5rem 0rem;
   }
 
   .sidebar-content {
     display: flex;
+    flex-grow: 1;
+
   }
 
+  .open-sidebar-content {
+    flex-grow: unset;
+  }
 
   .shoppingcard-img {
     display: none;

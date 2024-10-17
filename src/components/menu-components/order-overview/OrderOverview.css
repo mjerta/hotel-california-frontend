@@ -1,0 +1,5 @@
+.order-overview {
+  display: flex;
+  flex-grow: 1;
+  background-color: #dc9d36;
+}

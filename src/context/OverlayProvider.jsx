@@ -8,10 +8,16 @@ function OverlayProvider({children}) {
   function toggleOverlay() {
     setIsOverLayOpen((prev) => !prev);
   }
+
   return (
-    <OverlayContext.Provider value={{isOverlayOpen, toggleOverlay}}>
+    <OverlayContext.Provider value={{
+      isOverlayOpen,
+      toggleOverlay
+    }
+    }>
       {children}
     </OverlayContext.Provider>
   )
 }
+
 export default OverlayProvider;
