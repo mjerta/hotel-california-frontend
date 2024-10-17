@@ -21,7 +21,8 @@
 .sidebar-content {
   display: none;
   border: 1px solid;
-  flex-basis: 50%;
+  flex-grow: 0;
+  flex-basis: calc(400rem / 16);
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem
@@ -38,6 +39,13 @@
   position: absolute;
   cursor: pointer;
   z-index: 1;
+}
+
+@media screen and (min-width: 800px) {
+  .sidebar-content {
+    flex-grow: unset;
+    flex-basis: 50%;
+  }
 }
 
 
