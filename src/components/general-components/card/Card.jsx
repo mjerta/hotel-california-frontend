@@ -2,14 +2,18 @@ import "./Card.css"
 import foodImage from "../../../assets/menu-image.png"
 import addButton from "../../../assets/add-button.svg"
 import convertPrice from "../../../helpers/convertPrice.js";
-function Card({className, name, image, description, price, onClick}) {
+import {useContext} from "react";
+import {OrderContext} from "../../../context/OrderProvider.jsx";
+function Card({className, name, image, description, price, id}) {
+
+  const {addMealToOrder} = useContext(OrderContext)
   return (
     <article
       className={`card${className ? className : ''}`}
     >
       <img src={image ? image : foodImage} alt="menu-image"/>
       <img
-        onClick={onClick}
+        onClick={() => addMealToOrder(id)}
         className={"add-button"}
         src={addButton}
         alt={"add-button"}

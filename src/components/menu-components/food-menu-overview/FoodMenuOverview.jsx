@@ -3,7 +3,7 @@ import Card from "../../general-components/card/Card.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-function FoodMenuOverview({className, addMealToOrder}) {
+function FoodMenuOverview({className}) {
   const baseUrl = import.meta.env.VITE_API_URL;
   const [meals, setMeals] = useState([]);
   const [error, setError] = useState(null);
@@ -43,7 +43,7 @@ function FoodMenuOverview({className, addMealToOrder}) {
               description={meal.description}
               price={meal.price}
               image={meal.image}
-              onClick={() => addMealToOrder(meal.id)}
+              id={meal.id}
             />
           ))
         )}
