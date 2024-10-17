@@ -1,3 +1,17 @@
 .order-item {
   display: flex;
+  background-color: rgba(55, 50, 62, 0.6);
+  padding: 1rem;
+  border-radius: .3rem;
+  color: white;
+
+
+  & img {
+    width: 2.4rem;
+    cursor: pointer;
+  }
+  & p {
+    flex-grow: 1;
+  }
+
 }

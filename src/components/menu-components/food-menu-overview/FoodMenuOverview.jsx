@@ -1,5 +1,5 @@
 import "./FoodMenuOverview.css"
-import Card from "../../general-components/card/Card.jsx";
+import Card from "../card/Card.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
