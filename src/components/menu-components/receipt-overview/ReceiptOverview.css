@@ -1,5 +1,6 @@
 .receipt-overview {
-  flex-basis: 10rem;
+  flex-basis: 14rem;
   flex-shrink: 0;
-  background-color: whitesmoke;
+  padding: 1rem;
+  background-color: #d0d5dd;
 }

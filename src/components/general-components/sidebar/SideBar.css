@@ -25,7 +25,8 @@
   flex-basis: calc(400rem / 16);
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem
+  padding: 1rem;
+  row-gap: 1rem;
 }
 
 .open-sidebar-content {

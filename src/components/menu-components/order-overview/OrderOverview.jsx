@@ -1,7 +1,7 @@
 import "./OrderOverview.css"
 import {useContext, useEffect} from "react";
 import {OrderContext} from "../../../context/OrderProvider.jsx";
-import OrderItem from "../receipt-overview/order-item/OrderItem.jsx";
+import OrderItem from "./order-item/OrderItem.jsx";
 
 function OrderOverview({className}) {
   const {currentOrder} = useContext(OrderContext)
