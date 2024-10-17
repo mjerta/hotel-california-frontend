@@ -1,19 +1,20 @@
 import "./Card.css"
 import foodImage from "../../../assets/menu-image.png"
 import addButton from "../../../assets/add-button.svg"
-function Card({className}) {
+import convertPrice from "../../../helpers/convertPrice.js";
+function Card({className, name, image, description, price}) {
   return (
     <article
       className={`card${className ? className : ''}`}
     >
-      <img src={foodImage} alt="menu-image"/>
+      <img src={image ? image : foodImage} alt="menu-image"/>
       <img className={"add-button"} src={addButton} alt={"add-button"}/>
       <figcaption>
         <div className="menu-details">
-          <p>menu item</p>
-          <p className={"description"}>Erg lekker</p>
+          <p>{name}</p>
+          <p className={"description"}>{description}</p>
         </div>
-        <div className="price">€12,95</div>
+        <div className="price">€{convertPrice(price)}</div>
       </figcaption>
 
 
