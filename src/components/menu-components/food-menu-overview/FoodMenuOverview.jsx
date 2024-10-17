@@ -3,17 +3,18 @@ import Card from "../../general-components/card/Card.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-function FoodMenuOverview({className}) {
+function FoodMenuOverview({className, addMealToOrder}) {
   const baseUrl = import.meta.env.VITE_API_URL;
   const [meals, setMeals] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+
   useEffect(() => {
     async function fetchMeals() {
       try {
         setLoading(true);
-        const response = await axios.get(`${baseUrl}/api/v1/mseals`)
+        const response = await axios.get(`${baseUrl}/api/v1/meals`)
         console.log(response);
         setMeals(response.data)
       } catch (e) {
@@ -42,6 +43,7 @@ function FoodMenuOverview({className}) {
               description={meal.description}
               price={meal.price}
               image={meal.image}
+              onClick={() => addMealToOrder(meal.id)}
             />
           ))
         )}

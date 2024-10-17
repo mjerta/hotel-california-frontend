@@ -4,7 +4,7 @@ import shoppingcard from "../../../assets/shopping-btn.svg"
 import "./SideBar.css"
 import "./Variants.css"
 
-function SideBar({className, children}) {
+function SideBar({className, children, currentOrder}) {
   const [openSideBar, setOpenSideBar] = useState(false);
 
   return (
@@ -19,6 +19,9 @@ function SideBar({className, children}) {
         <div
           className={`sidebar-content`}
         >
+          <p>result: {currentOrder.length > 0 && currentOrder.map((menuitem) => (
+            menuitem
+          ))}</p>
           {children}
         </div>
       </aside>

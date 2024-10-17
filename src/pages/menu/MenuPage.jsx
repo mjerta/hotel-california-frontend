@@ -5,8 +5,15 @@ import SearchSection
   from "../../components/menu-components/seach-section/SearchSection.jsx";
 import FoodMenuOverview
   from "../../components/menu-components/food-menu-overview/FoodMenuOverview.jsx";
+import {useState} from "react";
 
 function MenuPage() {
+  const [currentOrder, setCurrentOrder] = useState([]);
+
+  function addMealToOrder(id) {
+    setCurrentOrder([...currentOrder, id]);
+  }
+
   return (
     <>
       <MainContent>
@@ -24,10 +31,13 @@ function MenuPage() {
         {/*  Button  component*/}
         {/*  Button component   - web confirmed  a cookie will be set of the order reference or the id depending the user is logged in or not - an interval of 10 or 20 seconds will be set*/}
         <SearchSection/>
-        <FoodMenuOverview/>
+        <FoodMenuOverview
+          addMealToOrder={addMealToOrder}
+        />
       </MainContent>
       <SideBar
         className={"sidebar-small"}
+        currentOrder={currentOrder}
       >
       </SideBar>
     </>
