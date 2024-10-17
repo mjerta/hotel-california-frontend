@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+body {
+
+}
+
 input,
 textarea,
 select {
@@ -31,6 +35,8 @@ select {
   --register-login-bg-color: #f9f9f9;
   --regist-login-border-color: #3498db;
 }
+
+
 
 @media screen and (min-width: 300px) {
   html {
