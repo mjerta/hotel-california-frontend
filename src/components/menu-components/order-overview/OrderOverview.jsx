@@ -1,5 +1,5 @@
 import "./OrderOverview.css"
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {OrderContext} from "../../../context/OrderProvider.jsx";
 import OrderItem from "./order-item/OrderItem.jsx";
 
@@ -9,10 +9,12 @@ function OrderOverview({className}) {
   return (
 
     <div className={`order-overview${className ? className : ''}`}>
-      {currentOrder.map((item, index) => (
+      {currentOrder.length > 0 && currentOrder.map((item, index) => (
         <OrderItem
           key={index}
-          id={item}
+          name={item.name}
+          description={item.description}
+          price={item.price}
         />
       ))}
     </div>

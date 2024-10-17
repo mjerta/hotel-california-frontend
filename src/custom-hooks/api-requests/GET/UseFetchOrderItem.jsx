@@ -1,48 +1,41 @@
 // useFetchOrderItem.js
-import { useEffect, useState } from "react";
+import { useState} from "react";
 import axios from "axios";
-import { useContext } from "react";
-import { OrderContext } from "./OrderProvider.jsx";
+import {useContext} from "react";
+import {OrderContext} from "../../../context/OrderProvider.jsx";
 
-function useFetchOrderItem(id) {
-  const baseUrl = import.meta.env.VITE_API_URL; // Get base URL from environment variable
-  const [orderItemData, setOrderItemData] = useState({
-    name: "",
-    description: "",
-    price: "",
-  });
+function useFetchOrderItem() {
+  const {setCurrentOrder} = useContext(OrderContext);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
+  const baseUrl = import.meta.env.VITE_API_URL;
 
-  useEffect(() => {
-    const fetchOrderItems = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(`${baseUrl}/api/v1/meals/${id}`);
-        const data = response.data;
-        setOrderItemData({
-          name: data.name,
-          description: data.description,
-          price: data.price,
-        });
-      } catch (e) {
-        if (e.response?.status === 401) {
-          setError("Unauthorized - no valid credentials");
-        } else if (e.response?.status === 403) {
-          setError("This endpoint is restricted");
-        } else {
-          setError("Something went wrong");
-        }
-        console.log(e.message);
-      } finally {
-        setLoading(false);
+  async function addMealToOrder(id) {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await axios.get(`${baseUrl}/api/v1/meals/${id}`);
+      const meal = response.data;
+      setCurrentOrder((prevOrder) => [...prevOrder, meal]);
+    } catch (e) {
+      if (e.response?.status === 401) {
+        setError("Unauthorized - no valid credentials");
+      } else if (e.response?.status === 403) {
+        setError("This endpoint is restricted");
+      } else {
+        setError("Something went wrong");
       }
-    };
+      console.log(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchOrderItems();
-  }, []);
-
-  return { orderItemData, loading, error }; // Return data, loading state, and error
+  return {
+    addMealToOrder,
+    loading,
+    error
+  };
 }
 
 export default useFetchOrderItem;
