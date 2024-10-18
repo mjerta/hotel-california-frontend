@@ -13,7 +13,7 @@ function LocationProvider({children}) {
         const result = await axios.get(`${baseUrl}/api/v1/locations`);
         setLocations(result.data)
       } catch (e) {
-        console.log(e)
+        console.error(e)
       }
     }
     fetchAllLocations();

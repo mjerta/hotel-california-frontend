@@ -10,6 +10,7 @@ function OrderProvider({children}) {
   const [finalPrice, setFinalPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isTableValid, setIsTableValid] = useState(false);
 
   useEffect(() => {
     const total = currentOrder.reduce((sum, item) => sum + item.price, 0);
@@ -26,7 +27,6 @@ function OrderProvider({children}) {
       setPriceWithDiscount(newPriceWithoutTax);
       setFinalPrice(newPriceWithoutTax * 1.21)
     }
-
   }, [totalPriceWithoutTax]);
 
   function calculateDiscount(points) {
@@ -39,12 +39,8 @@ function OrderProvider({children}) {
       setDiscount(discount);
       setPriceWithDiscount(newPriceWithoutTax);
       setFinalPrice(newPriceWithoutTax * 1.21)
-
-
     }
   }
-
-
   return (
     <OrderContext.Provider value={{
       currentOrder,
@@ -56,8 +52,8 @@ function OrderProvider({children}) {
       priceWithDiscount,
       isButtonDisabled,
       setIsButtonDisabled,
-      finalPrice
-
+      finalPrice,
+      setIsTableValid
     }}>
       {children}
     </OrderContext.Provider>
