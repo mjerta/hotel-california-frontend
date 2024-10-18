@@ -1,5 +1,5 @@
 import "./OrderItem.css"
-import deleteIcon from "../../../../assets/add-button.svg"
+import deleteIcon from "../../../../assets/remove-btn.svg"
 import MenuTitle from "../../card/menu-title/MenuTitle.jsx";
 import convertPrice from "../../../../helpers/convertPrice.js";
 

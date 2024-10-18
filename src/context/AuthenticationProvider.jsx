@@ -1,5 +1,7 @@
 import {createContext, useState, useEffect} from 'react';
 import {jwtDecode} from "jwt-decode";
+import useFetchProfile
+  from "../custom-hooks/api-requests/GET/useFetchProfile.jsx";
 
 export const AuthContext = createContext();
 
@@ -11,6 +13,9 @@ const AuthProvider = ({children}) => {
     roles: [],
     username: null,
   });
+
+  // This will be fired whne a token is being set, could be in the useffect or on saveToken
+  const { profileData, loading, error } = useFetchProfile(authState.token);
 
   // on start up - get token from local storage
   useEffect(() => {
@@ -24,6 +29,7 @@ const AuthProvider = ({children}) => {
         username: decodeToken(storedToken).sub,
       }));
     }
+
   }, []);
 
   // token will be saved in states and in local storage
@@ -65,6 +71,9 @@ const AuthProvider = ({children}) => {
       token: authState.token,
       roles: authState.roles,
       username: authState.username,
+      profileData,
+      profileLoading: loading,
+      profileError: error,
       decodedToken: authState.decodedToken
     }}>
       {children}

@@ -1,44 +1,34 @@
-import {createContext, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 
 export const OrderContext = createContext();
 
 function OrderProvider({children}) {
   const [currentOrder, setCurrentOrder] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPriceWithoutTax, setTotalPriceWithoutTax] = useState(0);
+  // const [totalPriceWithDiscount, setTotalPriceWithDiscount] = useState(0);
 
-  function getTotalPrice() {
-    let total = 0;
-    currentOrder.forEach((item) => {
-      total += item.price;
-    })
-    return total.toFixed(2);
-  }
+  useEffect(() => {
+    const total = currentOrder.reduce((sum, item) => sum + item.price, 0);
+    setTotalPrice(total);
 
-  function getTotalPriceWithoutTax(callBack) {
-    return (callBack() * .79).toFixed(2);
-  }
+    const priceWithoutTax = total / 1.21; // Assuming a 21% tax rate
+    setTotalPriceWithoutTax(priceWithoutTax);
 
-  function getTotalPriceWithDiscount(points, callBack) {
-    const discount = points / 25; // Calculate the discount
-    console.log(discount)
-    const totalPrice = callBack(); // Get the total price using the callback
-    console.log(totalPrice)
+    console.log("Total price:", total);
+    console.log("Total price without tax:", priceWithoutTax);
 
-    const newPrice = totalPrice - discount; // Subtract the discount from total
 
-    if (newPrice <= 0) {
-      return 0; // Ensure the price doesn't go below 0
-    }
+  }, [currentOrder]);
 
-    return newPrice.toFixed(2); // Return the new price with two decimal places
-  }
 
   return (
     <OrderContext.Provider value={{
       currentOrder,
       setCurrentOrder,
-      getTotalPrice,
-      getTotalPriceWithoutTax,
-      getTotalPriceWithDiscount
+      totalPrice,
+      totalPriceWithoutTax,
+
     }}>
       {children}
     </OrderContext.Provider>

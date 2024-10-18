@@ -9,35 +9,34 @@ function ReceiptOverview({className}) {
 
   const {
     currentOrder,
-    getTotalPrice,
-    getTotalPriceWithoutTax,
-    getTotalPriceWithDiscount
+    totalPrice,
+    totalPriceWithoutTax
   } = useContext(OrderContext);
-  const [usePoints, setUsePoints] = useState(false);
+
+  const points = 120;
 
   return (
     <div className={`receipt-overview ${className ? className : ''}`}>
       <TextLineText
-        priceFirstText={getTotalPriceWithoutTax(getTotalPrice)}
-        priceSecondText={getTotalPrice()}
+        priceFirstText={totalPriceWithoutTax}
+        priceSecondText={totalPrice}
       />
       <Button
-        onClick={() => setUsePoints(true)}
         className={"points-btn"}
       >
         <div className="coin-box">
           <img src={coinIcon} alt="Coin icon"/>
-          <span>{usePoints ? '0' : "130"}</span>
+          <span>{points ?  points : "130"}</span>
         </div>
         <span>USE POINTS</span>
       </Button>
       <TextLineText
-        priceFirstText={
-          usePoints ?
-            getTotalPriceWithDiscount(130, getTotalPrice)
-            :
-            getTotalPriceWithoutTax(getTotalPrice)
-        }
+        // priceFirstText={
+        //   points ?
+        //     getTotalPriceWithoutTax(getTotalPrice) - discount
+        //     :
+        //     getTotalPriceWithoutTax(getTotalPrice)
+        // }
         priceSecondText={"41,14"}
       />
       <Button
