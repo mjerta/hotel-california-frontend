@@ -53,6 +53,7 @@ const AuthProvider = ({children}) => {
       username: null,
     });
     localStorage.removeItem('jwt');
+
   };
 
   // function to decode token

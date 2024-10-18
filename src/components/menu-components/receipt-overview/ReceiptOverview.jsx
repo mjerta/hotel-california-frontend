@@ -4,32 +4,33 @@ import Button from "../../general-components/button/Button.jsx";
 import coinIcon from "../../../assets/coin-icon.svg"
 import {OrderContext} from "../../../context/OrderProvider.jsx";
 import {useContext, useState} from "react";
+import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 
 function ReceiptOverview({className}) {
+  const {profileData} = useContext(AuthContext);
 
   const {
-    currentOrder,
-    totalPrice,
-    totalPriceWithoutTax
+    totalPrice, totalPriceWithoutTax
   } = useContext(OrderContext);
 
   const points = 120;
 
-  return (
-    <div className={`receipt-overview ${className ? className : ''}`}>
+  return (<div className={`receipt-overview ${className ? className : ''}`}>
       <TextLineText
         priceFirstText={totalPriceWithoutTax}
         priceSecondText={totalPrice}
       />
-      <Button
-        className={"points-btn"}
-      >
-        <div className="coin-box">
-          <img src={coinIcon} alt="Coin icon"/>
-          <span>{points ?  points : "130"}</span>
-        </div>
-        <span>USE POINTS</span>
-      </Button>
+      {profileData.id !== null && (<Button
+          className={"points-btn"}
+        >
+          <div className="coin-box">
+            <img src={coinIcon} alt="Coin icon"/>
+            <span>{points ? points : "130"}</span>
+          </div>
+          <span>USE POINTS</span>
+        </Button>)
+
+      }
       <TextLineText
         // priceFirstText={
         //   points ?

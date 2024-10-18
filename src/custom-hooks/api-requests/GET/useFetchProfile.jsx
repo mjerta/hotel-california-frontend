@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const useFetchProfile = (token) => {
@@ -17,7 +17,17 @@ const useFetchProfile = (token) => {
 
   // Fetch profile data function
   useEffect(() => {
-    if (!token) return;
+    if (!token) {
+      setProfileData({
+        id: null,
+        firstName: "",
+        lastName: "",
+        phoneNumber: "",
+        address: "",
+        points: 0,
+      });
+      return
+    }
 
     const fetchProfileData = async () => {
       setLoading(true);
@@ -55,7 +65,7 @@ const useFetchProfile = (token) => {
     fetchProfileData();
   }, [token]);
 
-  return { profileData, loading, error };
+  return {profileData, loading, error};
 };
 
 export default useFetchProfile;
