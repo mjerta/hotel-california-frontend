@@ -79,6 +79,9 @@ function ReceiptOverview({className}) {
 
       }
       />
+
+      {/*this is going to send the order: to the endpoint /api/v1/orders */}
+      {/* I need mealid or drinkid and desitination id*/}
       <Button
         className={"confirm-order"}
         spanTextOne={"Sub total with discount"}
