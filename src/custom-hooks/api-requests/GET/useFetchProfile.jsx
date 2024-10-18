@@ -38,7 +38,6 @@ const useFetchProfile = (token) => {
           },
         });
         const data = response.data;
-        console.log(data);
 
         setProfileData({
           id: data.id,

@@ -1,11 +1,12 @@
 import "./Button.css"
 import "./Variants.css"
 
-function Button({className, onClick, text, children}) {
+function Button({className, onClick, text, children, disabled}) {
   return (
     <button
       className={`button ${className ? ` ${className}` : ''}`}
       onClick={onClick}
+      disabled={disabled}
     >
       {
         children ? (

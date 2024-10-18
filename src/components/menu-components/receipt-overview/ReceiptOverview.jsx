@@ -3,45 +3,85 @@ import TextLineText from "./text-line-text/TextLineText.jsx";
 import Button from "../../general-components/button/Button.jsx";
 import coinIcon from "../../../assets/coin-icon.svg"
 import {OrderContext} from "../../../context/OrderProvider.jsx";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
+import convertPrice from "../../../helpers/convertPrice.js";
 
 function ReceiptOverview({className}) {
-  const {profileData} = useContext(AuthContext);
-
   const {
-    totalPrice, totalPriceWithoutTax
+    profileData,
+    points, setPoints
+  } = useContext(AuthContext);
+  const {
+    totalPrice,
+    totalPriceWithoutTax,
+    calculateDiscount,
+    priceWithDiscount,
+    discount,
+    isButtonDisabled,
+    setIsButtonDisabled,
+    finalPrice
   } = useContext(OrderContext);
 
-  const points = 120;
+  function handleDiscountClick() {
+    calculateDiscount(profileData.points);
+    if (totalPrice >= discount && totalPrice > 0) {
+      console.log(totalPrice)
+      setPoints(0);
+    // disable the button here
+    setIsButtonDisabled(true);
+    }
+  }
 
   return (<div className={`receipt-overview ${className ? className : ''}`}>
       <TextLineText
-        priceFirstText={totalPriceWithoutTax}
-        priceSecondText={totalPrice}
+        spanTextOne={"Sub total:"}
+        spanTextTwo={"With tax:"}
+        priceFirstText={convertPrice(totalPriceWithoutTax.toFixed(2))}
+        priceSecondText={convertPrice(totalPrice.toFixed(2))}
       />
       {profileData.id !== null && (<Button
-          className={"points-btn"}
-        >
-          <div className="coin-box">
-            <img src={coinIcon} alt="Coin icon"/>
-            <span>{points ? points : "130"}</span>
-          </div>
-          <span>USE POINTS</span>
-        </Button>)
+        className={"points-btn"}
+        onClick={handleDiscountClick}
+        disabled={isButtonDisabled}
+      >
+        <div className="coin-box">
+          <img src={coinIcon} alt="Coin icon"/>
+          <span>{points ? points : "0"}</span>
+        </div>
+        <span>USE POINTS</span>
+      </Button>)
 
       }
       <TextLineText
-        // priceFirstText={
-        //   points ?
-        //     getTotalPriceWithoutTax(getTotalPrice) - discount
-        //     :
-        //     getTotalPriceWithoutTax(getTotalPrice)
-        // }
-        priceSecondText={"41,14"}
+        spanTextOne={"Sub total with discount:"}
+        spanTextTwo={"With tax and discount:"}
+        priceFirstText={
+          isButtonDisabled ?
+            <>
+              {convertPrice(priceWithDiscount.toFixed(2))}
+            </>
+            :
+            <>
+              {convertPrice(totalPriceWithoutTax.toFixed(2))}
+            </>
+        }
+        priceSecondText={
+        isButtonDisabled ?
+          <>
+            {convertPrice(finalPrice.toFixed(2))}
+
+          </>
+          :
+          <>
+            {convertPrice(totalPrice.toFixed(2))}
+          </>
+
+      }
       />
       <Button
         className={"confirm-order"}
+        spanTextOne={"Sub total with discount"}
         text={"Confirm order"}
       />
     </div>

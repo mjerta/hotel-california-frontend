@@ -1,14 +1,14 @@
 import "./TextLineText.css"
-function TextLineText({className, priceFirstText, priceSecondText}) {
+function TextLineText({className, priceFirstText, priceSecondText, spanTextOne, spanTextTwo}) {
   return (
     <div className={`text-line-text ${className ? className : ''}`}>
       <div className={"text"}>
-        <span>Sub total:</span>
+        <span>{spanTextOne}</span>
         <span>{priceFirstText}</span>
       </div>
       <hr className="divider"/>
       <div className={"text"}>
-        <span>With tax:</span>
+        <span>{spanTextTwo}</span>
         <span>{priceSecondText}</span>
       </div>
     </div>

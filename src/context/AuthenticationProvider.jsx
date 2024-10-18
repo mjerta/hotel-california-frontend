@@ -14,8 +14,22 @@ const AuthProvider = ({children}) => {
     username: null,
   });
 
+  // PROFILE SECTION
+
   // This will be fired whne a token is being set, could be in the useffect or on saveToken
-  const { profileData, loading, error } = useFetchProfile(authState.token);
+  const {profileData, loading, error} = useFetchProfile(authState.token);
+  console.log(profileData)
+  const [points, setPoints] = useState(0);
+
+  useEffect(() => {
+    setPoints(profileData.points
+    )
+  }, [profileData]);
+
+  // PROFILE SECTION
+
+
+
 
   // on start up - get token from local storage
   useEffect(() => {
@@ -29,7 +43,6 @@ const AuthProvider = ({children}) => {
         username: decodeToken(storedToken).sub,
       }));
     }
-
   }, []);
 
   // token will be saved in states and in local storage
@@ -73,6 +86,8 @@ const AuthProvider = ({children}) => {
       roles: authState.roles,
       username: authState.username,
       profileData,
+      points: points,
+      setPoints: setPoints,
       profileLoading: loading,
       profileError: error,
       decodedToken: authState.decodedToken
