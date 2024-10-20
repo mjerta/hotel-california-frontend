@@ -10,7 +10,6 @@
     font-size: 1.7rem;
     display: flex;
     column-gap: .5rem;
-    padding: 1rem 0;
   }
 
   & input {

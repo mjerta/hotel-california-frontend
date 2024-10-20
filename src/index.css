@@ -27,7 +27,7 @@ select {
 :root {
   --default-radius: .3rem;
   --default-padding-buttom: .7rem 3rem;
-
+ --default-postive-button-color: #7db149;
   --default-sidebar-color: #37323e;
   --default-main-container-bg-color: #dcb740;
 
