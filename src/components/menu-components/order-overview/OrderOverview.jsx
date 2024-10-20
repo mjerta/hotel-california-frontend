@@ -4,7 +4,14 @@ import {OrderContext} from "../../../context/OrderProvider.jsx";
 import OrderItem from "./order-item/OrderItem.jsx";
 
 function OrderOverview({className}) {
-  const {currentOrder, setCurrentOrder} = useContext(OrderContext)
+  const {currentOrder, setCurrentOrder, status} = useContext(OrderContext)
+
+
+  // First way of doing the removal, this was causing the remove duplicates ass well
+  // function removeItemFromOrder(itemId) {
+  //   const updatedItems = currentOrder.filter((item) => item.id !== itemId);
+  //   setCurrentOrder(updatedItems);
+  // }
 
   function removeItemFromOrder(itemId) {
     // const updatedItems = currentOrder.filter((item) => item.id !== itemId);
@@ -20,7 +27,6 @@ function OrderOverview({className}) {
       setCurrentOrder(updatedItems); // Update the order with the new array
     }
   }
-
   return (
 
     <div className={`order-overview${className ? className : ''}`}>
@@ -31,6 +37,7 @@ function OrderOverview({className}) {
           name={item.name}
           description={item.description}
           price={item.price}
+          status={status}
           onClick={() => removeItemFromOrder(item.id)}
         />
       ))}

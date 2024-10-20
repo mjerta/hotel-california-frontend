@@ -1,32 +1,15 @@
 import "./FoodMenuOverview.css"
 import Card from "../card/Card.jsx";
-import {useEffect, useState} from "react";
-import axios from "axios";
+import {useContext} from "react";
+import {OrderContext} from "../../../context/OrderProvider.jsx";
+import useFetchMeals
+  from "../../../custom-hooks/api-requests/GET/useFetchMeals.jsx";
 
 function FoodMenuOverview({className}) {
-  const baseUrl = import.meta.env.VITE_API_URL;
-  const [meals, setMeals] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const {status} = useContext(OrderContext);
 
+  const { meals, error, loading} = useFetchMeals();
 
-  useEffect(() => {
-    async function fetchMeals() {
-      try {
-        setLoading(true);
-        const response = await axios.get(`${baseUrl}/api/v1/meals`)
-        setMeals(response.data)
-      } catch (e) {
-        console.error(e)
-        if (e.code ===  "ERR_NETWORK") {
-          setError("Could not make a connection with the API")
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchMeals();
-  }, [])
   return (
     <>
       <section className={`card-overview${className ? className : ''}`}>
@@ -43,6 +26,7 @@ function FoodMenuOverview({className}) {
               price={meal.price}
               image={meal.image}
               id={meal.id}
+              status={status}
             />
           ))
         )}

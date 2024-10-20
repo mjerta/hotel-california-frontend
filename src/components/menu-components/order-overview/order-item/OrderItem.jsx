@@ -3,17 +3,18 @@ import deleteIcon from "../../../../assets/remove-btn.svg"
 import MenuTitle from "../../card/menu-title/MenuTitle.jsx";
 import convertPrice from "../../../../helpers/convertPrice.js";
 
-function OrderItem({className, name, description, price, onClick}) {
-  // const {setCurrentOrder, currentOrder} = useContext(OrderContext);
-
+function OrderItem({className, name, description, price, onClick, status}) {
   return (
     <div className={`order-item ${className ? className : ''}`}>
-      <img
-        onClick={onClick}
-        // onClick={removeItemFromOrder}
-        src={deleteIcon}
-        alt="remove button"
-      />
+      {
+        !status && (
+          <img
+            onClick={onClick}
+            src={deleteIcon}
+            alt="remove button"
+          />
+        )
+      }
       <MenuTitle
         name={name}
         description={description}
