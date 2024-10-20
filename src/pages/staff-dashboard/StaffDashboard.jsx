@@ -1,8 +1,8 @@
 import useAuthGuard from "../../custom-hooks/useauthguard/useAuthGuard.jsx";
 
-function KitchenDashboard() {
+function StaffDashboard() {
 
-  useAuthGuard("/kitchen-dashboard", "ROLE_STAFF");
+  useAuthGuard("/staff-dashboard", "ROLE_STAFF");
 
   return (
     <div>
@@ -19,4 +19,4 @@ function KitchenDashboard() {
   )
 }
 
-export default KitchenDashboard;
+export default StaffDashboard;

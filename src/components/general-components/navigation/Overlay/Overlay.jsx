@@ -25,8 +25,8 @@ function Overlay({classname}) {
             <NavLink
               onClick={toggleOverlay}
               className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-              to="/kitchen-dashboard">
-              Kitchen Dashboard
+              to="/staff-dashboard">
+              Staff Dashboard
             </NavLink>
           </li>
         )}
