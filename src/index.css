@@ -1,7 +1,19 @@
+/*css reset*/
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+
+}
+
+input,
+textarea,
+select {
+  outline: none;
+  border: 1px solid
 }
 
 #root {
@@ -15,6 +27,10 @@
 :root {
   --default-radius: .3rem;
   --default-padding-buttom: .7rem 3rem;
+ --default-postive-button-color: #7db149;
+  --default-sidebar-color: #37323e;
+  --default-main-container-bg-color: #dcb740;
+  --default-navigation-bg-color: #dc9d36;
 
 
   --default-padding-box: 1.5rem;
@@ -22,4 +38,12 @@
 
   --register-login-bg-color: #f9f9f9;
   --regist-login-border-color: #3498db;
+}
+
+
+
+@media screen and (min-width: 300px) {
+  html {
+    font-size: clamp(12px,4vw, 16px);
+  }
 }

@@ -18,7 +18,6 @@ function RegisterForm() {
   const [success, setSuccess] = useState("");
 
   async function onSubmit(data) {
-    console.log(data);
     try {
       setLoading(true)
       const response = await axios.post(`${baseUrl}/api/v1/register`, {
@@ -32,7 +31,6 @@ function RegisterForm() {
           points: 30
         }
       });
-      console.log(response)
       setSuccess("Register was successful");
       setTimeout(() => {
         navigate("/login", {
@@ -43,7 +41,6 @@ function RegisterForm() {
 
       }, 1000)
     } catch (e) {
-      console.log(e)
       if (e.response.data) {
         setError(e.response.data["error-message"])
       } else {

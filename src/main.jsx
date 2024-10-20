@@ -5,15 +5,21 @@ import './index.css'
 import {BrowserRouter as Router} from "react-router-dom";
 import OverlayProvider from "./context/OverlayProvider.jsx";
 import AuthenticationProvider from "./context/AuthenticationProvider.jsx";
+import OrderProvider from "./context/OrderProvider.jsx";
+import LocationProvider from "./context/LocationProvider.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
       {/* Provider to keep state of the menu that is open or not*/}
       <AuthenticationProvider>
-        <OverlayProvider>
-          <App/>
-        </OverlayProvider>
+        <LocationProvider>
+          <OverlayProvider>
+            <OrderProvider>
+              <App/>
+            </OrderProvider>
+          </OverlayProvider>
+        </LocationProvider>
       </AuthenticationProvider>
     </Router>
   </StrictMode>,

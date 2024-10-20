@@ -1,0 +1,24 @@
+.points-btn {
+  justify-content: space-between;
+  color: white;
+  text-transform: capitalize;
+  background-color: #778F6B;
+  align-items: center;
+  padding-right: 2rem;
+  
+  & .coin-box {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    & img {
+      width: 1.5rem;
+    }
+  }
+}
+
+.confirm-order {
+  color: white;
+  text-transform: capitalize;
+  background-color: #778F6B;
+  justify-content: center;
+}

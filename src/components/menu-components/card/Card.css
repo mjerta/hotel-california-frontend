@@ -1,0 +1,47 @@
+.card {
+  display: flex;
+  flex-basis: 14rem;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 14rem;
+  border-radius: var(--default-radius);
+  max-width: 19rem;
+  overflow: hidden;
+  position: relative;
+
+  & img {
+    flex-grow: 1;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .add-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    cursor: pointer;
+  }
+
+  & figcaption {
+    background-color: #37323e;
+    display: flex;
+    justify-content: space-between;
+    font-size: .7rem;
+    color: white;
+    padding: 0.2rem .5rem;
+    font-weight: lighter;
+  }
+}
+.menu-details {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
+  .description {
+    font-style: italic;
+  }
+}
+
