@@ -6,8 +6,7 @@ function InputTable({status, onChange, currentLocation, text, valid}) {
            onChange={onChange}
            type={"text"}
            placeholder={status ? currentLocation : text}
-           className={valid && "valid"}
-
+           className={valid ? "valid" : ''}
     />
   )
 }
