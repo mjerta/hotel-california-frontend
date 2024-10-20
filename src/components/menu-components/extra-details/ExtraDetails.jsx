@@ -64,10 +64,8 @@ function ExtraDetails({className}) {
         </h1>
         <small>Available: {availableLocations && availableLocations.join(', ')}</small>
         {error &&
-          <p>{error}</p>
+          <p className={"error"}>{error}</p>
         }
-        <p>
-        </p>
         <p><span><img src={clockIcon} alt="clock icon"/></span> estimated time:
                                                                 20min</p>
       </div>

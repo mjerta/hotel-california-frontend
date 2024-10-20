@@ -1,6 +1,6 @@
 .sidebar {
   flex-shrink: 0;
-  background-color: green;
+  background-color: var(--default-sidebar-color);
   height: 100vh;
   position: relative;
   overflow-y: auto;
@@ -20,13 +20,16 @@
 
 .sidebar-content {
   display: none;
-  border: 1px solid;
   flex-grow: 0;
   flex-basis: calc(400rem / 16);
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
   row-gap: 1rem;
+
+  & div {
+    border-radius: var(--default-radius);
+  }
 }
 
 .open-sidebar-content {

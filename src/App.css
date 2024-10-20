@@ -1,7 +1,6 @@
 .wrapper {
   flex-grow: 0;
   flex-basis: 1440px;
-  background-color: #dcb740;
   display: flex;
   min-height: 100vh;
   position: relative;
@@ -11,6 +10,7 @@
   display: flex;
   flex-grow: 1;
   height: 100vh;
+  background-color: var(--default-main-container-bg-color);
 }
 
 

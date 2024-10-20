@@ -28,6 +28,9 @@ select {
   --default-radius: .3rem;
   --default-padding-buttom: .7rem 3rem;
 
+  --default-sidebar-color: #37323e;
+  --default-main-container-bg-color: #dcb740;
+
 
   --default-padding-box: 1.5rem;
 
