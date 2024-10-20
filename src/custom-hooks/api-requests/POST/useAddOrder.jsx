@@ -25,6 +25,11 @@ function useAddOrder(token, currentOrder, currentLocation, setStatus) {
       );
       const data = result.data;
       setStatus(data.status);
+      if (token) {
+        localStorage.setItem('id', data.id);
+      } else {
+        localStorage.setItem('orderReference', data.orderReference);
+      }
       console.log(data);
 
     } catch (e) {
@@ -40,6 +45,7 @@ function useAddOrder(token, currentOrder, currentLocation, setStatus) {
       setIsLoading(false);
     }
   }
+
   return {addOrder, isLoading, error};
 }
 
