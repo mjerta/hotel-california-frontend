@@ -4,9 +4,22 @@ import {OrderContext} from "../../../context/OrderProvider.jsx";
 import OrderItem from "./order-item/OrderItem.jsx";
 
 function OrderOverview({className}) {
-  const {currentOrder} = useContext(OrderContext)
+  const {currentOrder, setCurrentOrder} = useContext(OrderContext)
 
+  function removeItemFromOrder(itemId) {
+    // const updatedItems = currentOrder.filter((item) => item.id !== itemId);
+    const itemIndex = currentOrder.findIndex((item) => item.id === itemId);
+    console.log(itemIndex)
 
+    // If the item exists, create a new array without that specific item
+    if (itemIndex !== -1) {
+      const updatedItems = [
+        ...currentOrder.slice(0, itemIndex), // Items before the item to remove
+        ...currentOrder.slice(itemIndex + 1) // Items after the item to remove
+      ];
+      setCurrentOrder(updatedItems); // Update the order with the new array
+    }
+  }
 
   return (
 
@@ -18,6 +31,7 @@ function OrderOverview({className}) {
           name={item.name}
           description={item.description}
           price={item.price}
+          onClick={() => removeItemFromOrder(item.id)}
         />
       ))}
     </div>
