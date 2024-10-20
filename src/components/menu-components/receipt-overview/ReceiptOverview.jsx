@@ -38,7 +38,6 @@ function ReceiptOverview({className}) {
   function handleDiscountClick() {
     calculateDiscount(profileData.points);
     if (totalPrice >= discount && totalPrice > 0) {
-      console.log(totalPrice)
       setPoints(0);
       // disable the button here
       setIsButtonDisabled(true);

@@ -30,8 +30,6 @@ function useAddOrder(token, currentOrder, currentLocation, setStatus) {
       } else {
         localStorage.setItem('orderReference', data.orderReference);
       }
-      console.log(data);
-
     } catch (e) {
       if (e.response?.status === 401) {
         setError("Unauthorized - no valid credentials");

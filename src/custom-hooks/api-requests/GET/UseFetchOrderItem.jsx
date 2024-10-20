@@ -25,7 +25,6 @@ function useFetchOrderItem() {
       } else {
         setError("Something went wrong");
       }
-      console.log(e.message);
     } finally {
       setLoading(false);
     }

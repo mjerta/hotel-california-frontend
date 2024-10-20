@@ -12,12 +12,10 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, sta
       if (localOrderReference) {
 
         try {
-          console.log(localOrderReference);
           const response = await axios.get(`${baseUrl}/api/v1/orders/orderreference`, {
             params: {orderReference: localOrderReference},
           });
           const data = response.data;
-          console.log(data);
           // Check if the order status is ORDER_PAYED
           if (data.status === "ORDER_PAYED") {
             // Reset everything
@@ -38,14 +36,12 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, sta
 
       } else if (localOrderId && token) {
         try {
-          console.log(localOrderId);
           const response = await axios.get(`${baseUrl}/api/v1/orders/${localOrderId}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
           const data = response.data;
-          console.log(data);
           // Check if the order status is ORDER_PAYED
           if (data.status === "ORDER_PAYED") {
             // Reset everything

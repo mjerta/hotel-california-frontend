@@ -14,10 +14,7 @@ function OrderOverview({className}) {
   // }
 
   function removeItemFromOrder(itemId) {
-    // const updatedItems = currentOrder.filter((item) => item.id !== itemId);
     const itemIndex = currentOrder.findIndex((item) => item.id === itemId);
-    console.log(itemIndex)
-
     // If the item exists, create a new array without that specific item
     if (itemIndex !== -1) {
       const updatedItems = [

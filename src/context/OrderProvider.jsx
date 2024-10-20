@@ -20,7 +20,6 @@ function OrderProvider({children}) {
 
   useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, status);
     useEffect(() => {
-      console.log(currentOrder)
       const total = currentOrder.reduce((sum, item) => sum + item.price, 0);
       setTotalPrice(total);
       const priceWithoutTax = total / 1.21; // Assuming a 21% tax rate
@@ -41,7 +40,6 @@ function OrderProvider({children}) {
       if (totalPriceWithoutTax <= 0) {
         setPriceWithDiscount(0);
       } else {
-        console.log("test")
         const discount = points / 25;
         const newPriceWithoutTax = (totalPriceWithoutTax - discount)
         setDiscount(discount);

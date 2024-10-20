@@ -9,7 +9,6 @@ function SideBar({className, children}) {
   const [openSideBar, setOpenSideBar] = useState(false);
   const {currentOrder} = useContext(OrderContext);
 
-  console.log(currentOrder.length)
 
   return (<>
     <div className={`img-container-shopping-card ${openSideBar ? "shopping-card-img-enforce" : ""}`}>
