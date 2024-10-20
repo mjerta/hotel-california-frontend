@@ -11,7 +11,7 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token) {
       async function loadOrderWithOrderReference() {
         try {
           console.log(localOrderReference);
-          const response = await axios.get(`${baseUrl}/api/v1/orders/orderrefence`, {
+          const response = await axios.get(`${baseUrl}/api/v1/orders/orderreference`, {
             params: {orderReference: localOrderReference},
           });
           const data = response.data;
