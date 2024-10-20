@@ -7,7 +7,7 @@ import {OrderContext} from "../../../context/OrderProvider.jsx";
 function ExtraDetails({className}) {
 
   const {locations} = useContext(LocationContext);
-  const {setIsTableValid, setCurrentLocation, status} = useContext(OrderContext)
+  const {setIsTableValid, setCurrentLocation, status, currentLocation} = useContext(OrderContext)
   const [error, setError] = useState(null);
   console.log(locations)
 
@@ -37,7 +37,7 @@ function ExtraDetails({className}) {
     <div className={`extra-details ${className ? className : ''}`}>
       <div className={"table-and-order"}>
         <h1>#<input disabled={status} onChange={(e) => handleOnChange(e)} type={"text"}
-                    placeholder={"Enter your table number"}/>
+                    placeholder={status ? currentLocation :  "Enter your table number"}/>
         </h1>
         {error &&
           <p>{error}</p>

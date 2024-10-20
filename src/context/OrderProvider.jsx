@@ -1,8 +1,10 @@
 import {createContext, useEffect, useState} from "react";
+import axios from "axios";
 
 export const OrderContext = createContext();
 
 function OrderProvider({children}) {
+  const baseUrl = import.meta.env.VITE_API_URL;
   const [currentOrder, setCurrentOrder] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalPriceWithoutTax, setTotalPriceWithoutTax] = useState(0);
@@ -15,6 +17,29 @@ function OrderProvider({children}) {
   const [status, setStatus] = useState(null)
 
   useEffect(() => {
+    async function loadOrder() {
+      try {
+        const orderReference = localStorage.getItem("orderReference");
+        console.log(orderReference);
+        const response = await axios.get(`${baseUrl}/api/v1/orders/orderrefence`, {
+          params: {orderReference: orderReference}
+        });
+        const data = response.data;
+        console.log(data);
+        setCurrentOrder(data.meals);
+        setStatus(data.status)
+        setCurrentLocation(data.destination.locationNumber)
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    loadOrder()
+
+  }, []);
+
+
+  useEffect(() => {
+    console.log(currentOrder)
     const total = currentOrder.reduce((sum, item) => sum + item.price, 0);
     setTotalPrice(total);
     const priceWithoutTax = total / 1.21; // Assuming a 21% tax rate
@@ -60,7 +85,7 @@ function OrderProvider({children}) {
       setCurrentLocation,
       currentLocation,
       setStatus,
-      status
+      status,
     }}>
       {children}
     </OrderContext.Provider>
