@@ -15,7 +15,8 @@ function OrderProvider({children}) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isTableValid, setIsTableValid] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(null);
-  const [status, setStatus] = useState(null)
+  const [status, setStatus] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, status);
     useEffect(() => {
@@ -67,6 +68,8 @@ function OrderProvider({children}) {
         currentLocation,
         setStatus,
         status,
+        searchQuery,
+        setSearchQuery
       }}>
         {children}
       </OrderContext.Provider>

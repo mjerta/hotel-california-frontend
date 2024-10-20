@@ -6,9 +6,15 @@ import useFetchMeals
   from "../../../custom-hooks/api-requests/GET/useFetchMeals.jsx";
 
 function FoodMenuOverview({className}) {
-  const {status} = useContext(OrderContext);
+  const {status, searchQuery} = useContext(OrderContext);
 
   const { meals, error, loading} = useFetchMeals();
+
+
+  // Filter meals based on searchQuery
+  const filteredMeals = meals.filter(meal =>
+    meal.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
@@ -18,7 +24,7 @@ function FoodMenuOverview({className}) {
         ) : loading ? (
           <p>Loading API ...</p>
         ) : (
-          meals.length > 0 && meals.map((meal) => (
+          filteredMeals.length > 0 && filteredMeals.map((meal) => (
             <Card
               key={meal.id}
               name={meal.name}
