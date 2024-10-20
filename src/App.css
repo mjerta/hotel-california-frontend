@@ -17,7 +17,7 @@
 .main-content,
 .sidebar {
   scrollbar-width: thin; /* Options: auto, thin, none */
-  scrollbar-color: #d55959 #e7e7e7; /* thumb color and track color */
+  scrollbar-color: #da9c36 #e7e7e7; /* thumb color and track color */
 }
 
 ::-webkit-scrollbar {
