@@ -1,12 +1,13 @@
 import "./Navigation.css"
 import hamburger from "../../../assets/hamburger-menu.svg";
+import hamburgerWhite from "../../../assets/hamburger-menu-white.svg";
 import profileImg from "../../../assets/user-circle.svg";
 import {OverlayContext} from "../../../context/OverlayProvider.jsx";
 import {useContext} from "react";
 import {useNavigate} from "react-router-dom";
 
 function Navigation({className}) {
-  const {toggleOverlay} = useContext(OverlayContext);
+  const {toggleOverlay, isOverlayOpen} = useContext(OverlayContext);
   const navigate = useNavigate();
 
   function handleProfileClick() {
@@ -15,7 +16,7 @@ function Navigation({className}) {
 
   return (<nav className={className}>
     <div className="image-wrapper">
-      <img onClick={toggleOverlay} className={"hamburger-img"} src={hamburger}
+      <img onClick={toggleOverlay} className={"hamburger-img"} src={!isOverlayOpen ? hamburger : hamburgerWhite}
            alt=""/>
     </div>
     <div className="image-wrapper">
