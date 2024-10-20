@@ -1,15 +1,32 @@
 import "./ExtraDetails.css"
 import clockIcon from "../../../assets/clock-icon.svg"
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {LocationContext} from "../../../context/LocationProvider.jsx";
 import {OrderContext} from "../../../context/OrderProvider.jsx";
+import InputTable from "./inputtable/InputTable.jsx";
 
 function ExtraDetails({className}) {
+  const [availableLocations, setAvailableLocations] = useState([]);
 
   const {locations} = useContext(LocationContext);
-  const {setIsTableValid, setCurrentLocation, status, currentLocation} = useContext(OrderContext)
+  const {
+    setIsTableValid,
+    isTableValid,
+    setCurrentLocation,
+    status,
+    currentLocation
+  } = useContext(OrderContext)
   const [error, setError] = useState(null);
-  console.log(locations)
+
+  useEffect(() => {
+    if (locations) {
+      console.log(locations)
+      setAvailableLocations(locations
+      .filter(location => !location.isOccupied) // Filter out occupied locations
+      .map(location => location.locationNumber)); //
+    }
+
+  }, [locations])
 
   function handleOnChange(e) {
     console.log(e.target.value)
@@ -36,9 +53,16 @@ function ExtraDetails({className}) {
   return (
     <div className={`extra-details ${className ? className : ''}`}>
       <div className={"table-and-order"}>
-        <h1>#<input disabled={status} onChange={(e) => handleOnChange(e)} type={"text"}
-                    placeholder={status ? currentLocation :  "Enter your table number"}/>
+        <h1>#
+          <InputTable
+            currentLocation={currentLocation}
+            onChange={(e) => handleOnChange(e)}
+            status={status}
+            valid={isTableValid}
+            text={"Enter your table number "}
+          />
         </h1>
+        <small>Available: {availableLocations && availableLocations.join(', ')}</small>
         {error &&
           <p>{error}</p>
         }
