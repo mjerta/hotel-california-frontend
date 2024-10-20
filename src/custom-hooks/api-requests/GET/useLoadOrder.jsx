@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import axios from 'axios';
 
-function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token) {
+function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, status) {
   const baseUrl = import.meta.env.VITE_API_URL;
   useEffect(() => {
 
@@ -46,9 +46,21 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token) {
           });
           const data = response.data;
           console.log(data);
-          setCurrentOrder(data.meals);
-          setStatus(data.status);
-          setCurrentLocation(data.destination.locationNumber);
+          // Check if the order status is ORDER_PAYED
+          if (data.status === "ORDER_PAYED") {
+            // Reset everything
+            setCurrentOrder([]);
+            setStatus(null);
+            setCurrentLocation(null);
+            localStorage.removeItem("id"); // Optionally clear local storage
+            // Stop the interval
+            clearInterval(intervalId);
+          } else {
+            // Update state with fetched data
+            setCurrentOrder(data.meals);
+            setStatus(data.status);
+            setCurrentLocation(data.destination.locationNumber);
+          }
         } catch (e) {
           console.error(e);
         }
@@ -62,7 +74,7 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token) {
 
     // Clean up the interval on unmount
     return () => clearInterval(intervalId);
-  }, [token]); // Only depend on token
+  }, [token, status]); // Only depend on token
 };
 
 export default useLoadOrder;

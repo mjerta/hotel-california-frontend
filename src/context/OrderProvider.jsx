@@ -17,7 +17,7 @@ function OrderProvider({children}) {
   const [currentLocation, setCurrentLocation] = useState(null);
   const [status, setStatus] = useState(null)
 
-  useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token);
+  useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, status);
     useEffect(() => {
       console.log(currentOrder)
       const total = currentOrder.reduce((sum, item) => sum + item.price, 0);
