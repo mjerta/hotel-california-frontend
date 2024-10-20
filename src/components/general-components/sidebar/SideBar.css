@@ -58,6 +58,7 @@
   .sidebar {
     flex-basis: calc(379rem / 16);
     padding: 2rem 1rem;
+    z-index: unset;
   }
 
   .sidebar-full-screen {
@@ -76,6 +77,7 @@
 
   .shoppingcard-img {
     display: none;
+
   }
 
   .shopping-card-img-enforce {
