@@ -6,11 +6,15 @@ import {OrderContext} from "../../../context/OrderProvider.jsx";
 import {useContext} from "react";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 import convertPrice from "../../../helpers/convertPrice.js";
+import useAddOrder
+  from "../../../custom-hooks/api-requests/POST/useAddOrder.jsx";
 
 function ReceiptOverview({className}) {
   const {
     profileData,
-    points, setPoints
+    points,
+    setPoints,
+    token
   } = useContext(AuthContext);
   const {
     totalPrice,
@@ -20,16 +24,24 @@ function ReceiptOverview({className}) {
     discount,
     isButtonDisabled,
     setIsButtonDisabled,
-    finalPrice
+    finalPrice,
+    isTableValid,
+    currentOrder,
+    currentLocation,
+    setStatus,
+    status
   } = useContext(OrderContext);
+
+  const {addOrder, isLoading, error} = useAddOrder(token,  currentOrder, currentLocation, setStatus);
+
 
   function handleDiscountClick() {
     calculateDiscount(profileData.points);
     if (totalPrice >= discount && totalPrice > 0) {
       console.log(totalPrice)
       setPoints(0);
-    // disable the button here
-    setIsButtonDisabled(true);
+      // disable the button here
+      setIsButtonDisabled(true);
     }
   }
 
@@ -67,25 +79,24 @@ function ReceiptOverview({className}) {
             </>
         }
         priceSecondText={
-        isButtonDisabled ?
-          <>
-            {convertPrice(finalPrice.toFixed(2))}
+          isButtonDisabled ?
+            <>
+              {convertPrice(finalPrice.toFixed(2))}
+            </>
+            :
+            <>
+              {convertPrice(totalPrice.toFixed(2))}
+            </>
 
-          </>
-          :
-          <>
-            {convertPrice(totalPrice.toFixed(2))}
-          </>
-
-      }
+        }
       />
-
       {/*this is going to send the order: to the endpoint /api/v1/orders */}
-      {/* I need mealid or drinkid and desitination id*/}
       <Button
+        disabled={!isTableValid || status}
+        onClick={addOrder}
         className={"confirm-order"}
         spanTextOne={"Sub total with discount"}
-        text={"Confirm order"}
+        text={isLoading ? "Loading..." : error ? error : status || "Confirm Order"}
       />
     </div>
 

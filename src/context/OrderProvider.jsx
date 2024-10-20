@@ -11,6 +11,8 @@ function OrderProvider({children}) {
   const [discount, setDiscount] = useState(0);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isTableValid, setIsTableValid] = useState(false);
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [status, setStatus] = useState(null)
 
   useEffect(() => {
     const total = currentOrder.reduce((sum, item) => sum + item.price, 0);
@@ -53,7 +55,12 @@ function OrderProvider({children}) {
       isButtonDisabled,
       setIsButtonDisabled,
       finalPrice,
-      setIsTableValid
+      setIsTableValid,
+      isTableValid,
+      setCurrentLocation,
+      currentLocation,
+      setStatus,
+      status
     }}>
       {children}
     </OrderContext.Provider>

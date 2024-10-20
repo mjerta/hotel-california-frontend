@@ -21,7 +21,7 @@ function LocationProvider({children}) {
 
   return (
     <LocationContext.Provider value={{
-      locations
+      locations,
     }}>
       {children}
     </LocationContext.Provider>
