@@ -1,0 +1,4 @@
+.orders-overview {
+  display: flex;
+  flex-wrap: wrap;
+}
