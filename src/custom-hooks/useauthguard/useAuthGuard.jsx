@@ -14,6 +14,7 @@ function useAuthGuard(redirectPath, requiredRole) {
         while (roles.length === 0) {
           await new Promise(resolve => setTimeout(resolve, 100));
         }
+        console.log(roles.length)
       }
 
       if (!token) {

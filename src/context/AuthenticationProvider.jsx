@@ -17,7 +17,7 @@ const AuthProvider = ({children}) => {
   // PROFILE SECTION
 
   // This will be fired whne a token is being set, could be in the useffect or on saveToken
-  const {profileData, loading, error} = useFetchProfile(authState.token);
+  const {profileData, loading, error} = useFetchProfile(authState.token, authState.roles);
   const [points, setPoints] = useState(0);
 
   useEffect(() => {
