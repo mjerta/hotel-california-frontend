@@ -9,13 +9,8 @@ function useAuthGuard(redirectPath, requiredRole) {
 
   useEffect(() => {
     async function checkAuth() {
+      if (roles.length  === 0) return;
       const token = localStorage.getItem('jwt');
-      if (token) {
-        while (roles.length === 0) {
-          await new Promise(resolve => setTimeout(resolve, 100));
-        }
-        console.log(roles.length)
-      }
 
       if (redirectPath === "/profile" && hasUserRole("ROLE_STAFF",roles)) {
         navigate("/login", {

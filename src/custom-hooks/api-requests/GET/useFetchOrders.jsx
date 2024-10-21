@@ -13,6 +13,7 @@ function useFetchOrders() {
 
   useEffect(() => {
     async function fetchOrders() {
+      if(!token) return;
       try {
         setLoading(true);
         const response = await axios.get(`${baseUrl}/api/v1/orders`, {
@@ -24,11 +25,12 @@ function useFetchOrders() {
         setOrders(response.data)
       } catch (e) {
         setError("Something went wrong")
-        console.error(e);
+        console.error(e.response);
       } finally {
         setLoading(false)
       }
     }
+
     fetchOrders();
 
   }, [baseUrl, token]);
