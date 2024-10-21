@@ -58,7 +58,7 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, sta
             setCurrentLocation(data.destination.locationNumber);
           }
         } catch (e) {
-          console.error(e);
+          console.error(e.response.data);
         }
       }
     }

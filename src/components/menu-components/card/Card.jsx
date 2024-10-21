@@ -2,12 +2,10 @@ import "./Card.css"
 import foodImage from "../../../assets/menu-image.png"
 import addButton from "../../../assets/add-button.svg"
 import convertPrice from "../../../helpers/convertPrice.js";
-import useFetchOrderItem
-  from "../../../custom-hooks/api-requests/GET/UseFetchOrderItem.jsx";
 
-function Card({className, name, image, description, price, id, status}) {
+function Card({className, name, image, description, price, status, onClick}) {
 
-  const {addMealToOrder} = useFetchOrderItem();
+  // const {addMealToOrder} = useFetchOrderItem();
 
   return (
     <article
@@ -17,7 +15,8 @@ function Card({className, name, image, description, price, id, status}) {
       {
         !status && (
           <img
-            onClick={() => addMealToOrder(id)}
+            // onClick={() => addMealToOrder(id)}
+            onClick={onClick}
             className={"add-button"}
             src={addButton}
             alt={"add-button"}
