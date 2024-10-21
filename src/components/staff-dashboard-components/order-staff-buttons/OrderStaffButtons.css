@@ -1,0 +1,4 @@
+.order-staff-buttons {
+  display: flex;
+  justify-content: space-between;
+}

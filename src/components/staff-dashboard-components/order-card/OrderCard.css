@@ -1,6 +1,6 @@
 .order-card {
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: #d0d5dd;
   padding: 1rem
 }

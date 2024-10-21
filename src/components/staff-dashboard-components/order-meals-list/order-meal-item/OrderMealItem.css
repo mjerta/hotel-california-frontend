@@ -1,0 +1,11 @@
+.order-meal-item {
+  display: flex;
+  flex-direction: column;
+  hr {
+    color: white;
+  }
+  .box {
+    display: flex;
+    column-gap: 1rem;
+  }
+}
