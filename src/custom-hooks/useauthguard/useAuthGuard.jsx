@@ -17,6 +17,15 @@ function useAuthGuard(redirectPath, requiredRole) {
         console.log(roles.length)
       }
 
+      if (redirectPath === "/profile" && hasUserRole("ROLE_STAFF",roles)) {
+        navigate("/login", {
+          state: {
+            redirectPath,
+            message: "Staff members dont use profiles, login as regular user",
+          }
+        });
+      }
+
       if (!token) {
         // Redirect if not logged in
         navigate("/login", {
