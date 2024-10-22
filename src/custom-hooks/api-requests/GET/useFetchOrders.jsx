@@ -12,6 +12,7 @@ function useFetchOrders() {
   const [loading, setLoading] = useState(false);
 
   async function fetchOrders() {
+    setError(null)
     if (!token) return;
     try {
       setLoading(true);
@@ -23,12 +24,13 @@ function useFetchOrders() {
       console.log(response);
       setOrders(response.data)
     } catch (e) {
+      setOrders([])
       if (e.status === 401) {
         setError("Unauthorized - no valid credentials") // later maybe have an constant file with responses I can just call
       } else if (e.status === 403) {
         setError("This endpoint is restricted") // later maybe have an constant file with responses I can just call
       } else {
-        setError("Something went wrong")
+        setError("Something went wrong on the server")
       }
       console.error(e.message);
     } finally {
@@ -38,8 +40,9 @@ function useFetchOrders() {
 
   useEffect(() => {
     fetchOrders();
-    // const intervalId = setInterval(fetchOrders, 10000); // Fetch orders every 10 seconds
-    // return () => clearInterval(intervalId); // Clean up interval on unmount
+    const intervalId = setInterval(fetchOrders, 10000); // Fetch orders every 10 seconds
+
+    return () => clearInterval(intervalId); // Clean up interval on unmount
   }, [baseUrl, token]);
 
   return {orders, error, loading, fetchOrders}

@@ -31,6 +31,7 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, sta
             setCurrentLocation(data.destination.locationNumber);
           }
         } catch (e) {
+          setCurrentOrder([])
           console.error(e);
         }
 
@@ -66,8 +67,6 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, sta
 
     // Set up interval for updates every 10 seconds
     const intervalId = setInterval(fetchOrder, 10000);
-
-
     // Clean up the interval on unmount
     return () => clearInterval(intervalId);
   }, [token, status]); // Only depend on token

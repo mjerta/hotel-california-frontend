@@ -5,6 +5,7 @@ import hasUserRole from "../../../helpers/hasUserRole.jsx";
 import Button from "../../general-components/button/Button.jsx";
 import useUpdateOrder
   from "../../../custom-hooks/api-requests/PATCH/updateOrderStatus.jsx";
+import "../../../components/general-components/button/Variants.css"
 
 function OrdersStaffButtons({className, id, destination, status, fetchOrders}) {
   const { loading, error, result, updateOrderStatus } = useUpdateOrder();
@@ -25,7 +26,7 @@ function OrdersStaffButtons({className, id, destination, status, fetchOrders}) {
         status === "IN_QUEUE" && (
           <Button
             onClick={() => updateOrderStatus(id, "PREPARING_ORDER", destination)}
-            className={"confirm-order"}
+            className={"order-staff-button"}
             text={loading ? "Loading..." : (error ? error : "Prepare order")}
           />
         )
@@ -34,7 +35,7 @@ function OrdersStaffButtons({className, id, destination, status, fetchOrders}) {
         (status === "IN_QUEUE" || status === "PREPARING_ORDER") && (
           <Button
             onClick={() => updateOrderStatus(id, "ORDER_PREPARED", destination)}
-            className={"confirm-order"}
+            className={"order-staff-button"}
             text={loading ? "Loading..." : (error ? error : "order prepared")}
           />
         )
@@ -46,7 +47,7 @@ function OrdersStaffButtons({className, id, destination, status, fetchOrders}) {
 
           <Button
             onClick={() => updateOrderStatus(id, "ORDER_DELIVERED", destination)}
-            className={"confirm-order"}
+            className={"order-staff-button"}
             text={loading ? "Loading..." : (error ? error : "order delivered")}
           />
         )
@@ -55,7 +56,7 @@ function OrdersStaffButtons({className, id, destination, status, fetchOrders}) {
         (status === "ORDER_PREPARED" || status === "ORDER_DELIVERED") && (
           <Button
             onClick={() => updateOrderStatus(id, "ORDER_PAYED")}
-            className={"confirm-order"}
+            className={"order-staff-button"}
             text={loading ? "Loading..." : (error ? error : "order payed")}
           />
         )
