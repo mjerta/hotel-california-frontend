@@ -1,0 +1,7 @@
+.order-card {
+  display: flex;
+  flex-direction: column;
+  background: #d0d5dd;
+  border-radius: var(--default-radius);
+  flex-basis: 15rem;
+}

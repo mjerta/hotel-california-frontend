@@ -22,3 +22,15 @@
   background-color: #778F6B;
   justify-content: center;
 }
+
+
+.order-staff-button {
+  text-transform: capitalize;
+  color: white;
+  background-color: #778F6B;
+  font-size: .7rem;
+  justify-content: center;
+  align-items: center;
+  padding: .4rem .5rem;
+
+}

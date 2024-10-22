@@ -2,7 +2,7 @@ import './App.css'
 import {Route, Routes} from "react-router-dom";
 import Navigation from "./components/general-components/navigation/Navigation.jsx";
 import MenuPage from "./pages/menu/MenuPage.jsx";
-import KitchenDashboard from "./pages/kitchen-dashboard/KitchenDashboard.jsx";
+import StaffDashboard from "./pages/staff-dashboard/StaffDashboard.jsx";
 import ManagerDashboard from "./pages/manager-dashboard/ManagerDashboard.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import AddMenuItem from "./pages/add-menu-item/AddMenuItem.jsx";
@@ -25,7 +25,7 @@ function App() {
         <main className="main-container">
           <Routes>
             <Route path="/" element={<MenuPage/>}/>
-            <Route path="/kitchen-dashboard" element={<KitchenDashboard/>}/>
+            <Route path="/staff-dashboard" element={<StaffDashboard/>}/>
             <Route path="/manager-dashboard" element={<ManagerDashboard/>}/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/new-menu-item" element={<AddMenuItem/>}/>

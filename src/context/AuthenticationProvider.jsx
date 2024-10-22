@@ -17,7 +17,7 @@ const AuthProvider = ({children}) => {
   // PROFILE SECTION
 
   // This will be fired whne a token is being set, could be in the useffect or on saveToken
-  const {profileData, loading, error} = useFetchProfile(authState.token);
+  const {profileData, loading, error} = useFetchProfile(authState.token, authState.roles);
   const [points, setPoints] = useState(0);
 
   useEffect(() => {
@@ -42,7 +42,9 @@ const AuthProvider = ({children}) => {
         username: decodeToken(storedToken).sub,
       }));
     }
+
   }, []);
+
 
   // token will be saved in states and in local storage
   const saveToken = (jwtToken) => {
@@ -89,7 +91,8 @@ const AuthProvider = ({children}) => {
       setPoints: setPoints,
       profileLoading: loading,
       profileError: error,
-      decodedToken: authState.decodedToken
+      decodedToken: authState.decodedToken,
+      isLoading: authState.isLoading,
     }}>
       {children}
     </AuthContext.Provider>

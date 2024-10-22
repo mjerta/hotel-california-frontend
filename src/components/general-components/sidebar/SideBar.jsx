@@ -5,7 +5,7 @@ import "./SideBar.css"
 import "./Variants.css"
 import {OrderContext} from "../../../context/OrderProvider.jsx";
 
-function SideBar({className, children}) {
+function SideBar({className, children, }) {
   const [openSideBar, setOpenSideBar] = useState(false);
   const {currentOrder} = useContext(OrderContext);
 

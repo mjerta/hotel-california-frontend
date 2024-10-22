@@ -1,7 +1,9 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import hasUserRole from "../../../helpers/hasUserRole.jsx";
 
-const useFetchProfile = (token) => {
+const useFetchProfile = (token, roles) => {
+
   const baseUrl = import.meta.env.VITE_API_URL;
 
   const [profileData, setProfileData] = useState({
@@ -17,7 +19,7 @@ const useFetchProfile = (token) => {
 
   // Fetch profile data function
   useEffect(() => {
-    if (!token) {
+    if (!token || hasUserRole("ROLE_STAFF", roles)) {
       setProfileData({
         id: null,
         firstName: "",
@@ -56,13 +58,14 @@ const useFetchProfile = (token) => {
           setError("Something went wrong");
         }
         console.error(e.message);
+        console.log(e)
       } finally {
         setLoading(false);
       }
     };
 
     fetchProfileData();
-  }, [token]);
+  }, [token, roles]);
 
   return {profileData, loading, error};
 };

@@ -25,8 +25,8 @@ function Overlay({classname}) {
             <NavLink
               onClick={toggleOverlay}
               className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-              to="/kitchen-dashboard">
-              Kitchen Dashboard
+              to="/staff-dashboard">
+              Staff Dashboard
             </NavLink>
           </li>
         )}
@@ -64,14 +64,16 @@ function Overlay({classname}) {
                   logout
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  onClick={toggleOverlay}
-                  className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                  to="/profile">
-                  Profile
-                </NavLink>
-              </li>
+              {!hasUserRole("ROLE_STAFF", roles) &&  hasUserRole("ROLE_USER", roles) && (
+                <li>
+                  <NavLink
+                    onClick={toggleOverlay}
+                    className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
+                    to="/profile">
+                    Profile
+                  </NavLink>
+                </li>
+              )}
             </>
           ) :
           (

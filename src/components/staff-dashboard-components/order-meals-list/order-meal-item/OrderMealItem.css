@@ -1,0 +1,30 @@
+.order-meal-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  font-size: .8rem;
+
+  hr {
+    color: white;
+  }
+  .box {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+    padding-bottom: .3rem;
+  }
+
+  & .cirle-qty {
+    padding: 1rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #dc9d36;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+}
+
