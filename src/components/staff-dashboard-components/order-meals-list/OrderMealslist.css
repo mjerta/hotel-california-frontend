@@ -1,4 +1,6 @@
 .order-meals-list {
   display: flex;
   flex-direction: column;
+  flex-basis: 10rem;
+  overflow-y: auto;
 }

@@ -2,5 +2,6 @@
   display: flex;
   flex-direction: column;
   background: #d0d5dd;
-  padding: 1rem
+  border-radius: var(--default-radius);
+  flex-basis: 15rem;
 }

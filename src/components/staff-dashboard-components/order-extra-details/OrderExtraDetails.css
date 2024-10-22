@@ -1,3 +1,14 @@
 .order-extra-details {
   display: flex;
+  flex-direction:column;
+  flex-basis: 5rem;
+  background-color: #768e6a;
+  justify-content: space-between;
+  color: white;
+  padding: .5rem;
+
+  .extra-details-row {
+    display: flex;
+    justify-content: space-between;
+  }
 }

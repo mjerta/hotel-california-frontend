@@ -4,9 +4,9 @@ function OrderMealItem({className, qty, name}) {
   return (
     <div className={`order-meal-item ${className ? className : ''}`}>
       <div className="box">
-      <span className="cirle-qty">
-        {qty}
-      </span>
+      <div className="cirle-qty">
+        <span>{qty}</span>
+      </div>
         <p>
           {name}
         </p>
