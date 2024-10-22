@@ -1,27 +1,67 @@
 import "./OrderStaffButtons.css"
+import {useContext, useEffect} from "react";
+import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
+import hasUserRole from "../../../helpers/hasUserRole.jsx";
+import Button from "../../general-components/button/Button.jsx";
+import useUpdateOrder
+  from "../../../custom-hooks/api-requests/PATCH/updateOrderStatus.jsx";
 
-function OrdersStaffButtons({className}) {
-  return (
-    <div className={`order-staff-buttons ${className ? className : ''}`}>
-      <button>in Queue</button>
-      <button>preparing order</button>
-      <button>order prepared</button>
-      <button>order delivered</button>
-      <button>order payed</button>
+function OrdersStaffButtons({className, id, destination, status, fetchOrders}) {
+  const { loading, error, result, updateOrderStatus } = useUpdateOrder();
+  const {roles} = useContext(AuthContext)
+
+  useEffect(() => {
+    if (result) {
+      fetchOrders();
+    }
+  }, [result]);
 
 
 
 
+  return (<div className={`order-staff-buttons ${className ? className : ''}`}>
+    {hasUserRole("ROLE_CHEF", roles) && (<>
+      {
+        status === "IN_QUEUE" && (
+          <Button
+            onClick={() => updateOrderStatus(id, "PREPARING_ORDER", destination)}
+            className={"confirm-order"}
+            text={loading ? "Loading..." : (error ? error : "Prepare order")}
+          />
+        )
+      }
+      {
+        (status === "IN_QUEUE" || status === "PREPARING_ORDER") && (
+          <Button
+            onClick={() => updateOrderStatus(id, "ORDER_PREPARED", destination)}
+            className={"confirm-order"}
+            text={loading ? "Loading..." : (error ? error : "order prepared")}
+          />
+        )
+      }
+    </>)}
+    {!hasUserRole("ROLE_CHEF", roles) && hasUserRole("ROLE_STAFF", roles) && (<>
+      {
+        status === "ORDER_PREPARED" && (
 
-      {/*NOT_PICKED_UP("Not Picked Up"),*/}
-      {/*IN_QUEUE("In Queue"),*/}
-      {/*PREPARING_ORDER("Preparing Order"),*/}
-      {/*ORDER_PREPARED("Order Prepared"),*/}
-      {/*ORDER_DELIVERED("Order Delivered"),*/}
-      {/*ORDER_PAYED("Order Payed");*/}
-
-    </div>
-  )
+          <Button
+            onClick={() => updateOrderStatus(id, "ORDER_DELIVERED", destination)}
+            className={"confirm-order"}
+            text={loading ? "Loading..." : (error ? error : "order delivered")}
+          />
+        )
+      }
+      {
+        (status === "ORDER_PREPARED" || status === "ORDER_DELIVERED") && (
+          <Button
+            onClick={() => updateOrderStatus(id, "ORDER_PAYED")}
+            className={"confirm-order"}
+            text={loading ? "Loading..." : (error ? error : "order payed")}
+          />
+        )
+      }
+    </>)}
+  </div>)
 }
 
 export default OrdersStaffButtons;
