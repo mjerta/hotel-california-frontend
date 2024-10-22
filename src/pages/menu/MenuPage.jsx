@@ -11,8 +11,17 @@ import ExtraDetails
   from "../../components/menu-components/extra-details/ExtraDetails.jsx";
 import ReceiptOverview
   from "../../components/menu-components/receipt-overview/ReceiptOverview.jsx";
+import {useContext, useState} from "react";
+import shoppingcard from "../../assets/shopping-btn.svg"
+import SideBarToggleButton
+  from "../../components/general-components/sidebar-toggle-button/SideBarToggleButton.jsx";
+import {OrderContext} from "../../context/OrderProvider.jsx";
+
 
 function MenuPage() {
+  const [openSideBar, setOpenSideBar] = useState(false);
+  const {currentOrder} = useContext(OrderContext);
+
   return (
     <>
       <MainContent>
@@ -20,8 +29,16 @@ function MenuPage() {
         <FoodMenuOverview
         />
       </MainContent>
+      <SideBarToggleButton
+        openSideBar={openSideBar}
+        setOpenSideBar={setOpenSideBar}
+        currentOrder={currentOrder}
+        image={shoppingcard}
+        alt={"shopping card image"}
+        />
       <SideBar
         className={"sidebar-small"}
+        openSideBar={openSideBar}
       >
         <ExtraDetails/>
         <OrderOverview/>
