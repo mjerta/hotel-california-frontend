@@ -1,6 +1,4 @@
 .sidebar-toggle-button {
-  bottom: 1rem;
-  right: 1rem;
   position: absolute;
   cursor: pointer;
   z-index: 4;

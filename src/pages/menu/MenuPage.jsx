@@ -12,7 +12,7 @@ import ExtraDetails
 import ReceiptOverview
   from "../../components/menu-components/receipt-overview/ReceiptOverview.jsx";
 import {useContext, useState} from "react";
-import shoppingcard from "../../assets/shopping-btn.svg"
+import shoppingBtn from "../../assets/shopping-btn.svg"
 import SideBarToggleButton
   from "../../components/general-components/sidebar-toggle-button/SideBarToggleButton.jsx";
 import {OrderContext} from "../../context/OrderProvider.jsx";
@@ -33,8 +33,9 @@ function MenuPage() {
         openSideBar={openSideBar}
         setOpenSideBar={setOpenSideBar}
         currentOrder={currentOrder}
-        image={shoppingcard}
+        image={shoppingBtn}
         alt={"shopping card image"}
+        className={"menu-page-variant"}
         />
       <SideBar
         className={"sidebar-small"}

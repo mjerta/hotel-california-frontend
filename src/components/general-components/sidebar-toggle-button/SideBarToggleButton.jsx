@@ -6,7 +6,7 @@ function SideBarToggleButton({className, openSideBar, currentOrder, setOpenSideB
     <div
       className={`sidebar-toggle-button ${className ? className : ''} ${openSideBar ? "img-enforce" : ""}`}>
       <div className="inside-img-container">
-        {currentOrder.length > 0 && (
+        {currentOrder && currentOrder.length > 0 && (
           <span className="absolute-element">
             {currentOrder.length}
           </span>
