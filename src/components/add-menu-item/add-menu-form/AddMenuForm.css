@@ -1,0 +1,8 @@
+.add-menu-form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: center;
+}

@@ -21,6 +21,15 @@
   }
 }
 
+.form-groud-add-menu-variant {
+  flex-direction: column;
+
+
+  input {
+    border: none;
+  }
+}
+
 @media screen and (min-width: 1200px) {
   .form-group-profile-variant {
     & label {

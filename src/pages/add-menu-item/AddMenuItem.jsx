@@ -11,6 +11,8 @@ import useFetchMeals
   from "../../custom-hooks/api-requests/GET/useFetchMeals.jsx";
 
 import menuBtn from "../../assets/menu-btn.svg"
+import AddMenuForm
+  from "../../components/add-menu-item/add-menu-form/AddMenuForm.jsx";
 
 function AddMenuItem() {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -20,19 +22,7 @@ function AddMenuItem() {
   return (
     <>
       <MainContent>
-        {/*  form component*/}
-        {/*  label input component*/}
-        {/*  label input component*/}
-        {/* Add ingredient button  */}
-        {/*  label input component*/}
-        {/*  label input component*/}
-        {/*  choose file component*/}
-        {/*  label*/}
-        {/*  button choose file*/}
-        {/*  image - based on the image is being uploaded*/}
-        {/*  button component save*/}
-        {/*  sidebar devided by 2*/}
-        {/*    list menu component map oover them*/}
+        <AddMenuForm />
       </MainContent>
       <SideBarToggleButton
         openSideBar={openSideBar}

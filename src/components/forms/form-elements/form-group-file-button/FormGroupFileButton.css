@@ -1,0 +1,14 @@
+.form-group-file-button {
+  display: flex;
+  padding: 1rem 0;
+  flex-direction: column;
+
+
+  input[type="file"] {
+    display: none;
+    position: absolute;
+  }
+
+
+
+}
