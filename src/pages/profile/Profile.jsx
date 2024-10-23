@@ -6,6 +6,8 @@ import SideBar from "../../components/general-components/sidebar/SideBar.jsx";
 import {useState} from "react";
 import SideBarToggleButton
   from "../../components/general-components/sidebar-toggle-button/SideBarToggleButton.jsx";
+import ProfileDetails
+  from "../../components/profile-components/profile-details/ProfileDetails.jsx";
 
 function Profile() {
   useAuthGuard("/profile", "ROLE_USER");
@@ -28,18 +30,8 @@ function Profile() {
         openSideBar={openSideBar}
         setOpenSideBar={setOpenSideBar}
       >
+        <ProfileDetails/>
       </SideBar>
-      {/*  main-middle component*/}
-      {/*  side bar*/}
-      {/*  profile image component*/}
-      {/*  form component*/}
-      {/* label and input component */}
-      {/* label and input component */}
-      {/* label and input component */}
-      {/* label and input component */}
-      {/*  cofiguration button - is meant for enabling, and for saving and disabbling the form*/}
-      {/*order overview component  */}
-      {/*  total point overview*/}
     </>
   )
 }

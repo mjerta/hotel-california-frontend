@@ -1,0 +1,12 @@
+.non-active-form {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  align-self: center;
+}
+
+@media screen and (min-width: 1200px ) {
+  .non-active-form {
+    width: 100%;
+  }
+}

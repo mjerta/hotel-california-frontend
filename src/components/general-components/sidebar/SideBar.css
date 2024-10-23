@@ -14,7 +14,7 @@
   position: absolute;
   width: 100%;
   left: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   padding: 0rem 0 1rem 0;
 
 }

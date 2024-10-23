@@ -62,6 +62,7 @@ function RegisterForm() {
       <DefaultForm header={"Register"} onSubmit={handleSubmit(onSubmit)}>
         <FormGroup
           type={"text"}
+          className={"form-group-login-register-variant"}
           labelText={"Username: "}
           labelAndID={"username"}
           name={"username"}
@@ -80,6 +81,7 @@ function RegisterForm() {
         />
         <FormGroup
           type={"password"}
+          className={"form-group-login-register-variant"}
           labelText={"Password: "}
           labelAndID={"password"}
           name={"password"}
@@ -94,6 +96,7 @@ function RegisterForm() {
         />
         <FormGroup
           type={"text"}
+          className={"form-group-login-register-variant"}
           labelText={"First name: "}
           labelAndID={"firstname"}
           name={"firstname"}
@@ -112,6 +115,7 @@ function RegisterForm() {
         />
         <FormGroup
           type={"text"}
+          className={"form-group-login-register-variant"}
           labelText={"Last name: "}
           labelAndID={"lastname"}
           name={"lastname"}
@@ -130,6 +134,7 @@ function RegisterForm() {
         />
         <FormGroup
           type={"text"}
+          className={"form-group-login-register-variant"}
           labelText={"Phone number: "}
           labelAndID={"phone"}
           name={"phone"}
@@ -152,6 +157,7 @@ function RegisterForm() {
         />
         <FormGroup
           type={"text"}
+          className={"form-group-login-register-variant"}
           labelText={"Address: "}
           labelAndID={"address"}
           name={"address"}

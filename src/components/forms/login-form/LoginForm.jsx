@@ -63,6 +63,7 @@ function LoginForm() {
       <DefaultForm header={"Login"} onSubmit={handleSubmit(onSubmit)}>
         <FormGroup
           type={"text"}
+          className={"form-group-login-register-variant"}
           labelText={"Username: "}
           labelAndID={"username"}
           name={"username"}
@@ -73,6 +74,7 @@ function LoginForm() {
         />
         <FormGroup
           type={"password"}
+          className={"form-group-login-register-variant"}
           labelText={"Password: "}
           labelAndID={"password"}
           name={"password"}
