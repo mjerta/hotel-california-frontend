@@ -8,6 +8,10 @@ import SideBarToggleButton
   from "../../components/general-components/sidebar-toggle-button/SideBarToggleButton.jsx";
 import ProfileDetails
   from "../../components/profile-components/profile-details/ProfileDetails.jsx";
+import MainContentSection
+  from "../../components/general-components/main-content-section/MainContentSection.jsx";
+import UserOrderOverview
+  from "../../components/profile-components/userorderoverview/UserOrderOverview.jsx";
 
 function Profile() {
   useAuthGuard("/profile", "ROLE_USER");
@@ -16,7 +20,18 @@ function Profile() {
 
   return (
     <>
-      <MainContent>
+      <MainContent
+      className={"main-content-profile-variant"}
+      >
+        <MainContentSection>
+          <UserOrderOverview/>
+
+
+        </MainContentSection>
+        <MainContentSection>
+
+
+        </MainContentSection>
       </MainContent>
       <SideBarToggleButton
         openSideBar={openSideBar}

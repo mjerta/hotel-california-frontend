@@ -1,7 +1,6 @@
 .main-content {
   display: flex;
   flex-grow: 1;
-  /*background-color: red;*/
   overflow-y: auto;
   flex-direction: column;
   align-items: center;

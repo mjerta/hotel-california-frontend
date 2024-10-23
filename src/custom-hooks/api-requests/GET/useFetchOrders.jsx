@@ -12,9 +12,9 @@ function useFetchOrders() {
   const [loading, setLoading] = useState(false);
 
   async function fetchOrders() {
-    setError(null)
-    if (!token) return;
     try {
+      if (!token) return;
+      setError(null)
       setLoading(true);
       const response = await axios.get(`${baseUrl}/api/v1/orders`, {
         headers: {

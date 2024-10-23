@@ -16,7 +16,7 @@ function LocationProvider({children}) {
         console.error(e)
       }
     }
-    fetchAllLocations();
+    void fetchAllLocations();
   }, []);
 
   return (

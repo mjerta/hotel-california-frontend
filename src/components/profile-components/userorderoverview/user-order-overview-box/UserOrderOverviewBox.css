@@ -1,0 +1,25 @@
+.user-order-overview-box {
+  display: flex;
+  background-color: var(--default-navigation-bg-color);
+  flex-basis: 7rem;
+  border-radius: var(--default-radius);
+  padding: 1rem;
+}
+
+.inner-order-box {
+  flex-grow: 1;
+  display: flex;
+  column-gap: 1rem;
+}
+
+.order-box-menu-details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.inner-box-menu-details {
+  display: flex;
+  align-items: center;
+  column-gap: .6rem;
+}

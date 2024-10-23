@@ -63,11 +63,14 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, sta
         }
       }
     }
-    fetchOrder();
+    void fetchOrder();
 
     // Set up interval for updates every 10 seconds
     const intervalId = setInterval(fetchOrder, 10000);
     // Clean up the interval on unmount
+    if (token == null) {
+      clearInterval(intervalId)
+    }
     return () => clearInterval(intervalId);
   }, [token, status]); // Only depend on token
 };
