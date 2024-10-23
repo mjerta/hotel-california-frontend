@@ -6,30 +6,31 @@
   left: 0;
   background-color: var(--default-sidebar-color);
   z-index: 2;
-}
 
-ul {
-  display: flex;
-  list-style-type: none;
-  text-decoration: none;
-  width: 100%;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  ul {
+    display: flex;
 
-  & a,
-  & a:visited{
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 1.5rem;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    & a,
+    & a:visited {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
   }
 }
+
+
 
 .default-menu-link {
   border: none;
 }
 
-.active-menu-link{
+.active-menu-link {
   border-bottom: 2px solid white;
 }

@@ -21,7 +21,6 @@ function useFetchOrders() {
           Authorization: `Bearer ${token}`,
         }
       });
-      console.log(response);
       setOrders(response.data)
     } catch (e) {
       setOrders([])

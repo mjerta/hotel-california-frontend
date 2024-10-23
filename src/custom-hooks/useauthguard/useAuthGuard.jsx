@@ -30,7 +30,6 @@ function useAuthGuard(redirectPath, requiredRole) {
           }
         });
       } else if (!hasUserRole(requiredRole, roles)) {
-        console.log(requiredRole, roles)
         // Redirect if the user doesn't have the required role
         navigate("/login", {
           state: {

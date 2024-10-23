@@ -9,7 +9,6 @@ import formatDateToDutch from "../../../helpers/formatDateToDutch.js";
 function UserOrderOverview({className}) {
 
   const {ordersByUser, loading, error} = useFetchOrdersByUser();
-  console.log(ordersByUser)
 
   return (
     <div className={`user-order-overview ${ordersByUser.length === 0 && 'put-in-middle'} ${className ? className : ''}`}>

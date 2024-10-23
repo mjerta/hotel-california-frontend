@@ -5,7 +5,6 @@ import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 function useFetchOrdersByUser() {
   const baseUrl = import.meta.env.VITE_API_URL;
   const {token} = useContext(AuthContext);
-  console.log(token)
   const [ordersByUser, setOrdersByUser] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -29,7 +28,7 @@ function useFetchOrdersByUser() {
         } else {
           setError("Something went wrong on the server")
         }
-        console.log(e)
+        console.error(e.message)
       } finally {
         setLoading(false);
       }

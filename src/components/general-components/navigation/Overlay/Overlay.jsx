@@ -61,7 +61,7 @@ function Overlay({classname}) {
                     toggleOverlay()
                   }}
                   to="/">
-                  logout
+                  Logout
                 </NavLink>
               </li>
               {!hasUserRole("ROLE_STAFF", roles) &&  hasUserRole("ROLE_USER", roles) && (

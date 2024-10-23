@@ -58,7 +58,6 @@ const useFetchProfile = (token, roles) => {
           setError("Something went wrong");
         }
         console.error(e.message);
-        console.log(e)
       } finally {
         setLoading(false);
       }
