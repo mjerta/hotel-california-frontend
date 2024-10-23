@@ -1,0 +1,10 @@
+.qty-circle {
+  padding: 1rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: #dc9d36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

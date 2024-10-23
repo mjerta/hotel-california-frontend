@@ -1,0 +1,43 @@
+.sidebar-toggle-button {
+  position: absolute;
+  cursor: pointer;
+  z-index: 4;
+
+  .inside-img-container {
+    position: relative;
+  }
+
+
+  .absolute-element {
+    content: '';
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    left: -.5rem;
+    top: -.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--default-postive-button-color);
+    color: white;
+    font-weight: bold;
+  }
+
+  .img {
+    height: 4rem;
+  }
+}
+
+
+@media screen and (min-width: 1200px) {
+
+  .sidebar-toggle-button {
+    display: none;
+
+  }
+
+  .img-enforce {
+    display: flex;
+  }
+}
