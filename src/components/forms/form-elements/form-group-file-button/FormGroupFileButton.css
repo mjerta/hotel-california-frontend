@@ -3,10 +3,14 @@
   padding: 1rem 0;
   flex-direction: column;
 
+  label {
+    pointer-events: none;
+  }
+
 
   input[type="file"] {
     display: none;
-    position: absolute;
+    /*position: absolute;*/
   }
 
 

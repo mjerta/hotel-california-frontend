@@ -13,16 +13,12 @@ function FormGroupFileButton({
                                disabled
                              }) {
 
-  const [fileName, setFileName] = useState("Choose a file");
+  const [previewUrlPhoto, setPreviewUrlPhoto] = useState('');
   const fileInputRef = useRef(null);
 
   function handleFileInputChange() {
     const file = fileInputRef.current.files[0];
-    if (file) {
-      setFileName(file.name); // Update the filename state
-    } else {
-      setFileName('Choose a file'); // Reset the filename if no file is selected
-    }
+    setPreviewUrlPhoto(URL.createObjectURL(file));
   }
 
   function handleButtonClick(e) {
@@ -33,7 +29,7 @@ function FormGroupFileButton({
   return (
     <>
       <div className={`form-group-file-button ${className ? className : ''}`}>
-        <label htmlFor={labelAndID}>{fileName}</label>
+        <label htmlFor={labelAndID}>Price</label>
         <input
           type={"file"}
           id={labelAndID}
@@ -44,7 +40,9 @@ function FormGroupFileButton({
           onChange={handleFileInputChange}
           value={value}
         />
+        <img src={previewUrlPhoto} alt={"photo"} />
         <Button
+          className={"confirm-order"}
           onClick={(e) => handleButtonClick(e)}
           text={"Upload"}
         />
