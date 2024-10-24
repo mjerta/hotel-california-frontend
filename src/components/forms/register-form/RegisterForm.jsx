@@ -2,7 +2,6 @@ import "./RegisterForm.css"
 import DefaultForm from "../default-form/DefaultForm.jsx";
 import FormGroup from "../form-elements/form-group/FormGroup.jsx";
 import {useForm} from "react-hook-form";
-import SubmitButton from "../form-elements/submit-button/SubmitButton.jsx";
 import axios from "axios";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
@@ -170,7 +169,10 @@ function RegisterForm() {
           })}
           errors={errors}
         />
-        <FormGroupButton/>
+        <FormGroupButton
+          className={"form-group-submit-login"}
+          btnClassName={"submit-button-login"}
+        />
       </DefaultForm>
     </>
   )

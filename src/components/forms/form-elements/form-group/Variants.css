@@ -23,6 +23,7 @@
 
 .form-groud-add-menu-variant {
   flex-direction: column;
+  row-gap: 1rem;
 
 
   input {

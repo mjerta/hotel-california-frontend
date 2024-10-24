@@ -87,7 +87,10 @@ function LoginForm() {
           })}
           errors={errors}
         />
-        <FormGroupButton/>
+        <FormGroupButton
+          className={"form-group-submit-login"}
+          btnClassName={"submit-button-login"}
+        />
       </DefaultForm>
     </>
   )

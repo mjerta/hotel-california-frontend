@@ -1,5 +1,5 @@
 import "./FormGroupFileButton.css"
-import {useRef, useState} from "react";
+import {useRef} from "react";
 import Button from "../../../general-components/button/Button.jsx";
 
 function FormGroupFileButton({
@@ -10,10 +10,11 @@ function FormGroupFileButton({
                                errors,
                                name,
                                value,
-                               disabled
+                               disabled,
+                               setPreviewUrlPhoto,
+                               btnText
                              }) {
 
-  const [previewUrlPhoto, setPreviewUrlPhoto] = useState('');
   const fileInputRef = useRef(null);
 
   function handleFileInputChange() {
@@ -29,7 +30,7 @@ function FormGroupFileButton({
   return (
     <>
       <div className={`form-group-file-button ${className ? className : ''}`}>
-        <label htmlFor={labelAndID}>Price</label>
+        <label htmlFor={labelAndID}>{labelText}</label>
         <input
           type={"file"}
           id={labelAndID}
@@ -40,11 +41,10 @@ function FormGroupFileButton({
           onChange={handleFileInputChange}
           value={value}
         />
-        <img src={previewUrlPhoto} alt={"photo"} />
         <Button
-          className={"confirm-order"}
+          className={"upload-image"}
           onClick={(e) => handleButtonClick(e)}
-          text={"Upload"}
+          text={btnText}
         />
         {errors && errors[name] &&
           <p className="error-message">{errors[name].message}</p>}

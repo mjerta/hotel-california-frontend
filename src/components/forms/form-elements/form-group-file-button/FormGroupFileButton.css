@@ -2,6 +2,7 @@
   display: flex;
   padding: 1rem 0;
   flex-direction: column;
+  row-gap: 1rem;
 
   label {
     pointer-events: none;
@@ -10,9 +11,5 @@
 
   input[type="file"] {
     display: none;
-    /*position: absolute;*/
   }
-
-
-
 }

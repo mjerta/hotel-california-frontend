@@ -4,7 +4,7 @@ import MainContent
 import SideBarToggleButton
   from "../../components/general-components/sidebar-toggle-button/SideBarToggleButton.jsx";
 import SideBar from "../../components/general-components/sidebar/SideBar.jsx";
-import {useContext, useState} from "react";
+import { useState} from "react";
 import MenuItemComplete
   from "../../components/add-menu-item/menu-item-complete/MenuItemComplete.jsx";
 import useFetchMeals
@@ -21,7 +21,9 @@ function AddMenuItem() {
   useAuthGuard("/new-menu-item", "ROLE_MANAGER");
   return (
     <>
-      <MainContent>
+      <MainContent
+        className={"main-content-profile-variant"}
+      >
         <AddMenuForm />
       </MainContent>
       <SideBarToggleButton

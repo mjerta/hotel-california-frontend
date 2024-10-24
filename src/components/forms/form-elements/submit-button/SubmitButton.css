@@ -1,4 +1,3 @@
-.login-button {
-  align-self: center;
+.submit-button {
   padding: var(--default-padding-buttom);
 }
