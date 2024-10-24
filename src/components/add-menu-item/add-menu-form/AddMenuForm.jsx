@@ -7,21 +7,31 @@ import FormGroupButton
   from "../../forms/form-elements/form-group-button/FormGroupButton.jsx";
 import FormGroupArray
   from "../../forms/form-elements/form-group-array/FormGroupArray.jsx";
+import {useForm} from "react-hook-form";
 
 function AddMenuForm({className}) {
   const [previewUrlPhoto, setPreviewUrlPhoto] = useState('');
   const [image, setImage] = useState([]);
-  console.log(image)
+  const {register, handleSubmit, formState: {errors}} = useForm();
+
+
+  function onSubmit(data) {
+    console.log(data);
+  }
 
   return (
-    <form className={`add-menu-form ${className ? className : ''}`}>
+    <form onSubmit={handleSubmit(onSubmit)} className={`add-menu-form ${className ? className : ''}`}>
       <FormGroup
         name={"menuName"}
         type={"text"}
         labelText={"Menu name:"}
         labelAndID={"menu-name"}
         className={"form-group-add-menu-variant"}
+        register={register("menuName", {
+          required: "Menu name is required",
+        })}
         required={true}
+        errors={errors}
       />
       <FormGroup
         name={"description"}
@@ -29,6 +39,9 @@ function AddMenuForm({className}) {
         labelText={"Description:"}
         labelAndID={"menu-description"}
         className={"form-group-add-menu-variant"}
+        register={register("description", {
+          required: "Description is required",
+        })}
       />
       <FormGroupArray
         name={"ingredient"}
@@ -37,6 +50,7 @@ function AddMenuForm({className}) {
         labelAndID={"menu-name"}
         className={"form-group-add-menu-variant"}
         required={true}
+
       />
       <FormGroup
         name={"price"}
@@ -58,7 +72,6 @@ function AddMenuForm({className}) {
         previewUrlPhoto && (
           <img src={previewUrlPhoto} alt=""/>
         )
-
       }
       </div>
       <FormGroupButton

@@ -2,7 +2,6 @@
   align-self: center;
 }
 
-
 .submit-button-add-menu {
   background-color: var(---default-positive-button-color-2);
   border: none;
@@ -10,4 +9,5 @@
   color: white;
   border-radius: var(--default-radius);
   flex-grow: 1;
+  padding: 1rem;
 }

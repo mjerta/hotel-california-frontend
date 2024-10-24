@@ -1,3 +1,4 @@
 .submit-button {
   padding: var(--default-padding-buttom);
+  cursor: pointer;
 }

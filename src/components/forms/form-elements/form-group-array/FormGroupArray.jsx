@@ -19,6 +19,11 @@ function FormGroupArray({
 
   const [inputAmmount, setInputAmmount] = useState(1)
 
+
+
+
+
+
   return (<>
     <div className={`form-group-array ${className ? className : ''}`}>
       <AddButton
@@ -43,6 +48,7 @@ function FormGroupArray({
             autoComplete={"off"}
             disabled={disabled}
             value={value}
+
           />
 
         ))}
