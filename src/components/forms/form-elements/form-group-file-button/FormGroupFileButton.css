@@ -8,6 +8,18 @@
     pointer-events: none;
   }
 
+  .asterisk {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: '*';
+      top: 0;
+      right: 0;
+      color: red;
+    }
+
+  }
 
   input[type="file"] {
     display: none;

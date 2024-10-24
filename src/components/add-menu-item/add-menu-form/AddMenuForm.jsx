@@ -5,6 +5,8 @@ import FormGroupFileButton
 import {useState} from "react";
 import FormGroupButton
   from "../../forms/form-elements/form-group-button/FormGroupButton.jsx";
+import FormGroupArray
+  from "../../forms/form-elements/form-group-array/FormGroupArray.jsx";
 
 function AddMenuForm({className}) {
   const [previewUrlPhoto, setPreviewUrlPhoto] = useState('');
@@ -18,28 +20,31 @@ function AddMenuForm({className}) {
         type={"text"}
         labelText={"Menu name:"}
         labelAndID={"menu-name"}
-        className={"form-groud-add-menu-variant"}
+        className={"form-group-add-menu-variant"}
+        required={true}
       />
       <FormGroup
         name={"description"}
         type={"text"}
         labelText={"Description:"}
         labelAndID={"menu-description"}
-        className={"form-groud-add-menu-variant"}
+        className={"form-group-add-menu-variant"}
       />
-      <FormGroup
+      <FormGroupArray
         name={"ingredient"}
         type={"text"}
         labelText={"Add ingredient:"}
         labelAndID={"menu-name"}
-        className={"form-groud-add-menu-variant"}
+        className={"form-group-add-menu-variant"}
+        required={true}
       />
       <FormGroup
         name={"price"}
         type={"text"}
         labelText={"Price:"}
         labelAndID={"menu-price"}
-        className={"form-groud-add-menu-variant"}
+        className={"form-group-add-menu-variant"}
+        required={true}
       />
       <FormGroupFileButton
         name={"image"}
@@ -47,6 +52,7 @@ function AddMenuForm({className}) {
         labelText={"image:"}
         btnText={"Choose file"}
         setPreviewUrlPhoto={setPreviewUrlPhoto}
+        required={true}
       />
       <div className="img-container">{
         previewUrlPhoto && (

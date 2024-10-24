@@ -1,8 +1,9 @@
-.form-group {
+.form-group-array {
   display: flex;
   padding: 1rem 0;
+  position: relative;
 
-   & input {
+  & input {
     padding: 1rem
   }
 

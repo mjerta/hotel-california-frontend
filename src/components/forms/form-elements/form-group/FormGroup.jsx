@@ -1,11 +1,11 @@
 import "./FormGroup.css"
 import "./Variants.css"
 
-function FormGroup({type, labelAndID, labelText, register, errors, name, className, value, disabled}) {
+function FormGroup({type, labelAndID, labelText, register, errors, name, className, value, disabled, required}) {
   return (
     <>
       <div className={`form-group ${className ? className: ''}`}>
-        <label htmlFor={labelAndID}>{labelText}</label>
+        <label className={required && "asterisk"} htmlFor={labelAndID}>{labelText}</label>
         <input
           type={type}
           id={labelAndID}

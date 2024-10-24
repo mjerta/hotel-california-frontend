@@ -12,7 +12,9 @@ function FormGroupFileButton({
                                value,
                                disabled,
                                setPreviewUrlPhoto,
-                               btnText
+                               btnText,
+                               required
+
                              }) {
 
   const fileInputRef = useRef(null);
@@ -30,7 +32,8 @@ function FormGroupFileButton({
   return (
     <>
       <div className={`form-group-file-button ${className ? className : ''}`}>
-        <label htmlFor={labelAndID}>{labelText}</label>
+        <label className={required && 'asterisk'}
+               htmlFor={labelAndID}>{labelText}</label>
         <input
           type={"file"}
           id={labelAndID}

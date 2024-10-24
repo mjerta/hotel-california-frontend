@@ -2,6 +2,7 @@ import "./Card.css"
 import foodImage from "../../../assets/menu-image.png"
 import addButton from "../../../assets/add-button.svg"
 import convertPrice from "../../../helpers/convertPrice.js";
+import AddButton from "../../general-components/add-button/AddButton.jsx";
 
 function Card({className, name, image, description, price, status, onClick}) {
 
@@ -14,13 +15,13 @@ function Card({className, name, image, description, price, status, onClick}) {
       <img src={image ? image : foodImage} alt="menu-image"/>
       {
         !status && (
-          <img
-            // onClick={() => addMealToOrder(id)}
+
+          <AddButton
             onClick={onClick}
             className={"add-button"}
             src={addButton}
             alt={"add-button"}
-          />
+            />
         )}
       <figcaption>
         <div className="menu-details">
