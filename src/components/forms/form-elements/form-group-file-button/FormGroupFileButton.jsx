@@ -14,7 +14,6 @@ function FormGroupFileButton({
                                setPreviewUrlPhoto,
                                btnText,
                                required
-
                              }) {
 
   const fileInputRef = useRef(null);

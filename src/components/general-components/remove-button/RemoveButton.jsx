@@ -1,4 +1,5 @@
 import "./RemoveButton.css"
+import "./Variants.css"
 import deleteIcon from "../../../assets/remove-btn.svg"
 
 function RemoveButton({className, alt, onClick}) {

@@ -1,6 +1,8 @@
 import "./FormGroupArray.css"
 import AddButton from "../../../general-components/add-button/AddButton.jsx";
 import {useState} from "react";
+import RemoveButton
+  from "../../../general-components/remove-button/RemoveButton.jsx";
 
 function FormGroupArray({
                           type,
@@ -23,6 +25,12 @@ function FormGroupArray({
         className={"add-button-add-menu"}
         onClick={() => setInputAmmount((prev) => prev + 1)}
       />
+      {inputAmmount > 1 && (
+        <RemoveButton
+          className={"remove-button-add-menu"}
+          onClick={() => setInputAmmount((prev) => prev - 1)}
+          />
+      )}
       <label className={required && "asterisk"}
              htmlFor={labelAndID}>{labelText}</label>
       <div className="input-group">
