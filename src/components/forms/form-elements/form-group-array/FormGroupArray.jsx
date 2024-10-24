@@ -21,23 +21,24 @@ function FormGroupArray({
     <div className={`form-group-array ${className ? className : ''}`}>
       <AddButton
         className={"add-button-add-menu"}
-        onClick={() => setInputAmmount((prev) => prev+ 1)}
+        onClick={() => setInputAmmount((prev) => prev + 1)}
       />
       <label className={required && "asterisk"}
              htmlFor={labelAndID}>{labelText}</label>
-      {Array.from({length: inputAmmount}).map((_, i) => (
-        <>
-          <p key={i} >test</p>
-        </>
-      ))}
-      <input
-        type={type}
-        id={labelAndID}
-        {...register}
-        autoComplete={"off"}
-        disabled={disabled}
-        value={value}
-      />
+      <div className="input-group">
+        {Array.from({length: inputAmmount}).map((_, i) => (
+          <input
+            key={i}
+            type={type}
+            id={labelAndID}
+            {...register}
+            autoComplete={"off"}
+            disabled={disabled}
+            value={value}
+          />
+
+        ))}
+      </div>
     </div>
     {errors && errors[name] &&
       <p className="error-message">{errors[name].message}</p>}
