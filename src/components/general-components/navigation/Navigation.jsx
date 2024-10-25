@@ -16,11 +16,11 @@ function Navigation({className}) {
 
   return (<nav className={className}>
     <div className="image-wrapper">
-      <img onClick={toggleOverlay} className={"hamburger-img"} src={!isOverlayOpen ? hamburger : hamburgerWhite}
+      <img onKeyDown={(e) => e.key === "Enter" && toggleOverlay()} tabIndex={"0"} onClick={toggleOverlay} className={"hamburger-img"} src={!isOverlayOpen ? hamburger : hamburgerWhite}
            alt=""/>
     </div>
     <div className="image-wrapper">
-      <img onClick={handleProfileClick} className={"profile-img"}
+      <img onKeyDown={(e) => e.key === "Enter" && handleProfileClick()} tabIndex={"0"} onClick={handleProfileClick} className={"profile-img"}
            src={profileImg} alt={"profile image"}/>
     </div>
     {/*  hamburger component  - maybe imported*/}

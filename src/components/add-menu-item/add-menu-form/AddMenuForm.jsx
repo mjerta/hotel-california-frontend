@@ -50,9 +50,6 @@ function AddMenuForm({className}) {
         def
         labelAndID={"menu-description"}
         className={"form-group-add-menu-variant"}
-        register={register("description", {
-          required: "Description is required",
-        })}
         defaultValue={""}
       />
       <FormGroupArray
@@ -70,7 +67,11 @@ function AddMenuForm({className}) {
         labelText={"Price:"}
         labelAndID={"menu-price"}
         className={"form-group-add-menu-variant"}
+        register={register("menuName", {
+          required: "Price is required",
+        })}
         required={true}
+        errors={errors}
         defaultValue={""}
       />
       <FormGroupFileButton
