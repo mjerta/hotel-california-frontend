@@ -38,7 +38,7 @@ function useFetchOrders() {
   }
 
   useEffect(() => {
-    fetchOrders();
+    void fetchOrders();
     const intervalId = setInterval(fetchOrders, 10000); // Fetch orders every 10 seconds
 
     return () => clearInterval(intervalId); // Clean up interval on unmount

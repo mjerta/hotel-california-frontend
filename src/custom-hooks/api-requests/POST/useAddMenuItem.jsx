@@ -1,5 +1,6 @@
 import {useContext, useState} from "react";
 import axios from "axios";
+import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 
 function useAddMenuItem() {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,8 +14,19 @@ function useAddMenuItem() {
     try {
       setResponseStatus(null)
       setIsLoading(true);
-      const result = await axios.post(`${baseUrl}/api/v1/meals`, data, {
-        headers: token ? {Authorization: `Bearer ${token}`} : {}
+
+      const formData = new FormData();
+      formData.append("name", data.menuName);
+      formData.append("description", data.description);
+      formData.append("price", data.price);
+      formData.append("image", image);
+      formData.append("ingredients", JSON.stringify(data.ingredients));
+
+      const result = await axios.post(`${baseUrl}/api/v1/meals`, formData, {
+        headers: token ? {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        } : {}
       })
       console.log(result.data)
       setResponseStatus(result.status)
@@ -31,8 +43,9 @@ function useAddMenuItem() {
       setIsLoading(false);
     }
 
-    return {useAddMenuItem, isLoading, error, responseStatus}
   }
+
+  return {addMenu, isLoading, error, responseStatus}
 }
 
 export default useAddMenuItem;

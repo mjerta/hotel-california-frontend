@@ -21,8 +21,6 @@ function AddMenuForm({className}) {
   } = useForm();
 
 
-
-
   function onSubmit(data) {
     console.log(data);
     console.log(image)
@@ -43,16 +41,19 @@ function AddMenuForm({className}) {
         })}
         required={true}
         errors={errors}
+        defaultValue={""}
       />
       <FormGroup
         name={"description"}
         type={"text"}
         labelText={"Description:"}
+        def
         labelAndID={"menu-description"}
         className={"form-group-add-menu-variant"}
         register={register("description", {
           required: "Description is required",
         })}
+        defaultValue={""}
       />
       <FormGroupArray
         name={"ingredients"}  // name of the field array
@@ -70,6 +71,7 @@ function AddMenuForm({className}) {
         labelAndID={"menu-price"}
         className={"form-group-add-menu-variant"}
         required={true}
+        defaultValue={""}
       />
       <FormGroupFileButton
         name={"image"}

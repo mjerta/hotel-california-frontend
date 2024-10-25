@@ -1,7 +1,7 @@
 import "./FormGroup.css"
 import "./Variants.css"
 
-function FormGroup({type, labelAndID, labelText, register, errors, name, className, value, disabled, required}) {
+function FormGroup({type, labelAndID, labelText, register, errors, name, className, disabled, required, defaultValue}) {
   return (
     <>
       <div className={`form-group ${className ? className: ''}`}>
@@ -12,8 +12,7 @@ function FormGroup({type, labelAndID, labelText, register, errors, name, classNa
           {...register}
           autoComplete={"off"}
           disabled={disabled}
-          value={value}
-          defaultValue={""}
+          defaultValue={defaultValue}
         />
       </div>
       {errors && errors[name] &&
