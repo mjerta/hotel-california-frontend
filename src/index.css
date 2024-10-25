@@ -11,6 +11,15 @@ body {
 
 }
 
+
+.error-message-start, .error-message {
+  height: 1rem;
+}
+
+.error-message-center {
+  text-align: center;
+}
+
 input,
 textarea,
 select {

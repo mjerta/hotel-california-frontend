@@ -12,11 +12,13 @@ import useFetchMeals
 
 import menuBtn from "../../assets/menu-btn.svg"
 import AddMenuForm
-  from "../../components/add-menu-item/add-menu-form/AddMenuForm.jsx";
+from "../../components/add-menu-item/add-menu-form/AddMenuForm.jsx";
 
 function AddMenuItem() {
   const [openSideBar, setOpenSideBar] = useState(false);
-  const {meals, error, loading} = useFetchMeals()
+  const [newMenuPlaced, setNewMenuPlaced] = useState(false);
+  const {meals, error, loading} = useFetchMeals(newMenuPlaced, setNewMenuPlaced)
+
 
   useAuthGuard("/new-menu-item", "ROLE_MANAGER");
   return (

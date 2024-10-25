@@ -27,8 +27,7 @@
   }
 }
 
-.error-message {
-  text-align: center;
+.error-message-field {
   height: 1rem;
 }
 
@@ -41,8 +40,9 @@
   padding: 1rem;
   overflow-y: auto;
   row-gap: .5rem;
-  
+
+
    input {
-     flex-grow: 0;
+     width: 100%;
    }
 }

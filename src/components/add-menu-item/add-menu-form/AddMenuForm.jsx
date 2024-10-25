@@ -12,15 +12,26 @@ import {useForm} from "react-hook-form";
 function AddMenuForm({className}) {
   const [previewUrlPhoto, setPreviewUrlPhoto] = useState('');
   const [image, setImage] = useState([]);
-  const {register, handleSubmit, formState: {errors}} = useForm();
+  const {
+    register,
+    control,
+    handleSubmit,
+    setValue,
+    formState: {errors},
+  } = useForm();
+
+
 
 
   function onSubmit(data) {
     console.log(data);
+    console.log(image)
+
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={`add-menu-form ${className ? className : ''}`}>
+    <form onSubmit={handleSubmit(onSubmit)}
+          className={`add-menu-form ${className ? className : ''}`}>
       <FormGroup
         name={"menuName"}
         type={"text"}
@@ -44,13 +55,13 @@ function AddMenuForm({className}) {
         })}
       />
       <FormGroupArray
-        name={"ingredient"}
+        name={"ingredients"}  // name of the field array
         type={"text"}
         labelText={"Add ingredient:"}
-        labelAndID={"menu-name"}
+        labelAndID={"ingredient"}
         className={"form-group-add-menu-variant"}
         required={true}
-
+        control={control} // pass control from useForm
       />
       <FormGroup
         name={"price"}
@@ -63,10 +74,16 @@ function AddMenuForm({className}) {
       <FormGroupFileButton
         name={"image"}
         labelAndID={"image"}
+        setImage={setImage}
         labelText={"image:"}
         btnText={"Choose file"}
+        setValue={setValue}
         setPreviewUrlPhoto={setPreviewUrlPhoto}
         required={true}
+        register={register("image", {
+          required: "Image is required",
+        })}
+        errors={errors}
       />
       <div className="img-container">{
         previewUrlPhoto && (
@@ -78,8 +95,7 @@ function AddMenuForm({className}) {
         className={"form-group-submit-add-menu"}
         btnClassName={"submit-button-add-menu"}
         textBtn={"save"}
-        />
-
+      />
     </form>
   )
 }

@@ -1,7 +1,10 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 
-function useFetchMeals() {
+function useFetchMeals(newMenuPlaced, setNewMenuPlaced) {
+  if (newMenuPlaced) {
+    setNewMenuPlaced(false)
+  }
   const baseUrl = import.meta.env.VITE_API_URL;
   const [meals, setMeals] = useState([]);
   const [error, setError] = useState(null);
@@ -24,7 +27,7 @@ function useFetchMeals() {
     }
 
     fetchMeals();
-  }, [baseUrl]);
+  }, [baseUrl, newMenuPlaced]);
   return {meals, error, loading};
 }
 

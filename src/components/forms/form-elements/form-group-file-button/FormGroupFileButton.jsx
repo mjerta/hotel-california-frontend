@@ -13,13 +13,17 @@ function FormGroupFileButton({
                                disabled,
                                setPreviewUrlPhoto,
                                btnText,
-                               required
+                               required,
+                               setImage,
+                               setValue
                              }) {
 
   const fileInputRef = useRef(null);
 
   function handleFileInputChange() {
     const file = fileInputRef.current.files[0];
+    setValue(name, file)
+    setImage(file);
     setPreviewUrlPhoto(URL.createObjectURL(file));
   }
 
@@ -34,6 +38,7 @@ function FormGroupFileButton({
         <label className={required && 'asterisk'}
                htmlFor={labelAndID}>{labelText}</label>
         <input
+          name={name}
           type={"file"}
           id={labelAndID}
           {...register}
@@ -49,7 +54,7 @@ function FormGroupFileButton({
           text={btnText}
         />
         {errors && errors[name] &&
-          <p className="error-message">{errors[name].message}</p>}
+          <p className="error-message-start">{errors[name].message}</p>}
       </div>
     </>
   )

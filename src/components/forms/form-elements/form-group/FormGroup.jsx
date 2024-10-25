@@ -13,10 +13,12 @@ function FormGroup({type, labelAndID, labelText, register, errors, name, classNa
           autoComplete={"off"}
           disabled={disabled}
           value={value}
+          defaultValue={""}
         />
       </div>
       {errors && errors[name] &&
         <p className="error-message">{errors[name].message}</p>}
+
     </>
   )
 }

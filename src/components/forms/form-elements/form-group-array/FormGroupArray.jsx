@@ -1,62 +1,70 @@
 import "./FormGroupArray.css"
 import AddButton from "../../../general-components/add-button/AddButton.jsx";
-import {useState} from "react";
 import RemoveButton
   from "../../../general-components/remove-button/RemoveButton.jsx";
+import {Controller, useFieldArray} from "react-hook-form";
+import {useEffect} from "react";
 
 function FormGroupArray({
-                          type,
+                          control, // control from useForm
+                          name,
                           labelAndID,
                           labelText,
-                          register,
-                          errors,
-                          name,
+                          type,
                           className,
-                          value,
-                          disabled,
-                          required
+                          required,
                         }) {
 
-  const [inputAmmount, setInputAmmount] = useState(1)
+  const {fields, append, remove,} = useFieldArray({
+    control,
+    name,
+  })
 
+  useEffect(() => {
+    if (fields.length === 0) {
+      remove(0) // I put this to make sure it wont add twice because of the react strict
+      append({value: ''})
+    }
+  }, []);
 
-
-
-
-
-  return (<>
+  return (
     <div className={`form-group-array ${className ? className : ''}`}>
-      <AddButton
-        className={"add-button-add-menu"}
-        onClick={() => setInputAmmount((prev) => prev + 1)}
-      />
-      {inputAmmount > 1 && (
+      <AddButton className={"add-button-add-menu"}
+                 onClick={() => append({value: ""})}/>
+      {fields.length > 1 && (
         <RemoveButton
           className={"remove-button-add-menu"}
-          onClick={() => setInputAmmount((prev) => prev - 1)}
-          />
+          onClick={() => remove(fields.length - 1)}
+        />
       )}
       <label className={required && "asterisk"}
              htmlFor={labelAndID}>{labelText}</label>
       <div className="input-group">
-        {Array.from({length: inputAmmount}).map((_, i) => (
-          <input
-            key={i}
-            type={type}
-            id={labelAndID}
-            {...register}
-            autoComplete={"off"}
-            disabled={disabled}
-            value={value}
-
-          />
-
+        {fields.map((field, index) => (
+          <div key={field.id} className="input-array-item">
+            <Controller
+              control={control}
+              name={`${name}[${index}].value`}
+              defaultValue={field.value}
+              rules={{required: required && "This field is required"}}
+              render={({field, fieldState: {error}}) => (
+                <>
+                  <input
+                    type={type}
+                    {...field}
+                    autoComplete="off"
+                    id={`${labelAndID}-${index}`}
+                  />
+                  {error &&
+                    <p className="error-message-start">{error.message}</p>}
+                </>
+              )}
+            />
+          </div>
         ))}
       </div>
     </div>
-    {errors && errors[name] &&
-      <p className="error-message">{errors[name].message}</p>}
-  </>)
+  );
 }
 
 export default FormGroupArray;
