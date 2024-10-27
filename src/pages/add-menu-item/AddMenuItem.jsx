@@ -4,7 +4,7 @@ import MainContent
 import SideBarToggleButton
   from "../../components/general-components/sidebar-toggle-button/SideBarToggleButton.jsx";
 import SideBar from "../../components/general-components/sidebar/SideBar.jsx";
-import { useState} from "react";
+import {useState} from "react";
 import MenuItemComplete
   from "../../components/add-menu-item/menu-item-complete/MenuItemComplete.jsx";
 import useFetchMeals
@@ -12,13 +12,12 @@ import useFetchMeals
 
 import menuBtn from "../../assets/menu-btn.svg"
 import AddMenuForm
-from "../../components/add-menu-item/add-menu-form/AddMenuForm.jsx";
+  from "../../components/add-menu-item/add-menu-form/AddMenuForm.jsx";
 
 function AddMenuItem() {
   const [openSideBar, setOpenSideBar] = useState(false);
-  const [newMenuPlaced, setNewMenuPlaced] = useState(false);
-  const {meals, error, loading} = useFetchMeals(newMenuPlaced, setNewMenuPlaced)
-
+  const [isUpdated, setIsUpdated] = useState(false);
+  const {meals, error, loading} = useFetchMeals(isUpdated, setIsUpdated)
 
   useAuthGuard("/new-menu-item", "ROLE_MANAGER");
   return (
@@ -26,7 +25,9 @@ function AddMenuItem() {
       <MainContent
         className={"main-content-profile-variant"}
       >
-        <AddMenuForm />
+        <AddMenuForm
+          setIsUpdated={setIsUpdated}
+        />
       </MainContent>
       <SideBarToggleButton
         openSideBar={openSideBar}
@@ -34,8 +35,7 @@ function AddMenuItem() {
         image={menuBtn}
         alt={"menu button"}
         className={"profile-variant"}
-
-        />
+      />
       <SideBar
         className={"sidebar-big"}
         openSideBar={openSideBar}
@@ -49,7 +49,7 @@ function AddMenuItem() {
                   description={meal.description}
                   ingredients={meal.ingredients}
                   name={meal.name}
-
+                  image={meal.image}
                 />
               ))
             ) :

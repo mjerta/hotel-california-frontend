@@ -2,19 +2,17 @@ import {useContext, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 
-function useAddMenuItem() {
+function useAddMenuItem(setIsUpdated) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [responseStatus, setResponseStatus] = useState(null);
   const {token} = useContext(AuthContext);
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
   async function addMenu(data) {
     try {
-      setResponseStatus(null)
       setIsLoading(true);
-
+      setError(null)
       const formData = new FormData();
       formData.append("name", data.menuName);
       formData.append("description", data.description);
@@ -25,19 +23,16 @@ function useAddMenuItem() {
       })
 
       console.log(formData);
-
-      // if (formData) {
-      //   return;
-      // }
-
-      const result = await axios.post(`${baseUrl}/api/v1/meals/testaddmeal`, formData, {
+      const result = await axios.post(`${baseUrl}/api/v1/meals`, formData, {
         headers: token ? {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
         } : {}
       })
       console.log(result.data)
-      setResponseStatus(result.status)
+      if(result.status === 201) {
+        setIsUpdated(true)
+      }
     } catch (e) {
       if (e.response?.status === 401) {
         setError("Unauthorized - no valid credentials");
@@ -53,7 +48,7 @@ function useAddMenuItem() {
 
   }
 
-  return {addMenu, isLoading, error, responseStatus}
+  return {addMenu, isLoading, error}
 }
 
 export default useAddMenuItem;

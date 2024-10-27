@@ -46,7 +46,17 @@ function FormGroupArray({
               control={control}
               name={`${name}[${index}].value`}
               defaultValue={""}
-              rules={{required: required && "This field is required"}}
+              rules={{
+                required: required && "This field is required",
+                minLength: {
+                  value: 2,
+                  message: "Ingredient must be at least 2 characters long"
+                },
+                maxLength: {
+                  value: 20,
+                  message: "Menu name cannot exceed 20 characters"
+                }
+              }}
               render={({field, fieldState: {error}}) => (
                 <>
                   <input
