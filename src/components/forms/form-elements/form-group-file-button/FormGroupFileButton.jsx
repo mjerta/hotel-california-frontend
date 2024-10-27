@@ -14,11 +14,11 @@ function FormGroupFileButton({
                                setPreviewUrlPhoto,
                                btnText,
                                required,
-                               setValue
+                               setValue,
+                               tabIndex
                              }) {
 
   const fileInputRef = useRef(null);
-
 
   function handleFileInputChange() {
     const file = fileInputRef.current.files[0];
@@ -48,6 +48,7 @@ function FormGroupFileButton({
           value={value}
         />
         <Button
+          tabIndex={tabIndex}
           className={"upload-image"}
           onClick={(e) => handleButtonClick(e)}
           text={btnText}

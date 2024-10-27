@@ -38,7 +38,11 @@ function useAddMenuItem(setIsUpdated) {
         setError("Unauthorized - no valid credentials");
       } else if (e.response?.status === 403) {
         setError("This endpoint is restricted");
-      } else {
+      } else if (e.response.status === 400 && e.response.data) {
+        setError(e.response.data["error-message"]);
+      }
+
+      else {
         setError("Something went wrong");
         console.error(e);
       }

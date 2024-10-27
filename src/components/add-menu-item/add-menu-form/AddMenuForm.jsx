@@ -55,7 +55,12 @@ function AddMenuForm({className, setIsUpdated}) {
           labelText={"Description:"}
           labelAndID={"menu-description"}
           className={"form-group-add-menu-variant"}
-          register={register("description")}
+          register={register("description", {
+            maxLength: {
+              value: 255,
+              message: "Description must not exceed 255 characters"
+            }
+          })}
           defaultValue={""}
         />
         <FormGroupArray

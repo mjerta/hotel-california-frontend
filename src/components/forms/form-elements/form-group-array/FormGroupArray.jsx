@@ -13,6 +13,7 @@ function FormGroupArray({
                           type,
                           className,
                           required,
+                          tabIndex
                         }) {
 
   const {fields, append, remove,} = useFieldArray({
@@ -29,10 +30,13 @@ function FormGroupArray({
 
   return (
     <div className={`form-group-array ${className ? className : ''}`}>
-      <AddButton className={"add-button-add-menu"}
-                 onClick={() => append({value: ""})}/>
+      <AddButton
+        tabIndex={0}
+        className={"add-button-add-menu"}
+        onClick={() => append({value: ""})}/>
       {fields.length > 1 && (
         <RemoveButton
+          tabIndex={0}
           className={"remove-button-add-menu"}
           onClick={() => remove(fields.length - 1)}
         />
@@ -60,6 +64,7 @@ function FormGroupArray({
               render={({field, fieldState: {error}}) => (
                 <>
                   <input
+                    tabIndex={tabIndex}
                     type={type}
                     {...field}
                     autoComplete="off"
