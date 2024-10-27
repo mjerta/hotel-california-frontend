@@ -8,10 +8,11 @@ import FormGroupButton
 import FormGroupArray
   from "../../forms/form-elements/form-group-array/FormGroupArray.jsx";
 import {useForm} from "react-hook-form";
+import useAddMenuItem
+  from "../../../custom-hooks/api-requests/POST/useAddMenuItem.jsx";
 
 function AddMenuForm({className}) {
   const [previewUrlPhoto, setPreviewUrlPhoto] = useState('');
-  const [image, setImage] = useState([]);
   const {
     register,
     control,
@@ -19,11 +20,13 @@ function AddMenuForm({className}) {
     setValue,
     formState: {errors},
   } = useForm();
+  const {addMenu, isLoading, error, responseStatus} = useAddMenuItem();
 
 
   function onSubmit(data) {
     console.log(data);
-    console.log(image)
+    addMenu(data)
+    // console.log(image)
 
   }
 
@@ -47,9 +50,9 @@ function AddMenuForm({className}) {
         name={"description"}
         type={"text"}
         labelText={"Description:"}
-        def
         labelAndID={"menu-description"}
         className={"form-group-add-menu-variant"}
+        register={register("description")}
         defaultValue={""}
       />
       <FormGroupArray
@@ -67,7 +70,7 @@ function AddMenuForm({className}) {
         labelText={"Price:"}
         labelAndID={"menu-price"}
         className={"form-group-add-menu-variant"}
-        register={register("menuName", {
+        register={register("price", {
           required: "Price is required",
         })}
         required={true}
@@ -77,7 +80,6 @@ function AddMenuForm({className}) {
       <FormGroupFileButton
         name={"image"}
         labelAndID={"image"}
-        setImage={setImage}
         labelText={"image:"}
         btnText={"Choose file"}
         setValue={setValue}

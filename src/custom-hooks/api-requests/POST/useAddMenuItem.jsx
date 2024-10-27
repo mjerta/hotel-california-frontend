@@ -10,7 +10,7 @@ function useAddMenuItem() {
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
-  async function addMenu(data, image) {
+  async function addMenu(data) {
     try {
       setResponseStatus(null)
       setIsLoading(true);
@@ -19,10 +19,18 @@ function useAddMenuItem() {
       formData.append("name", data.menuName);
       formData.append("description", data.description);
       formData.append("price", data.price);
-      formData.append("image", image);
-      formData.append("ingredients", JSON.stringify(data.ingredients));
+      formData.append("image", data.image);
+      data.ingredients.forEach(ingredient => {
+        formData.append("ingredients", ingredient.value);
+      })
 
-      const result = await axios.post(`${baseUrl}/api/v1/meals`, formData, {
+      console.log(formData);
+
+      // if (formData) {
+      //   return;
+      // }
+
+      const result = await axios.post(`${baseUrl}/api/v1/meals/testaddmeal`, formData, {
         headers: token ? {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

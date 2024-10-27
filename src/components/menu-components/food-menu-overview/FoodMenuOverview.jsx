@@ -12,6 +12,8 @@ function FoodMenuOverview({className}) {
   // gets all meals
   const { meals, error, loading} = useFetchMeals();
   // get the function to put a indiviual meal to the current order
+  console.log(meals)
+
   const {addMealToOrder} = useFetchOrderItem();
   // Filter meals based on searchQuery
   const filteredMeals = meals.filter(meal =>

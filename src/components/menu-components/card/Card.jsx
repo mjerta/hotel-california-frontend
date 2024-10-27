@@ -6,8 +6,6 @@ import AddButton from "../../general-components/add-button/AddButton.jsx";
 
 function Card({className, name, image, description, price, status, onClick}) {
 
-  // const {addMealToOrder} = useFetchOrderItem();
-
   return (
     <article
       className={`card${className ? className : ''}`}
@@ -21,7 +19,7 @@ function Card({className, name, image, description, price, status, onClick}) {
             className={"add-button"}
             src={addButton}
             alt={"add-button"}
-            />
+          />
         )}
       <figcaption>
         <div className="menu-details">

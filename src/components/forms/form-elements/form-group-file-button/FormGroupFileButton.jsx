@@ -14,16 +14,15 @@ function FormGroupFileButton({
                                setPreviewUrlPhoto,
                                btnText,
                                required,
-                               setImage,
                                setValue
                              }) {
 
   const fileInputRef = useRef(null);
 
+
   function handleFileInputChange() {
     const file = fileInputRef.current.files[0];
     setValue(name, file)
-    setImage(file);
     setPreviewUrlPhoto(URL.createObjectURL(file));
   }
 

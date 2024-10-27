@@ -45,7 +45,7 @@ function FormGroupArray({
             <Controller
               control={control}
               name={`${name}[${index}].value`}
-              defaultValue={field.value}
+              defaultValue={""}
               rules={{required: required && "This field is required"}}
               render={({field, fieldState: {error}}) => (
                 <>
