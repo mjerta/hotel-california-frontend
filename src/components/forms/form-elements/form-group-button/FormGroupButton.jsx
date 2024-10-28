@@ -1,12 +1,14 @@
 import "./FormGroupButton.css"
 import SubmitButton from "../submit-button/SubmitButton.jsx";
 
-function FormGroupButton() {
+function FormGroupButton({btnClassName, textBtn, className, tabIndex}) {
   return (
     <>
-      <div className="form-group-submit">
+      <div className={`form-group-submit ${className ? className : '' }`}>
         <SubmitButton
-          text={"submit"}
+          tabindex={tabIndex}
+          className={btnClassName}
+          text={textBtn ? textBtn : 'submit'}
         />
       </div>
     </>

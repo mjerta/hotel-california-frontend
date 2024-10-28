@@ -7,7 +7,7 @@ import profileImage from "../../../assets/profile-sidebar-image.svg"
 
 function ProfileDetails({className}) {
   const {profileData} = useContext(AuthContext);
-  console.log(profileData);
+  console.log(profileData.firstName)
 
   return (
     <div className={`profile-details ${className ? className : ""}`}>
@@ -16,7 +16,7 @@ function ProfileDetails({className}) {
         <FormGroup
           type={"text"}
           name={"firstName"}
-          value={profileData.firstName}
+          defaultValue={profileData.firstName}
           labelText={"First name:"}
           className={"form-group-profile-variant"}
           disabled={true}
@@ -24,7 +24,7 @@ function ProfileDetails({className}) {
         <FormGroup
           type={"text"}
           name={"lastName"}
-          value={profileData.lastName}
+          defaultValue={profileData.lastName}
           labelText={"Last name:"}
           className={"form-group-profile-variant"}
           disabled={true}
@@ -32,7 +32,7 @@ function ProfileDetails({className}) {
         <FormGroup
           type={"text"}
           name={"phoneNumber"}
-          value={profileData.phoneNumber}
+          defaultValue={profileData.phoneNumber}
           labelText={"Telephone number:"}
           className={"form-group-profile-variant"}
           disabled={true}
@@ -40,7 +40,7 @@ function ProfileDetails({className}) {
         <FormGroup
           type={"text"}
           name={"address"}
-          value={profileData.address}
+          defaultValue={profileData.address}
           labelText={"Address:"}
           className={"form-group-profile-variant"}
           disabled={true}

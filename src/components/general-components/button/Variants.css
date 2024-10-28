@@ -23,6 +23,14 @@
   justify-content: center;
 }
 
+.upload-image {
+  color: white;
+  text-transform: capitalize;
+  background-color: var(---default-positive-button-color-2);
+  justify-content: center;
+  width: 60%;
+}
+
 
 .order-staff-button {
   text-transform: capitalize;
@@ -32,5 +40,4 @@
   justify-content: center;
   align-items: center;
   padding: .4rem .5rem;
-
 }

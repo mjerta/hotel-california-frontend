@@ -22,7 +22,6 @@
   height: 2rem;
   cursor: pointer;
   z-index: 3;
-
   & svg {
     fill: red;
   }

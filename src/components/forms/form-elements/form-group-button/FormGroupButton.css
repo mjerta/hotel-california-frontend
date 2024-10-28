@@ -1,5 +1,12 @@
 .form-group-submit {
   display: flex;
-  justify-content: center;
   padding: 1rem 0;
+}
+
+.form-group-submit-login {
+  justify-content: center;
+}
+
+.form-group-submit-add-menu {
+  width: 100%;
 }

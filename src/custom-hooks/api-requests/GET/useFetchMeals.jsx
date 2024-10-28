@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 
-function useFetchMeals() {
+function useFetchMeals(isUpdated, setIsUpdated) {
   const baseUrl = import.meta.env.VITE_API_URL;
   const [meals, setMeals] = useState([]);
   const [error, setError] = useState(null);
@@ -10,6 +10,9 @@ function useFetchMeals() {
   useEffect(() => {
     async function fetchMeals() {
       try {
+        if (setIsUpdated) {
+          setIsUpdated(false)
+        }
         setLoading(true);
         const response = await axios.get(`${baseUrl}/api/v1/meals`);
         setMeals(response.data);
@@ -24,7 +27,7 @@ function useFetchMeals() {
     }
 
     fetchMeals();
-  }, [baseUrl]);
+  }, [baseUrl, isUpdated]);
   return {meals, error, loading};
 }
 

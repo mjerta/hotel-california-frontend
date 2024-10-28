@@ -1,18 +1,14 @@
-.form-group {
+.form-group-file-button {
   display: flex;
   padding: 1rem 0;
+  flex-direction: column;
+  row-gap: 1rem;
 
-   & input {
-    padding: 1rem
+  label {
+    pointer-events: none;
   }
 
-  & input {
-    flex-grow: 1;
-    border-radius: var(--default-radius);
-  }
-
-
-  .asterisk  {
+  .asterisk {
     position: relative;
 
     &:after {
@@ -24,5 +20,8 @@
     }
 
   }
-}
 
+  input[type="file"] {
+    display: none;
+  }
+}

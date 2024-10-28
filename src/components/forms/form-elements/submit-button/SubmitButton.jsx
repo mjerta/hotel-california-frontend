@@ -1,8 +1,9 @@
 import "./SubmitButton.css"
+import "./Variants.css"
 function SubmitButton({className, text}) {
   return (
     <>
-      <button type="submit" className={`login-button${className ? className : ''}`}>
+      <button tabIndex={0} type="submit" className={`submit-button ${className ? className : ''}`}>
         {text}
       </button>
     </>
