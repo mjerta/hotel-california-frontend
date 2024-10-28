@@ -5,6 +5,7 @@ function ManagerDashboard() {
 
   return (
     <div>
+
       {/*  Middle main component*/}
         {/* graph component - this will be probably a package imported*/}
         {/* Configuration component */}

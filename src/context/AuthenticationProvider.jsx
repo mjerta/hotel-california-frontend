@@ -42,7 +42,6 @@ const AuthProvider = ({children}) => {
         username: decodeToken(storedToken).sub,
       }));
     }
-
   }, []);
 
 
