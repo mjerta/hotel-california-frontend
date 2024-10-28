@@ -1,0 +1,7 @@
+.input-chart-section {
+  display: flex;
+  height: 45%;
+  border: 2px solid;
+  width: 100%;
+  flex-shrink: 0;
+}
