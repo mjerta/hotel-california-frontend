@@ -8,29 +8,19 @@ function InputChartSection({
                              className,
                              inputTimeFilter,
                              setInputTimeFilter,
-                             menuItems,
+                             checkBoxes,
                              checkedItems,
-                             setCheckedItems
+                             setCheckedItems,
+                             setMenuItems,
+                             onChange
 
                            }) {
 
   useEffect(() => {
-    const initialCheckedState = menuItems.map(item => item); // Create an array from menuItems
+    const initialCheckedState = checkBoxes.map(item => item); // Create an array from menuItems
     setCheckedItems(initialCheckedState);
-  }, [menuItems]);
+  }, [checkBoxes]);
 
-
-  function handleOnChange(item) {
-    setCheckedItems(prev => {
-      if (prev.includes(item)) {
-        // If item is already checked, remove it
-        return prev.filter(checkedItem => checkedItem !== item);
-      } else {
-        // If item is not checked, add it
-        return [...prev, item];
-      }
-    });
-  }
   return (
     <div className={`input-chart-section ${className ? className : ''}`}>
       <div className="box timeline">
@@ -66,11 +56,12 @@ function InputChartSection({
         </div>
       </div>
       <div className="box selectboxes">
-        {menuItems.map((item) => (
+        {checkBoxes.map((item) => (
           <div key={item}>
             <input
-              onChange={() => handleOnChange(item)}
               defaultChecked={true}
+              onChange={onChange}
+              name={item}
               type="checkbox"
             />
             <label>{item}</label>

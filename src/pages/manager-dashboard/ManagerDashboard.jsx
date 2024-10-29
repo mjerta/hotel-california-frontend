@@ -21,21 +21,15 @@ function ManagerDashboard() {
   const {orders} = useFetchOrders();
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [result, setResult] = useState([]);
-  const [finalFilteredOrders, setFinalFilteredOrders] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
+  const [checkBoxes, setCheckBoxes] = useState([]);
   const [data, setData] = useState([]);
   const [inputDateQuery, setInputDateQuery] = useState("daily")
   const [checkedItems, setCheckedItems] = useState([]);
 
-  const filterOrdersByCheckedItems = (orders, checkedItems) => {
-    console.log(testOrders)
-    console.log(orders)
-    if (checkedItems.length === 0) return orders;
-    const extraFilter = orders.filter(order=> checkedItems.includes(order.name));
-    console.log(extraFilter)
-  };
-
   useEffect(() => {
+    setMenuItems([]);
+    setData([]);
     if (inputDateQuery === "daily") {
       setFilteredOrders(filterOrdersByCurrentDay(testOrders))
     }
@@ -68,6 +62,7 @@ function ManagerDashboard() {
       const newData = result.map(item => item.count);
       setMenuItems(newMenuItems);
       setData(newData);
+      setCheckBoxes(newMenuItems)
     }
     else {
       setMenuItems([])
@@ -75,15 +70,31 @@ function ManagerDashboard() {
     }
   }, [filteredOrders])
 
-  useEffect(() => {
-    filterOrdersByCheckedItems(result, checkedItems);
-    // console.log(filteredByCheckedItems)
 
-  }, [checkedItems]);
+  // this is manually triggered
+  function setDataBasedOnCheckBoxes(e) {
+    const itemName = e.target.name; // Get the name of the checkbox
+    const isChecked = e.target.checked; // Check if it's checked
 
-  useEffect(() => {
+    // Update checked items based on checkbox state
+    setCheckedItems(prev => {
+      const updatedCheckedItems = isChecked
+        ? [...prev, itemName] // Add item if checked
+        : prev.filter(item => item !== itemName); // Remove item if unchecked
 
-  })
+      // Update menuItems and data based on the updated checked items
+      const updatedMenuItems = result
+      .filter(item => updatedCheckedItems.includes(item.name))
+      .map(item => item.name);
+      const updatedData = result
+      .filter(item => updatedCheckedItems.includes(item.name))
+      .map(item => item.count);
+
+      setMenuItems(updatedMenuItems); // Set updated menu items
+      setData(updatedData); // Set updated data
+      return updatedCheckedItems; // Return updated checked items
+    });
+  }
 
   return (
     <>
@@ -97,9 +108,11 @@ function ManagerDashboard() {
         <InputChartSection
           inputTimeFilter={inputDateQuery}
           setInputTimeFilter={setInputDateQuery}
-          menuItems={menuItems}
+          checkBoxes={checkBoxes}
           checkedItems={checkedItems}
           setCheckedItems={setCheckedItems}
+          setMenuItems={setMenuItems}
+          onChange={setDataBasedOnCheckBoxes}
         />
       </MainContent>
     </>
