@@ -15,6 +15,7 @@ function BarChartSection({className, menuItems, data}) {
         ]}
         series={[
           {
+            color: '#074044',
             data: data
           },
         ]}

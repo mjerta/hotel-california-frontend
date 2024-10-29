@@ -8,21 +8,49 @@ import InputChartSection
 import useFetchOrders
   from "../../custom-hooks/api-requests/GET/useFetchOrders.js";
 import {useEffect, useState} from "react";
+import testOrders from "../../constant/testOrders.js";
+import {
+  filterOrdersByCurrentDay,
+  filterOrdersByCurrentMonth,
+  filterOrdersByCurrentWeek
+} from "../../helpers/filterOrderByDateTime.js";
 
 function ManagerDashboard() {
   useAuthGuard("/manager-dashboard", "ROLE_MANAGER");
-  const {orders} = useFetchOrders();
 
+  const {orders} = useFetchOrders();
+  const [filteredOrders, setFilteredOrders] = useState([]);
+  const [result, setResult] = useState([]);
+  const [finalFilteredOrders, setFinalFilteredOrders] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
   const [data, setData] = useState([]);
+  const [inputDateQuery, setInputDateQuery] = useState("daily")
+  const [checkedItems, setCheckedItems] = useState([]);
+
+  const filterOrdersByCheckedItems = (orders, checkedItems) => {
+    console.log(testOrders)
+    console.log(orders)
+    if (checkedItems.length === 0) return orders;
+    const extraFilter = orders.filter(order=> checkedItems.includes(order.name));
+    console.log(extraFilter)
+  };
 
   useEffect(() => {
-    if (orders && orders.length > 0) {
-      console.log(orders)
+    if (inputDateQuery === "daily") {
+      setFilteredOrders(filterOrdersByCurrentDay(testOrders))
+    }
+    if (inputDateQuery === "weekly") {
+      setFilteredOrders(filterOrdersByCurrentWeek(testOrders))
+    }
+    if (inputDateQuery === "monthly") {
+      setFilteredOrders(filterOrdersByCurrentMonth(testOrders))
+    }
+  }, [inputDateQuery])
 
+  useEffect(() => {
+    if (filteredOrders && filteredOrders.length > 0) {
       const result = Object.values(
-        orders.reduce((acc, obj) => {
-          console.log(obj)
+        filteredOrders.reduce((acc, obj) => {
           obj.meals.forEach(({name}) => {
             // If the name is already in the accumulator, increase the count; otherwise, initialize it
             if (acc[name]) {
@@ -34,16 +62,28 @@ function ManagerDashboard() {
           return acc;
         }, {})
       );
-
+      console.log(result)
+      setResult(result)
       const newMenuItems = result.map(item => item.name);
-      console.log(newMenuItems)
       const newData = result.map(item => item.count);
-      console.log(newData)
-
       setMenuItems(newMenuItems);
       setData(newData);
     }
-  }, [orders])
+    else {
+      setMenuItems([])
+      setData([])
+    }
+  }, [filteredOrders])
+
+  useEffect(() => {
+    filterOrdersByCheckedItems(result, checkedItems);
+    // console.log(filteredByCheckedItems)
+
+  }, [checkedItems]);
+
+  useEffect(() => {
+
+  })
 
   return (
     <>
@@ -53,12 +93,14 @@ function ManagerDashboard() {
         <BarChartSection
           menuItems={menuItems}
           data={data}
-          // menuItems={['Ceasar-Salad', 'Pad-Thai']}
-          // data={[5, 2,]}
-          // menuItems={['bar A', 'bar B']}
-          // data={[2, 5]}
         />
-        <InputChartSection/>
+        <InputChartSection
+          inputTimeFilter={inputDateQuery}
+          setInputTimeFilter={setInputDateQuery}
+          menuItems={menuItems}
+          checkedItems={checkedItems}
+          setCheckedItems={setCheckedItems}
+        />
       </MainContent>
     </>
   )
