@@ -19,8 +19,6 @@ function BarChartSection({className, menuItems, data}) {
             data: data
           },
         ]}
-        // width={1000}
-        // height={300}
       />
     </div>
   )

@@ -2,16 +2,14 @@ import "./InputChartSection.css"
 import Button from "../../general-components/button/Button.jsx";
 import radioBtnOpen from "../../../assets/radio-btn-open.svg"
 import radioBtnClose from "../../../assets/radio-btn-closed.svg"
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
 function InputChartSection({
                              className,
                              inputTimeFilter,
                              setInputTimeFilter,
                              checkBoxes,
-                             checkedItems,
                              setCheckedItems,
-                             setMenuItems,
                              onChange
 
                            }) {
