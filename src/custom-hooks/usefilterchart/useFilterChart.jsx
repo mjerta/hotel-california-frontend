@@ -18,6 +18,7 @@ const useFilterChart = (inputDateQuery, orders) => {
   useEffect(() => {
     setMenuItems([]);
     setData([]);
+    setCheckBoxes([])
     if (inputDateQuery === "daily") {
       setFilteredOrders(filterOrdersByCurrentDay(orders && orders.length > 0 ? orders : testOrders))
     }

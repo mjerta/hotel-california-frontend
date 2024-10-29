@@ -14,12 +14,10 @@ export function filterOrdersByCurrentWeek(orders) {
   const startOfWeek = new Date(currentDate);
   startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
   startOfWeek.setHours(0, 0, 0, 0);
-  console.log(startOfWeek);
 
   const endOfWeek = new Date(currentDate);
   endOfWeek.setDate(currentDate.getDate() + (6 - currentDate.getDay()));
   endOfWeek.setHours(23, 59, 59, 999);
-  console.log(endOfWeek);
 
   return orders.filter(order => {
     const orderDate = new Date(order.orderDate);
