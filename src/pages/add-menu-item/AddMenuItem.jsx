@@ -19,7 +19,7 @@ function AddMenuItem() {
   const [isUpdated, setIsUpdated] = useState(false);
   const {meals, error, loading} = useFetchMeals(isUpdated, setIsUpdated)
 
-  useAuthGuard("/new-menu-item", "ROLE_MANAGER");
+  // useAuthGuard("/new-menu-item", "ROLE_MANAGER");
   return (
     <>
       <MainContent

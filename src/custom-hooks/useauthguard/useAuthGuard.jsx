@@ -5,12 +5,13 @@ import {AuthContext} from "../../context/AuthenticationProvider.jsx";
 
 function useAuthGuard(redirectPath, requiredRole) {
   const navigate = useNavigate();
-  const {roles} = useContext(AuthContext);
+  const {roles, isAuthenticated} = useContext(AuthContext);
 
   useEffect(() => {
     async function checkAuth() {
-      const token = localStorage.getItem('jwt');
-      if (!token) {
+      // const token = localStorage.getItem('jwt');
+      if (!isAuthenticated) {
+        console.log(location.pathname)
         // Redirect if not logged in
         navigate("/login", {
           state: {
@@ -42,6 +43,7 @@ function useAuthGuard(redirectPath, requiredRole) {
 
     checkAuth();
   }, [roles]); // Dependency array for rerender on changes
+
 }
 
 export default useAuthGuard;

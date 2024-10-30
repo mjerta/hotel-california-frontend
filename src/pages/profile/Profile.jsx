@@ -16,7 +16,7 @@ import coinIcon from "../../assets/coin-icon.svg"
 import {AuthContext} from "../../context/AuthenticationProvider.jsx";
 
 function Profile() {
-  useAuthGuard("/profile", "ROLE_USER");
+  // useAuthGuard("/profile", "ROLE_USER");
   const [openSideBar, setOpenSideBar] = useState(false);
   const {profileData} = useContext(AuthContext)
   return (
@@ -26,11 +26,8 @@ function Profile() {
       >
         <MainContentSection>
           <UserOrderOverview/>
-
-
         </MainContentSection>
         <MainContentSection
-
         >
           <img className={"large-coin-icon"} src={coinIcon} alt="coin-icon"/>
           <h1 className={"header-profile-coins"}>{profileData.points} earned!</h1>

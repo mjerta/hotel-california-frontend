@@ -11,7 +11,7 @@ import FormGroupButton
 
 function LoginForm() {
   const baseUrl = import.meta.env.VITE_API_URL;
-  const {saveToken} = useContext(AuthContext);
+  const {saveToken, login} = useContext(AuthContext);
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,8 @@ function LoginForm() {
   const navigate = useNavigate();
 
   const location = useLocation()
-  const redirectPath = location.state?.redirectPath;
+  console.log(location)
+  const redirectPath = location.state?.location;
   const initialAuthMessage = location.state?.message;
   const [authMessage, setAuthMessage] = useState(initialAuthMessage);
 
@@ -32,12 +33,16 @@ function LoginForm() {
           password: data.password
         }
       )
+      console.log("joehoe")
       setAuthMessage(false) // If this was set it will be false so its not be visible for that 1 second
       setSuccess("Login was successful") // later maybe have an constant file with responses I can just call
+      login();
       saveToken(response.data.jwt)
-
       setTimeout(() => {
+        console.log("is this working")
         const destination = redirectPath || -1;
+        console.log(destination)
+        console.log(redirectPath)
         navigate(destination)
       }, 1000)
     } catch (e) {

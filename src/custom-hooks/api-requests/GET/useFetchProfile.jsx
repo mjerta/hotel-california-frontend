@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import hasUserRole from "../../../helpers/hasUserRole.jsx";
 
-const useFetchProfile = (token, roles) => {
+const useFetchProfile = (isAuthenticated, token, roles) => {
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -19,7 +19,7 @@ const useFetchProfile = (token, roles) => {
 
   // Fetch profile data function
   useEffect(() => {
-    if (!token || hasUserRole("ROLE_STAFF", roles)) {
+    if (!isAuthenticated || hasUserRole("ROLE_STAFF", roles)) {
       setProfileData({
         id: null,
         firstName: "",
@@ -64,7 +64,7 @@ const useFetchProfile = (token, roles) => {
     };
 
     fetchProfileData();
-  }, [token, roles]);
+  }, [token, roles, isAuthenticated]);
 
   return {profileData, loading, error};
 };

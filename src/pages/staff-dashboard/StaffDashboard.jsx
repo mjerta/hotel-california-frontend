@@ -6,7 +6,7 @@ import OrdersOverview
 
 function StaffDashboard() {
 
-  useAuthGuard("/staff-dashboard", "ROLE_STAFF");
+  // useAuthGuard("/staff-dashboard", "ROLE_STAFF");
 
   return (
     <>

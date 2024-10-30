@@ -12,7 +12,7 @@ import useFilterChart
   from "../../custom-hooks/usefilterchart/useFilterChart.jsx";
 
 function ManagerDashboard() {
-  useAuthGuard("/manager-dashboard", "ROLE_MANAGER");
+  // useAuthGuard("/manager-dashboard", "ROLE_MANAGER");
 
   const {orders} = useFetchOrders();
   const [inputDateQuery, setInputDateQuery] = useState("daily")
