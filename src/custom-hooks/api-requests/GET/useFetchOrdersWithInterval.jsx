@@ -5,7 +5,7 @@ import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 function useFetchOrdersWithInterval() {
   const baseUrl = import.meta.env.VITE_API_URL;
 
-  const {token} = useContext(AuthContext);
+  const {token, isAuthenticated} = useContext(AuthContext);
 
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ function useFetchOrdersWithInterval() {
 
   async function fetchOrders() {
     try {
-      if (!token) return;
+      if (!isAuthenticated) return;
       setError(null)
       setLoading(true);
       const response = await axios.get(`${baseUrl}/api/v1/orders`, {
@@ -42,7 +42,7 @@ function useFetchOrdersWithInterval() {
     const intervalId = setInterval(fetchOrders, 10000); // Fetch orders every 10 seconds
 
     return () => clearInterval(intervalId); // Clean up interval on unmount
-  }, [baseUrl, token]);
+  }, [baseUrl, token, isAuthenticated]);
 
   return {orders, error, loading, fetchOrders}
 

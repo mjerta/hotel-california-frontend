@@ -14,7 +14,8 @@ function ReceiptOverview({className}) {
     profileData,
     points,
     setPoints,
-    token
+    token,
+    isAuthenticated
   } = useContext(AuthContext);
   const {
     totalPrice,
@@ -32,7 +33,7 @@ function ReceiptOverview({className}) {
     status
   } = useContext(OrderContext);
 
-  const {addOrder, isLoading, error} = useAddOrder(token,  currentOrder, currentLocation, setStatus);
+  const {addOrder, isLoading, error} = useAddOrder(token,  currentOrder, currentLocation, setStatus, isAuthenticated);
 
 
   function handleDiscountClick() {

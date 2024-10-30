@@ -1,7 +1,7 @@
 import {useState} from "react";
 import axios from "axios";
 
-function useAddOrder(token, currentOrder, currentLocation, setStatus) {
+function useAddOrder(token, currentOrder, currentLocation, setStatus, isAuthenticated) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -20,12 +20,12 @@ function useAddOrder(token, currentOrder, currentLocation, setStatus) {
         `${baseUrl}/api/v1/orders`,
         requestPayload,
         {
-          headers: token ? {Authorization: `Bearer ${token}`} : {}
+          headers: isAuthenticated ? {Authorization: `Bearer ${token}`} : {}
         }
       );
       const data = result.data;
       setStatus(data.status);
-      if (token) {
+      if (isAuthenticated) {
         localStorage.setItem('id', data.id);
       } else {
         localStorage.setItem('orderReference', data.orderReference);
@@ -43,7 +43,6 @@ function useAddOrder(token, currentOrder, currentLocation, setStatus) {
       setIsLoading(false);
     }
   }
-
   return {addOrder, isLoading, error};
 }
 

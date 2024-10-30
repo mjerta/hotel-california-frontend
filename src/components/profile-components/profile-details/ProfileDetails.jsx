@@ -7,7 +7,6 @@ import profileImage from "../../../assets/profile-sidebar-image.svg"
 
 function ProfileDetails({className}) {
   const {profileData} = useContext(AuthContext);
-  console.log(profileData.firstName)
 
   return (
     <div className={`profile-details ${className ? className : ""}`}>

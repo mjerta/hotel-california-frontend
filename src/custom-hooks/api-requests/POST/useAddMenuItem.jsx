@@ -5,12 +5,13 @@ import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 function useAddMenuItem(setIsUpdated) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const {token} = useContext(AuthContext);
+  const {token, isAuthenticated} = useContext(AuthContext);
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
   async function addMenu(data) {
     try {
+      if (!isAuthenticated) return;
       setIsLoading(true);
       setError(null)
       const formData = new FormData();
@@ -24,13 +25,12 @@ function useAddMenuItem(setIsUpdated) {
 
       console.log(formData);
       const result = await axios.post(`${baseUrl}/api/v1/meals`, formData, {
-        headers: token ? {
+        headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
-        } : {}
+        }
       })
-      console.log(result.data)
-      if(result.status === 201) {
+      if (result.status === 201) {
         setIsUpdated(true)
       }
     } catch (e) {
@@ -40,9 +40,7 @@ function useAddMenuItem(setIsUpdated) {
         setError("This endpoint is restricted");
       } else if (e.response.status === 400 && e.response.data) {
         setError(e.response.data["error-message"]);
-      }
-
-      else {
+      } else {
         setError("Something went wrong");
         console.error(e);
       }

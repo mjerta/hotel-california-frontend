@@ -4,7 +4,7 @@ import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 
 function useFetchOrdersByUser() {
   const baseUrl = import.meta.env.VITE_API_URL;
-  const {token} = useContext(AuthContext);
+  const {token, isAuthenticated} = useContext(AuthContext);
   const [ordersByUser, setOrdersByUser] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -13,7 +13,7 @@ function useFetchOrdersByUser() {
     async function fetchOrdersByUser() {
       try {
         setLoading(true);
-        if (!token) return;
+        if (!isAuthenticated) return;
         const response = await axios.get(`${baseUrl}/api/v1/orders/loggeduser`, {
           headers: {
             authorization: `Bearer ${token}`,
@@ -36,7 +36,7 @@ function useFetchOrdersByUser() {
 
     void fetchOrdersByUser()
 
-  }, [token]);
+  }, [token, isAuthenticated]);
 
   return {ordersByUser, error, loading}
 

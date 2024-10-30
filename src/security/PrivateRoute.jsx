@@ -42,7 +42,7 @@ function PrivateRoute({children, redirectPath, requiredRole}) {
     }
     void checkAuthorization();
   }, [roles, isAuthenticated, requiredRole]);
-  if (isAuthorized === null) {
+  if (isAuthorized === false) {
     return <h1>Authorising...</h1>;
   }
   return isAuthorized ? children : null;

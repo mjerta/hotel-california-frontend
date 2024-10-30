@@ -20,7 +20,6 @@ function LoginForm() {
   const navigate = useNavigate();
 
   const location = useLocation()
-  console.log(location)
   const redirectPath = location.state?.location;
   const initialAuthMessage = location.state?.message;
   const [authMessage, setAuthMessage] = useState(initialAuthMessage);

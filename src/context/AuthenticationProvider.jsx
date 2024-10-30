@@ -19,7 +19,7 @@ const AuthProvider = ({children}) => {
 
   // PROFILE SECTION
 
-  // This will be fired when a token is being set, could be in the useffect or on saveToken
+  // This will be fired when a use is authenticated, could be in the useffect or on saveToken
   const {
     profileData,
     loading,
