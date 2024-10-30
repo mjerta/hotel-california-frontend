@@ -6,7 +6,7 @@ import isExpirationTimeValid from "../helpers/isExpirationTimeValid.js";
 
 export const AuthContext = createContext();
 
-// states
+// STATES
 const AuthProvider = ({children}) => {
   const [authState, setAuthState] = useState({
     token: null,
@@ -17,9 +17,9 @@ const AuthProvider = ({children}) => {
     status: 'pending'
   });
 
-  // PROFILE SECTION
+  // PROFILE SECTION //
 
-  // This will be fired when a use is authenticated, could be in the useffect or on saveToken
+  // This will be triggered when a user is authenticated, could be ON START UP or on ON LOGIN
   const {
     profileData,
     loading,
@@ -28,24 +28,16 @@ const AuthProvider = ({children}) => {
   const [points, setPoints] = useState(0);
 
   useEffect(() => {
-    console.log(profileData)
     setPoints(profileData.points
     )
   }, [profileData]);
 
-  // PROFILE SECTION
+  // PROFILE SECTION //
 
-  // on start up - get token from local storage
+  // ON START UP - get token from local storage
   useEffect(() => {
     const storedToken = localStorage.getItem('jwt');
-    if (!storedToken) {
-      setAuthState({
-        status: 'done'
-      })
-      return
-    }
-    const tokenValidated = isExpirationTimeValid(decodeToken(storedToken).exp)
-    if (storedToken && tokenValidated) {
+    if (storedToken && isExpirationTimeValid(decodeToken(storedToken).exp)) {
       setAuthState((prevState) => ({
         ...prevState,
         isAuthenticated: true,
@@ -64,7 +56,8 @@ const AuthProvider = ({children}) => {
     }
   }, []);
 
-  // token will be saved in states and in local storage
+  // ON LOGIN
+  // Token will be saved in states and in local storage //  this is being used in the login form
   const saveToken = (jwtToken) => {
     setAuthState((prevState) => ({
       ...prevState,
@@ -75,7 +68,8 @@ const AuthProvider = ({children}) => {
     }));
     localStorage.setItem('jwt', jwtToken);  // Optionally store the token
   };
-
+  // ON LOGIN
+  // Authentication takes place // this is being used in the login form
   const login = () => {
     setAuthState((prevState) => ({
       ...prevState,
@@ -85,7 +79,7 @@ const AuthProvider = ({children}) => {
   }
 
   // reset states and localstorage
-  const removeToken = () => {
+  const logout = () => {
     setAuthState({
       token: null,
       decodedToken: null,
@@ -97,7 +91,7 @@ const AuthProvider = ({children}) => {
 
   };
 
-  // function to decode token
+  // DECODE FUNCTION
   const decodeToken = (jwtToken) => {
     try {
       return jwtDecode(jwtToken);
@@ -109,7 +103,7 @@ const AuthProvider = ({children}) => {
   return (
     <AuthContext.Provider value={{
       saveToken,
-      removeToken,
+      logout: logout,
       token: authState.token,
       login: login,
       roles: authState.roles,

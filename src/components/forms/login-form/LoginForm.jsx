@@ -32,23 +32,27 @@ function LoginForm() {
           password: data.password
         }
       )
-      console.log("joehoe")
-      setAuthMessage(false) // If this was set it will be false so its not be visible for that 1 second
-      setSuccess("Login was successful") // later maybe have an constant file with responses I can just call
-      login();
-      saveToken(response.data.jwt)
-      setTimeout(() => {
-        console.log("is this working")
-        const destination = redirectPath || -1;
-        console.log(destination)
-        console.log(redirectPath)
-        navigate(destination)
-      }, 1000)
+      if (response.status === 200) {
+        setAuthMessage(false) // If this was set it will be false so its not be visible for that 1 second
+        setSuccess("Login was successful") // later maybe have an constant file with responses I can just call
+        saveToken(response.data.jwt)
+        login();
+        setTimeout(() => {
+          const destination = redirectPath || "/";
+          console.log(destination);
+          navigate(destination)
+        }, 1000)
+      } else {
+        setError("The wrong status is coming back from the server")
+      }
     } catch (e) {
       if (e.status === 401) {
-        setError("Unauthorized - no valid credentials") // later maybe have an constant file with responses I can just call
+        setError("Unauthorized - no valid credentials")
       } else if (e.status === 403) {
-        setError("This endpoint is restricted") // later maybe have an constant file with responses I can just call
+        setError("This endpoint is restricted")
+      }
+      else {
+        setError("Something else went wrong")
       }
       console.error(e.message)
     } finally {
