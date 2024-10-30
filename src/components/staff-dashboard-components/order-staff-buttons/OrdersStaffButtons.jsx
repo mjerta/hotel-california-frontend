@@ -17,9 +17,6 @@ function OrdersStaffButtons({className, id, destination, status, fetchOrders}) {
     }
   }, [result]);
 
-
-
-
   return (<div className={`order-staff-buttons ${className ? className : ''}`}>
     {hasUserRole("ROLE_CHEF", roles) && (<>
       {
@@ -44,7 +41,6 @@ function OrdersStaffButtons({className, id, destination, status, fetchOrders}) {
     {!hasUserRole("ROLE_CHEF", roles) && hasUserRole("ROLE_STAFF", roles) && (<>
       {
         status === "ORDER_PREPARED" && (
-
           <Button
             onClick={() => updateOrderStatus(id, "ORDER_DELIVERED", destination)}
             className={"order-staff-button"}

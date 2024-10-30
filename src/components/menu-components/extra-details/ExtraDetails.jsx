@@ -17,14 +17,17 @@ function ExtraDetails({className}) {
     currentLocation
   } = useContext(OrderContext)
   const [error, setError] = useState(null);
+  const [noLocationsFound, setNoLocationsFound] = useState(false);
 
   useEffect(() => {
     if (locations) {
+      setNoLocationsFound(false)
       setAvailableLocations(locations
       .filter(location => !location.isOccupied) // Filter out occupied locations
       .map(location => location.locationNumber)); //
+    } else {
+      setNoLocationsFound(true)
     }
-
   }, [locations])
 
   function handleOnChange(e) {
@@ -53,6 +56,7 @@ function ExtraDetails({className}) {
             currentLocation={currentLocation}
             onChange={(e) => handleOnChange(e)}
             status={status}
+            noLocationsFound={noLocationsFound}
             valid={isTableValid}
             text={"Enter your table number "}
           />

@@ -5,7 +5,7 @@ import axios from "axios";
 function useFetchOrders() {
   const baseUrl = import.meta.env.VITE_API_URL;
 
-  const {token} = useContext(AuthContext);
+  const {token, isAuthenticated} = useContext(AuthContext);
 
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ function useFetchOrders() {
 
   async function fetchOrders() {
     try {
-      if (!token) return;
+      if (!isAuthenticated) return;
       setLoading(true);
       const response = await axios.get(`${baseUrl}/api/v1/orders`, {
         headers: {
@@ -39,7 +39,7 @@ function useFetchOrders() {
 
   useEffect(() => {
     void fetchOrders()
-  }, [token]);
+  }, [token, isAuthenticated]);
 
   return {orders, error, loading};
 

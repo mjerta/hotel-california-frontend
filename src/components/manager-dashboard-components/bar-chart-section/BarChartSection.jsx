@@ -6,6 +6,9 @@ function BarChartSection({className, menuItems, data}) {
     <div className={`bar-chart-section ${className ? className : ''}`}>
 
       <BarChart
+        sx={
+        {bgcolor: '#d0d5dd' }
+        }
         xAxis={[
           {
             id: 'barCategories',
@@ -15,7 +18,7 @@ function BarChartSection({className, menuItems, data}) {
         ]}
         series={[
           {
-            color: '#074044',
+            color: '#37323e',
             data: data
           },
         ]}

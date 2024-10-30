@@ -12,14 +12,15 @@ function RegisterForm() {
   const baseUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
 
   async function onSubmit(data) {
     try {
+      setError(null)
       setLoading(true)
-      const response = await axios.post(`${baseUrl}/api/v1/register`, {
+      await axios.post(`${baseUrl}/api/v1/register`, {
         username: data.username,
         password: data.password,
         profile: {
@@ -40,10 +41,10 @@ function RegisterForm() {
 
       }, 1000)
     } catch (e) {
-      if (e.response.data) {
+      if ( e.response?.data) {
         setError(e.response.data["error-message"])
       } else {
-        setError("Bad request");
+        setError("Something else went wrong");
       }
       console.error(e.request.response);
     } finally {

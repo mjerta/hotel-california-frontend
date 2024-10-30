@@ -1,8 +1,8 @@
 import "./InputTable.css"
 
-function InputTable({status, onChange, currentLocation, text, valid}) {
+function InputTable({status, onChange, currentLocation, text, valid, noLocationsFound}) {
   return (
-    <input disabled={status}
+    <input disabled={status || noLocationsFound}
            onChange={onChange}
            type={"text"}
            placeholder={status ? currentLocation : text}

@@ -5,7 +5,7 @@ import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 function useUpdateOrder() {
   const baseUrl = import.meta.env.VITE_API_URL;
 
-  const {token} = useContext(AuthContext)
+  const {token, isAuthenticated} = useContext(AuthContext)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [result, setResult] = useState(null);
@@ -19,6 +19,7 @@ function useUpdateOrder() {
     };
 
     try {
+      if (!isAuthenticated) return;
       const response = await axios.patch(
         `${baseUrl}/api/v1/orders/updateorderbystaff/${id}`,
         data,

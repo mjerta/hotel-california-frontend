@@ -2,22 +2,29 @@ import {createContext, useState, useEffect} from 'react';
 import {jwtDecode} from "jwt-decode";
 import useFetchProfile
   from "../custom-hooks/api-requests/GET/useFetchProfile.jsx";
+import isExpirationTimeValid from "../helpers/isExpirationTimeValid.js";
 
 export const AuthContext = createContext();
 
-// states
+// STATES
 const AuthProvider = ({children}) => {
   const [authState, setAuthState] = useState({
     token: null,
     decodedToken: null,
     roles: [],
     username: null,
+    isAuthenticated: false,
+    status: 'pending'
   });
 
-  // PROFILE SECTION
+  // PROFILE SECTION //
 
-  // This will be fired whne a token is being set, could be in the useffect or on saveToken
-  const {profileData, loading, error} = useFetchProfile(authState.token, authState.roles);
+  // This will be triggered when a user is authenticated, could be ON START UP or on ON LOGIN
+  const {
+    profileData,
+    loading,
+    error
+  } = useFetchProfile(authState.isAuthenticated, authState.token, authState.roles);
   const [points, setPoints] = useState(0);
 
   useEffect(() => {
@@ -25,27 +32,32 @@ const AuthProvider = ({children}) => {
     )
   }, [profileData]);
 
-  // PROFILE SECTION
+  // PROFILE SECTION //
 
-
-
-
-  // on start up - get token from local storage
+  // ON START UP - get token from local storage
   useEffect(() => {
     const storedToken = localStorage.getItem('jwt');
-    if (storedToken) {
+    if (storedToken && isExpirationTimeValid(decodeToken(storedToken).exp)) {
       setAuthState((prevState) => ({
         ...prevState,
+        isAuthenticated: true,
         token: storedToken,
         decodedToken: decodeToken(storedToken),
         roles: decodeToken(storedToken).authorities,
         username: decodeToken(storedToken).sub,
+        status: 'done'
       }));
+    } else {
+      setAuthState((prevState) => ({
+        ...prevState,
+        isAuthenticated: false,
+        status: 'done'
+      }))
     }
   }, []);
 
-
-  // token will be saved in states and in local storage
+  // ON LOGIN
+  // Token will be saved in states and in local storage //  this is being used in the login form
   const saveToken = (jwtToken) => {
     setAuthState((prevState) => ({
       ...prevState,
@@ -56,20 +68,30 @@ const AuthProvider = ({children}) => {
     }));
     localStorage.setItem('jwt', jwtToken);  // Optionally store the token
   };
+  // ON LOGIN
+  // Authentication takes place // this is being used in the login form
+  const login = () => {
+    setAuthState((prevState) => ({
+      ...prevState,
+      isAuthenticated: true,
+      status: 'done'
+    }))
+  }
 
   // reset states and localstorage
-  const removeToken = () => {
+  const logout = () => {
     setAuthState({
       token: null,
       decodedToken: null,
       roles: [],
       username: null,
+      status: 'done'
     });
     localStorage.removeItem('jwt');
 
   };
 
-  // function to decode token
+  // DECODE FUNCTION
   const decodeToken = (jwtToken) => {
     try {
       return jwtDecode(jwtToken);
@@ -81,10 +103,12 @@ const AuthProvider = ({children}) => {
   return (
     <AuthContext.Provider value={{
       saveToken,
-      removeToken,
+      logout: logout,
       token: authState.token,
+      login: login,
       roles: authState.roles,
       username: authState.username,
+      isAuthenticated: authState.isAuthenticated,
       profileData,
       points: points,
       setPoints: setPoints,
@@ -93,7 +117,7 @@ const AuthProvider = ({children}) => {
       decodedToken: authState.decodedToken,
       isLoading: authState.isLoading,
     }}>
-      {children}
+      {authState.status === 'done' ? children : <h1>Loading</h1>}
     </AuthContext.Provider>
   );
 };

@@ -1,4 +1,3 @@
-import useAuthGuard from "../../custom-hooks/useauthguard/useAuthGuard.jsx";
 import MainContent
   from "../../components/general-components/maincontent/MainContent.jsx";
 import SideBarToggleButton
@@ -19,7 +18,6 @@ function AddMenuItem() {
   const [isUpdated, setIsUpdated] = useState(false);
   const {meals, error, loading} = useFetchMeals(isUpdated, setIsUpdated)
 
-  useAuthGuard("/new-menu-item", "ROLE_MANAGER");
   return (
     <>
       <MainContent

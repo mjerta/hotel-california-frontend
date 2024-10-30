@@ -5,7 +5,7 @@ import useLoadOrder from "../custom-hooks/api-requests/GET/useLoadOrder.jsx";
 export const OrderContext = createContext();
 
 function OrderProvider({children}) {
-  const {token} = useContext(AuthContext);
+  const {token, isAuthenticated} = useContext(AuthContext);
   const [currentOrder, setCurrentOrder] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalPriceWithoutTax, setTotalPriceWithoutTax] = useState(0);
@@ -18,7 +18,7 @@ function OrderProvider({children}) {
   const [status, setStatus] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, status);
+  useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, status, isAuthenticated);
     useEffect(() => {
       const total = currentOrder.reduce((sum, item) => sum + item.price, 0);
       setTotalPrice(total);

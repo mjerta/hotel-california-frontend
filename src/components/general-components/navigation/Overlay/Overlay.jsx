@@ -8,7 +8,7 @@ import hasUserRole from "../../../../helpers/hasUserRole.jsx";
 
 function Overlay({classname}) {
   const {toggleOverlay} = useContext(OverlayContext);
-  const {token, removeToken, roles} = useContext(AuthContext)
+  const {logout, roles, isAuthenticated} = useContext(AuthContext)
   return (
     <div className={`overlay ${classname ? classname : ''}`}>
       <ul>
@@ -20,7 +20,7 @@ function Overlay({classname}) {
             Menu
           </NavLink>
         </li>
-        {token && hasUserRole("ROLE_STAFF", roles) && (
+        {isAuthenticated && hasUserRole("ROLE_STAFF", roles) && (
           <li>
             <NavLink
               onClick={toggleOverlay}
@@ -30,7 +30,7 @@ function Overlay({classname}) {
             </NavLink>
           </li>
         )}
-        {token && hasUserRole("ROLE_MANAGER", roles) && (
+        {isAuthenticated && hasUserRole("ROLE_MANAGER", roles) && (
           <>
             <li>
               <NavLink
@@ -51,13 +51,13 @@ function Overlay({classname}) {
           </>
         )
         }
-        {token ?
+        {isAuthenticated ?
           (
             <>
               <li>
                 <NavLink
                   onClick={() => {
-                    removeToken();
+                    logout();
                     toggleOverlay()
                   }}
                   to="/">
