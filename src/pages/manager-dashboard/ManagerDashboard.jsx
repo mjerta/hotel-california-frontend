@@ -1,4 +1,3 @@
-import useAuthGuard from "../../custom-hooks/useauthguard/useAuthGuard.jsx";
 import MainContent
   from "../../components/general-components/maincontent/MainContent.jsx";
 import BarChartSection
@@ -12,7 +11,6 @@ import useFilterChart
   from "../../custom-hooks/usefilterchart/useFilterChart.jsx";
 
 function ManagerDashboard() {
-  // useAuthGuard("/manager-dashboard", "ROLE_MANAGER");
 
   const {orders} = useFetchOrders();
   const [inputDateQuery, setInputDateQuery] = useState("daily")

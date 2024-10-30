@@ -1,4 +1,3 @@
-import useAuthGuard from "../../custom-hooks/useauthguard/useAuthGuard.jsx";
 import MainContent
   from "../../components/general-components/maincontent/MainContent.jsx";
 import OrdersOverview
@@ -6,7 +5,6 @@ import OrdersOverview
 
 function StaffDashboard() {
 
-  // useAuthGuard("/staff-dashboard", "ROLE_STAFF");
 
   return (
     <>

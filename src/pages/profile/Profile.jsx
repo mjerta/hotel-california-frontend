@@ -1,4 +1,3 @@
-import useAuthGuard from "../../custom-hooks/useauthguard/useAuthGuard.jsx";
 import MainContent
   from "../../components/general-components/maincontent/MainContent.jsx";
 import configBtn from "../../assets/config-btn.svg"
@@ -16,7 +15,6 @@ import coinIcon from "../../assets/coin-icon.svg"
 import {AuthContext} from "../../context/AuthenticationProvider.jsx";
 
 function Profile() {
-  // useAuthGuard("/profile", "ROLE_USER");
   const [openSideBar, setOpenSideBar] = useState(false);
   const {profileData} = useContext(AuthContext)
   return (
