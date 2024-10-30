@@ -55,7 +55,7 @@ function InputChartSection({
       </div>
       <div className="box selectboxes">
         {checkBoxes.map((item) => (
-          <div key={item}>
+          <div className={"select-label-group"} key={item}>
             <input
               defaultChecked={true}
               onChange={onChange}

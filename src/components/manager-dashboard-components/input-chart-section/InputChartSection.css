@@ -11,13 +11,24 @@
 
   & .box {
     flex-basis: 20rem;
-    height: 18rem;
+    min-height: 18rem;
     flex-grow: 1;
     padding: 2rem;
     background-color: var(--default-grey-color);
     display: flex;
     flex-direction: column;
     border-radius: var(--default-radius);
+    row-gap: .5rem;
+  }
+
+  input {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .select-label-group {
+    display: flex;
+    column-gap: 1rem;
   }
 }
 
