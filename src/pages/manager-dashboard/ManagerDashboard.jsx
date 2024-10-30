@@ -1,18 +1,51 @@
 import useAuthGuard from "../../custom-hooks/useauthguard/useAuthGuard.jsx";
+import MainContent
+  from "../../components/general-components/maincontent/MainContent.jsx";
+import BarChartSection
+  from "../../components/manager-dashboard-components/bar-chart-section/BarChartSection.jsx";
+import InputChartSection
+  from "../../components/manager-dashboard-components/input-chart-section/InputChartSection.jsx";
+import useFetchOrders
+  from "../../custom-hooks/api-requests/GET/useFetchOrders.js";
+import {useState} from "react";
+import useFilterChart
+  from "../../custom-hooks/usefilterchart/useFilterChart.jsx";
 
 function ManagerDashboard() {
   useAuthGuard("/manager-dashboard", "ROLE_MANAGER");
 
-  return (
-    <div>
-      {/*  Middle main component*/}
-        {/* graph component - this will be probably a package imported*/}
-        {/* Configuration component */}
-          {/* time selector component */}
-          {/*  MenuPage item selector - based on the state with an result of an array of a request.*/}
-          {/* Set Range component  */}
+  const {orders} = useFetchOrders();
+  const [inputDateQuery, setInputDateQuery] = useState("daily")
+  const {
+    setMenuItems,
+    checkBoxes,
+    menuItems,
+    data,
+    checkedItems,
+    setCheckedItems,
+    setDataBasedOnCheckBoxes
+  } = useFilterChart(inputDateQuery, orders);
 
-    </div>
+  return (
+    <>
+      <MainContent
+        className={"main-content-profile-variant"}
+      >
+        <BarChartSection
+          menuItems={menuItems}
+          data={data}
+        />
+        <InputChartSection
+          inputTimeFilter={inputDateQuery}
+          setInputTimeFilter={setInputDateQuery}
+          checkBoxes={checkBoxes}
+          checkedItems={checkedItems}
+          setCheckedItems={setCheckedItems}
+          setMenuItems={setMenuItems}
+          onChange={setDataBasedOnCheckBoxes}
+        />
+      </MainContent>
+    </>
   )
 }
 

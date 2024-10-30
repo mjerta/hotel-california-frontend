@@ -1,13 +1,13 @@
 import "./OrdersOverview.css"
-import useFetchOrders
-  from "../../../custom-hooks/api-requests/GET/useFetchOrders.jsx";
+import useFetchOrdersWithInterval
+  from "../../../custom-hooks/api-requests/GET/useFetchOrdersWithInterval.jsx";
 import OrderCard from "../order-card/OrderCard.jsx";
 import hasUserRole from "../../../helpers/hasUserRole.jsx";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 import {useContext} from "react";
 
 function OrdersOverview({className}) {
-  const {orders, error, loading, fetchOrders} = useFetchOrders();
+  const {orders, error, loading, fetchOrders} = useFetchOrdersWithInterval();
   const {roles} = useContext(AuthContext);
 
   const filteredOrders = orders.filter(order => {

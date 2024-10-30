@@ -2,7 +2,7 @@ import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
 
-function useFetchOrders() {
+function useFetchOrdersWithInterval() {
   const baseUrl = import.meta.env.VITE_API_URL;
 
   const {token} = useContext(AuthContext);
@@ -48,4 +48,4 @@ function useFetchOrders() {
 
 }
 
-export default useFetchOrders;
+export default useFetchOrdersWithInterval;

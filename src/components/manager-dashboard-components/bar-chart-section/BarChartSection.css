@@ -1,0 +1,7 @@
+.bar-chart-section {
+  display: flex;
+  flex-grow:1;
+  min-height: 45%;
+  width: 100%;
+  border: 2px solid;
+}
