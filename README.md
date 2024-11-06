@@ -26,6 +26,7 @@ To install and run the application, ensure the following software and configurat
 - **Java 21 SDK**: Required to run the backend.
 - **WebStorm** (or another code editor): For developing and running the frontend (Vite application).
 - **Node.js (version 18 or higher)**: For running the frontend and managing frontend dependencies.
+- **PostgreSQL Server:** Required for running the PostgreSQL database (you can install it locally or use a cloud-hosted database). Make sure the server is running and accessible for your application.
 - **pgAdmin (optional)**: For visually managing the PostgreSQL database.
 
 ### System Requirements
