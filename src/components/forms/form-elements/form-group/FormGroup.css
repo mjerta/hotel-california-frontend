@@ -1,0 +1,27 @@
+.form-group {
+  display: flex;
+  padding: 1rem 0;
+
+   & input {
+    padding: 1rem
+  }
+
+  & input {
+    flex-grow: 1;
+    border-radius: var(--default-radius);
+  }
+
+  .asterisk  {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: '*';
+      top: 0;
+      right: 0;
+      color: red;
+    }
+
+  }
+}
+

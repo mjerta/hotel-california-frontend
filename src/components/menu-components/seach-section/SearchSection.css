@@ -1,0 +1,15 @@
+.search-header {
+  display: flex;
+  height: 10rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+@media screen and (min-width: 500px) {
+  .search-header {
+    justify-content: flex-start;
+    padding: 0 3rem 0 3rem;
+  }
+}

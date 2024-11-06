@@ -1,0 +1,10 @@
+
+.input-table {
+  border-radius: .3rem;
+}
+
+.valid {
+  border: 3px solid #8de78d;
+  background-color: rgba(141, 231, 141, 0.5);
+  color: white
+}

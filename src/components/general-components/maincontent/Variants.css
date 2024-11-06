@@ -1,0 +1,15 @@
+.main-content-profile-variant {
+  row-gap: 3rem;
+}
+
+@media screen and (min-width: 400px) {
+  .main-content-profile-variant {
+    padding: 5rem 1rem 1rem 1rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main-content-profile-variant {
+    padding: 3rem;
+  }
+}

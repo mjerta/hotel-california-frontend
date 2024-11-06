@@ -1,0 +1,39 @@
+.form-group-login-register-variant {
+  flex-wrap: wrap;
+  & label {
+    padding: 1rem;
+    flex-basis: 10rem;
+  }
+}
+
+.form-group-profile-variant {
+  flex-direction: column;
+
+  & label {
+    padding: .7rem 0;
+    color: white;
+    font-size: 1.7rem;
+    flex-shrink: 0;
+  }
+
+  & input:disabled {
+    background-color: #D9D9D9;
+  }
+}
+
+.form-group-add-menu-variant {
+  flex-direction: column;
+  row-gap: 1rem;
+
+  input {
+    border: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .form-group-profile-variant {
+    & label {
+      flex-basis: 100%;
+    }
+  }
+}

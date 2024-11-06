@@ -1,0 +1,9 @@
+@media screen and (min-width: 1200px) {
+  .sidebar-small {
+    flex-basis: calc(379rem /16);
+  }
+
+  .sidebar-big {
+    flex-basis: 50%;
+  }
+}

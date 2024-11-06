@@ -1,0 +1,26 @@
+.form-group-file-button {
+  display: flex;
+  padding: 1rem 0;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  label {
+    pointer-events: none;
+  }
+
+  .asterisk {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: '*';
+      top: 0;
+      right: 0;
+      color: red;
+    }
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}

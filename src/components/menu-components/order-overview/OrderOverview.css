@@ -1,0 +1,9 @@
+.order-overview {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #D2D7DF;
+  overflow-y: auto;
+  padding: 1rem;
+  row-gap: 1rem
+}

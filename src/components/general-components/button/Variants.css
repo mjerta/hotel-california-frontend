@@ -1,0 +1,57 @@
+.points-btn {
+  justify-content: space-between;
+  color: white;
+  text-transform: capitalize;
+  background-color: #778F6B;
+  align-items: center;
+  padding-right: 2rem;
+  
+  & .coin-box {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    & img {
+      width: 1.5rem;
+    }
+  }
+}
+
+.confirm-order {
+  color: white;
+  text-transform: capitalize;
+  background-color: #778F6B;
+  justify-content: center;
+}
+
+.upload-image {
+  color: white;
+  text-transform: capitalize;
+  background-color: var(---default-positive-button-color-2);
+  justify-content: center;
+  width: 60%;
+}
+
+
+.order-staff-button {
+  text-transform: capitalize;
+  color: white;
+  background-color: #778F6B;
+  font-size: .7rem;
+  justify-content: center;
+  align-items: center;
+  padding: .4rem .5rem;
+}
+
+.input-chart-button {
+  text-transform: uppercase;
+  color: white;
+  background-color: var(--default-navigation-bg-color);
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-space: 1rem;
+  padding: .8rem  1rem;
+  flex-basis: 30rem;
+  max-width: 20rem;
+}

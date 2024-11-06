@@ -1,0 +1,20 @@
+.user-order-overview {
+  display: flex;
+  background-color: var(--default-sidebar-color);
+  flex-grow: 1;
+  height: 100%;
+  border-radius: var(--default-radius);
+  padding: 1rem;
+  overflow-y: auto;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  & h1 {
+    color: white
+  }
+}
+
+.put-in-middle {
+  justify-content: center;
+  align-items: center;
+}

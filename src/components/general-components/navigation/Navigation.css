@@ -1,0 +1,59 @@
+.navigation {
+  position: relative;
+  flex-shrink: 0;
+  background-color: var(--default-navigation-bg-color);
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  flex-direction: column;
+}
+
+
+.image-wrapper {
+  width: calc(138rem / 16);
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.hamburger-img {
+  height: 2rem;
+  cursor: pointer;
+  z-index: 3;
+  & svg {
+    fill: red;
+  }
+
+}
+
+.profile-img {
+  display: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+@media screen and (min-width: 1200px) {
+
+  .navigation {
+    display: flex;
+    flex-basis: calc(138rem / 16);
+  }
+
+  .navigation-content {
+    display: flex;
+  }
+
+  .profile-img {
+    display: unset;
+  }
+
+  .image-wrapper {
+    position: static;
+  }
+
+  .image-wrapper {
+    width: 100%;
+  }
+}

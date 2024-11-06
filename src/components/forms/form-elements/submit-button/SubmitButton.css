@@ -1,0 +1,8 @@
+.submit-button {
+  padding: var(--default-padding-buttom);
+  cursor: pointer;
+
+  &:focus {
+    border: 2px solid blue;;
+  }
+}

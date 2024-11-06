@@ -1,33 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {Route, Routes} from "react-router-dom";
+import Navigation
+  from "./components/general-components/navigation/Navigation.jsx";
+import MenuPage from "./pages/menu/MenuPage.jsx";
+import StaffDashboard from "./pages/staff-dashboard/StaffDashboard.jsx";
+import ManagerDashboard from "./pages/manager-dashboard/ManagerDashboard.jsx";
+import Profile from "./pages/profile/Profile.jsx";
+import AddMenuItem from "./pages/add-menu-item/AddMenuItem.jsx";
+import {useContext} from "react";
+import Overlay
+  from "./components/general-components/navigation/Overlay/Overlay.jsx";
+import {OverlayContext} from "./context/OverlayProvider.jsx";
+import Login from "./pages/authentication/login/Login.jsx";
+import Register from "./pages/authentication/register/Register.jsx";
+import PrivateRoute from "./security/PrivateRoute.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const {isOverlayOpen} = useContext(OverlayContext);
   return (
+
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="wrapper">
+        <Navigation
+          className={"navigation"}
+        />
+        {isOverlayOpen && (<Overlay/>)}
+        <main className="main-container">
+          <Routes>
+            <Route path="/" element={<MenuPage/>}/>
+            <Route path="/staff-dashboard" element={
+              <PrivateRoute requiredRole={"ROLE_STAFF"} redirectPath={"/login"}>
+                <StaffDashboard/>
+              </PrivateRoute>
+            }/>
+            <Route path="/manager-dashboard" element={
+              <PrivateRoute requiredRole={"ROLE_MANAGER"}
+                            redirectPath={"/login"}>
+                <ManagerDashboard/>
+              </PrivateRoute>
+            }/>
+            <Route path="/profile" element={
+              <PrivateRoute requiredRole={"ROLE_USER"} redirectPath={"/login"}>
+                <Profile/>
+              </PrivateRoute>
+            }/>
+            <Route path="/new-menu-item" element={
+              <PrivateRoute requiredRole={"ROLE_MANAGER"} redirectPath={"/login"}>
+                <AddMenuItem/>
+              </PrivateRoute>
+            }/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/*" element={<h1>Page not found</h1>}/>
+
+          </Routes>
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

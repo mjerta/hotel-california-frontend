@@ -1,0 +1,15 @@
+.button {
+  display: flex;
+  background-color: unset;
+  outline: none;
+  border: none;
+  border-radius: .3rem;
+  width: 100%;
+  padding: 1rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:focus {
+    border: 2px solid blue
+  }
+}
