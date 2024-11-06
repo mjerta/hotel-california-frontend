@@ -15,7 +15,6 @@ function useFetchMeals(isUpdated, setIsUpdated) {
         }
         setLoading(true);
         const response = await axios.get(`${baseUrl}/api/v1/meals`);
-        console.log(response)
         setMeals(response.data);
       } catch (e) {
         console.error(e);

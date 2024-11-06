@@ -1,58 +1,15 @@
 import DefaultForm from "../default-form/DefaultForm.jsx";
 import FormGroup from "../form-elements/form-group/FormGroup.jsx";
 import {useForm} from "react-hook-form";
-import axios from "axios";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
 import FormGroupButton
   from "../form-elements/form-group-button/FormGroupButton.jsx";
+import useRegister
+  from "../../../custom-hooks/api-requests/POST/useRegister.jsx";
 
 function RegisterForm() {
-  const baseUrl = import.meta.env.VITE_API_URL;
-  const navigate = useNavigate();
 
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
-
-  async function onSubmit(data) {
-    try {
-      setError(null)
-      setLoading(true)
-      await axios.post(`${baseUrl}/api/v1/register`, {
-        username: data.username,
-        password: data.password,
-        profile: {
-          firstName: data.firstname,
-          lastName: data.lastname,
-          phoneNumber: data.phone,
-          address: data.address,
-          points: 30
-        }
-      });
-      setSuccess("Register was successful");
-      setTimeout(() => {
-        navigate("/login", {
-          state: {
-            redirectPath: "/"
-          }
-        })
-
-      }, 1000)
-    } catch (e) {
-      if ( e.response?.data) {
-        setError(e.response.data["error-message"])
-      } else {
-        setError("Something else went wrong");
-      }
-      console.error(e.request.response);
-    } finally {
-      setLoading(false)
-    }
-  }
-
+  const {error, loading, success, onSubmit} = useRegister();
   const {register, handleSubmit, formState: {errors}} = useForm();
-
   return (
     <>
       <h3>{loading && "loading..."}</h3>
