@@ -1,63 +1,26 @@
 import {useForm} from "react-hook-form";
-import axios from "axios";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../../context/AuthenticationProvider.jsx";
-import {useNavigate, useLocation} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import DefaultForm from "../default-form/DefaultForm.jsx";
 import FormGroup from "../form-elements/form-group/FormGroup.jsx";
 import FormGroupButton
   from "../form-elements/form-group-button/FormGroupButton.jsx";
+import {useLogin} from "../../../custom-hooks/api-requests/POST/useLogin.jsx";
 
 function LoginForm() {
-  const baseUrl = import.meta.env.VITE_API_URL;
   const {saveToken, login} = useContext(AuthContext);
-
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
-
-  const navigate = useNavigate();
-
   const location = useLocation()
   const redirectPath = location.state?.location;
   const initialAuthMessage = location.state?.message;
   const [authMessage, setAuthMessage] = useState(initialAuthMessage);
 
-  async function onSubmit(data) {
-    try {
-      setLoading(true)
-      const response = await axios.post(`${baseUrl}/api/v1/login`, {
-          username: data.username,
-          password: data.password
-        }
-      )
-      if (response.status === 200) {
-        setAuthMessage(false) // If this was set it will be false so its not be visible for that 1 second
-        setSuccess("Login was successful") // later maybe have an constant file with responses I can just call
-        saveToken(response.data.jwt)
-        login();
-        setTimeout(() => {
-          const destination = redirectPath || "/";
-          navigate(destination)
-        }, 1000)
-      } else {
-        setError("The wrong status is coming back from the server")
-      }
-    } catch (e) {
-      if (e.status === 401) {
-        setError("Unauthorized - no valid credentials")
-      } else if (e.status === 403) {
-        setError("This endpoint is restricted")
-      }
-      else {
-        setError("Something else went wrong")
-      }
-      console.error(e.message)
-    } finally {
-      setLoading(false);
-    }
-  }
-
+  const { onSubmit, loading, success, error } = useLogin({
+    saveToken,
+    login,
+    redirectPath,
+    setAuthMessage
+  });
   const {register, handleSubmit, formState: {errors}} = useForm();
 
   return (
