@@ -5,7 +5,7 @@ This application is designed to enhance efficiency and user experience in a rest
 <details>
   <summary>Click to view the image</summary>
 
-![Hidden Image](../hotel-california-frontend/src/assets/menu-page-hotel-california.png)
+![Hidden Image](./src/assets/menu-page-hotel-california.png)
 
 </details>
 
