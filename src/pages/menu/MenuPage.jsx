@@ -44,10 +44,8 @@ function MenuPage() {
         <ExtraDetails/>
         <OrderOverview/>
         <ReceiptOverview/>
-
       </SideBar>
     </>
   );
 }
-
 export default MenuPage;

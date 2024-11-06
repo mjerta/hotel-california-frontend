@@ -60,5 +60,4 @@ function AddMenuItem() {
     </>
   )
 }
-
 export default AddMenuItem;

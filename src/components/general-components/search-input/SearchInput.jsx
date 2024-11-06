@@ -12,5 +12,4 @@ function SearchInput({placeHolder, className, onChange}) {
     </div>
   )
 }
-
 export default SearchInput;

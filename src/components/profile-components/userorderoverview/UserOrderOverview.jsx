@@ -31,8 +31,6 @@ function UserOrderOverview({className}) {
         )
       }
     </div>
-
   )
 }
-
 export default UserOrderOverview;

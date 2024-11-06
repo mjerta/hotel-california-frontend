@@ -18,8 +18,6 @@ function SideBarToggleButton({className, openSideBar, currentOrder, setOpenSideB
         />
       </div>
     </div>
-
   )
 }
-
 export default SideBarToggleButton;

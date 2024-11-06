@@ -25,11 +25,11 @@ function useFetchOrdersWithInterval() {
     } catch (e) {
       setOrders([])
       if (e.status === 401) {
-        setError("Unauthorized - no valid credentials") // later maybe have an constant file with responses I can just call
+        setError("Unauthorized - no valid credentials")
       } else if (e.status === 403) {
-        setError("This endpoint is restricted") // later maybe have an constant file with responses I can just call
+        setError("This endpoint is restricted")
       } else {
-        setError("Something went wrong on the server")
+        setError("Something went wrong. Please try again")
       }
       console.error(e.message);
     } finally {
@@ -45,7 +45,5 @@ function useFetchOrdersWithInterval() {
   }, [baseUrl, token, isAuthenticated]);
 
   return {orders, error, loading, fetchOrders}
-
 }
-
 export default useFetchOrdersWithInterval;

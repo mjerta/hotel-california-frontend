@@ -8,5 +8,4 @@ function MenuTitle({className, name, description}) {
     </div>
   )
 }
-
 export default MenuTitle;

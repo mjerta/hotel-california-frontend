@@ -14,5 +14,4 @@ function getTimeDifference(date) {
   return formattedTimeDifference;
 
 }
-
 export default getTimeDifference;

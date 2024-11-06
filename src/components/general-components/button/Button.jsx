@@ -25,5 +25,4 @@ function Button({className, onClick, text, children, disabled, tabIndex}) {
     </button>
   )
 }
-
 export default Button;

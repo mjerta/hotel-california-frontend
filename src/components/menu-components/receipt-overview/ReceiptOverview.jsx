@@ -35,12 +35,10 @@ function ReceiptOverview({className}) {
 
   const {addOrder, isLoading, error} = useAddOrder(token,  currentOrder, currentLocation, setStatus, isAuthenticated);
 
-
   function handleDiscountClick() {
     calculateDiscount(profileData.points);
     if (totalPrice >= discount && totalPrice > 0) {
       setPoints(0);
-      // disable the button here
       setIsButtonDisabled(true);
     }
   }
@@ -99,9 +97,7 @@ function ReceiptOverview({className}) {
         text={isLoading ? "Loading..." : error ? error : status || "Confirm Order"}
       />
     </div>
-
   )
 }
-
 export default ReceiptOverview;
 

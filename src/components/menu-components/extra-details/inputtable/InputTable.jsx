@@ -10,5 +10,4 @@ function InputTable({status, onChange, currentLocation, text, valid, noLocations
     />
   )
 }
-
 export default InputTable;

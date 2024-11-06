@@ -20,15 +20,15 @@ function useFetchMeals(isUpdated, setIsUpdated) {
         console.error(e);
         if (e.code === "ERR_NETWORK") {
           setError("Could not make a connection with the API");
+        } else {
+          setError("Something went wrong. Please try again");
         }
       } finally {
         setLoading(false);
       }
     }
-
     fetchMeals();
   }, [baseUrl, isUpdated]);
   return {meals, error, loading};
 }
-
 export default useFetchMeals;

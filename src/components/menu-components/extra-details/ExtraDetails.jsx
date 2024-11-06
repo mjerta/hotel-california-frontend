@@ -23,8 +23,8 @@ function ExtraDetails({className}) {
     if (locations) {
       setNoLocationsFound(false)
       setAvailableLocations(locations
-      .filter(location => !location.isOccupied) // Filter out occupied locations
-      .map(location => location.locationNumber)); //
+      .filter(location => !location.isOccupied)
+      .map(location => location.locationNumber));
     } else {
       setNoLocationsFound(true)
     }
@@ -72,5 +72,4 @@ function ExtraDetails({className}) {
     </div>
   )
 }
-
 export default ExtraDetails;

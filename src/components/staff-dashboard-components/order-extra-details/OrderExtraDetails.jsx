@@ -19,12 +19,7 @@ function OrderExtraDetails({classname, locationType, locationNumber, orderDate})
           {getTimeDifference(orderDate)}
         </span>
       </div>
-
-
-
     </div>
-
   )
 }
-
 export default OrderExtraDetails;

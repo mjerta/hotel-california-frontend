@@ -11,7 +11,6 @@ body {
 
 }
 
-
 .error-message-start, .error-message {
   height: 1rem;
 }
@@ -30,8 +29,6 @@ select {
 #root {
   display: flex;
   min-height: 100vh;
-  /*flex-direction: column;*/
-  /*align-items: center;*/
   justify-content: center;
 }
 
@@ -45,15 +42,12 @@ select {
   --default-main-container-bg-color-darker: #ad8f32;
   --default-navigation-bg-color: #dc9d36;
 
-
   --default-padding-box: 1.5rem;
-
 
   --default-grey-color: #D9D9D9;
   --register-login-bg-color: #f9f9f9;
   --regist-login-border-color: #3498db;
 }
-
 
 @media screen and (min-width: 300px) {
   html {

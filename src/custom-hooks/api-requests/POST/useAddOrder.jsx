@@ -36,7 +36,7 @@ function useAddOrder(token, currentOrder, currentLocation, setStatus, isAuthenti
       } else if (e.response?.status === 403) {
         setError("This endpoint is restricted");
       } else {
-        setError("Something went wrong");
+        setError("Something went wrong. Please try again");
         console.error(e);
       }
     } finally {
@@ -45,5 +45,4 @@ function useAddOrder(token, currentOrder, currentLocation, setStatus, isAuthenti
   }
   return {addOrder, isLoading, error};
 }
-
 export default useAddOrder;

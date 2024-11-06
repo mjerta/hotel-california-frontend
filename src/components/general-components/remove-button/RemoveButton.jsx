@@ -14,5 +14,4 @@ function RemoveButton({className, alt, onClick, tabIndex}) {
       />
   )
 }
-
 export default RemoveButton;

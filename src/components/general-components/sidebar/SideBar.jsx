@@ -2,8 +2,6 @@ import "./SideBar.css"
 import "./Variants.css"
 
 function SideBar({className, children, openSideBar}) {
-  //
-
   return (
     <aside
       className={`sidebar ${className} ${openSideBar ? "sidebar-full-screen" : ""}`}
@@ -16,5 +14,4 @@ function SideBar({className, children, openSideBar}) {
     </aside>
   )
 }
-
 export default SideBar;

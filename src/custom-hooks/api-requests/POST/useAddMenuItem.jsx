@@ -41,7 +41,7 @@ function useAddMenuItem(setIsUpdated) {
       } else if (e.response.status === 400 && e.response.data) {
         setError(e.response.data["error-message"]);
       } else {
-        setError("Something went wrong");
+        setError("Something went wrong. Please try again");
         console.error(e);
       }
     } finally {
@@ -52,5 +52,4 @@ function useAddMenuItem(setIsUpdated) {
 
   return {addMenu, isLoading, error}
 }
-
 export default useAddMenuItem;

@@ -1,4 +1,3 @@
-import "./Register.css"
 import MainContent
   from "../../../components/general-components/maincontent/MainContent.jsx";
 import RegisterForm
@@ -12,5 +11,4 @@ function Register() {
     </>
   )
 }
-
 export default Register;

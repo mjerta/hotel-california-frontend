@@ -19,5 +19,4 @@ function OverlayProvider({children}) {
     </OverlayContext.Provider>
   )
 }
-
 export default OverlayProvider;

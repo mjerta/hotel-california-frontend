@@ -23,7 +23,7 @@ function useFetchOrderItem() {
       } else if (e.response?.status === 403) {
         setError("This endpoint is restricted");
       } else {
-        setError("Something went wrong");
+        setError("Something went wrong. Please try again");
       }
     } finally {
       setLoading(false);
@@ -36,5 +36,4 @@ function useFetchOrderItem() {
     error
   };
 }
-
 export default useFetchOrderItem;

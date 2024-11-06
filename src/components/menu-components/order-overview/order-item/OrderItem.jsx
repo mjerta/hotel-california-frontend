@@ -23,5 +23,4 @@ function OrderItem({className, name, description, price, onClick, status}) {
     </div>
   )
 }
-
 export default OrderItem;

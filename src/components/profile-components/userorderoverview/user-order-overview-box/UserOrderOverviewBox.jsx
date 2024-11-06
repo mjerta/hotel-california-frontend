@@ -21,5 +21,4 @@ function UserOrderOverviewBoX({className, meals, date}) {
     </div>
   )
 }
-
 export default UserOrderOverviewBoX;

@@ -31,5 +31,4 @@ function Card({className, name, image, description, price, status, onClick}) {
     </article>
   )
 }
-
 export default Card;

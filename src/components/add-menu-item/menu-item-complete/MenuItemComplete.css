@@ -5,7 +5,6 @@
   flex-direction: column;
   row-gap: 1rem;
 
-
   & .img-container, & figcaption {
     border-radius: var(--default-radius);
   }
@@ -18,7 +17,6 @@
   .description {
     font-style: italic;
   }
-
 
   & figcaption {
     padding: 1rem;
@@ -47,7 +45,6 @@
   .-menu-item-complete {
     flex-direction: row;
 
-
     .img-container {
       flex-basis: 50%;
     }
@@ -55,7 +52,6 @@
     & .img-container, & figcaption {
       height: calc(160rem / 16);
     }
-
 
     & img {
       width: 100%;
@@ -65,7 +61,6 @@
 
     & figcaption {
       flex-grow: 1;
-
     }
   }
 }
