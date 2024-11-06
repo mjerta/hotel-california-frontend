@@ -23,7 +23,6 @@ function useAddMenuItem(setIsUpdated) {
         formData.append("ingredients", ingredient.value);
       })
 
-      console.log(formData);
       const result = await axios.post(`${baseUrl}/api/v1/meals`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
