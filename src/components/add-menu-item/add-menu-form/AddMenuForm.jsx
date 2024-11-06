@@ -64,13 +64,13 @@ function AddMenuForm({className, setIsUpdated}) {
           defaultValue={""}
         />
         <FormGroupArray
-          name={"ingredients"}  // name of the field array
+          name={"ingredients"}
           type={"text"}
           labelText={"Add ingredient:"}
           labelAndID={"ingredient"}
           className={"form-group-add-menu-variant"}
           required={true}
-          control={control} // pass control from useForm
+          control={control}
         />
         <FormGroup
           name={"price"}
@@ -117,5 +117,4 @@ function AddMenuForm({className, setIsUpdated}) {
     </>
   )
 }
-
 export default AddMenuForm;

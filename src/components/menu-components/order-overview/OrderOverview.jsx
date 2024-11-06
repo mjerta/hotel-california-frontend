@@ -5,14 +5,6 @@ import OrderItem from "./order-item/OrderItem.jsx";
 
 function OrderOverview({className}) {
   const {currentOrder, setCurrentOrder, status} = useContext(OrderContext)
-
-
-  // First way of doing the removal, this was causing the remove duplicates ass well
-  // function removeItemFromOrder(itemId) {
-  //   const updatedItems = currentOrder.filter((item) => item.id !== itemId);
-  //   setCurrentOrder(updatedItems);
-  // }
-
   function removeItemFromOrder(itemId) {
     const itemIndex = currentOrder.findIndex((item) => item.id === itemId);
     // If the item exists, create a new array without that specific item
@@ -39,8 +31,6 @@ function OrderOverview({className}) {
         />
       ))}
     </div>
-
   )
 }
-
 export default OrderOverview;

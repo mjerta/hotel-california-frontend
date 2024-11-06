@@ -9,12 +9,8 @@ import useFetchOrderItem
 
 function FoodMenuOverview({className}) {
   const {status, searchQuery} = useContext(OrderContext);
-  // gets all meals
   const { meals, error, loading} = useFetchMeals();
-  // get the function to put a indiviual meal to the current order
-
   const {addMealToOrder} = useFetchOrderItem();
-  // Filter meals based on searchQuery
   const filteredMeals = meals.filter(meal =>
     meal.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -35,7 +31,6 @@ function FoodMenuOverview({className}) {
               price={meal.price}
               image={meal.image}
               status={status}
-              // id={meal.id}
               onClick={() => addMealToOrder(meal.id)}
             />
           ))
@@ -44,5 +39,4 @@ function FoodMenuOverview({className}) {
     </>
   )
 }
-
 export default FoodMenuOverview;

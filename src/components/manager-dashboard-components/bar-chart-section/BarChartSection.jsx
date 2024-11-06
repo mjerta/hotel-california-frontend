@@ -4,7 +4,6 @@ import {BarChart} from "@mui/x-charts";
 function BarChartSection({className, menuItems, data}) {
   return (
     <div className={`bar-chart-section ${className ? className : ''}`}>
-
       <BarChart
         sx={
         {bgcolor: '#d0d5dd' }

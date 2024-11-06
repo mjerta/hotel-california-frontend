@@ -27,7 +27,6 @@ function OrderProvider({children}) {
 
     }, [currentOrder]);
 
-    // this need to be in a different useEffect. Cause states need to be updated first.
     useEffect(() => {
       if (discount > 0) {
         const newPriceWithoutTax = (totalPriceWithoutTax - discount)

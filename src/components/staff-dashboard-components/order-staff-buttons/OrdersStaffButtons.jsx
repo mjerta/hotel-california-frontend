@@ -60,5 +60,4 @@ function OrdersStaffButtons({className, id, destination, status, fetchOrders}) {
     </>)}
   </div>)
 }
-
 export default OrdersStaffButtons;

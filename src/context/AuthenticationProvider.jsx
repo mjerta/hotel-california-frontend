@@ -91,7 +91,6 @@ const AuthProvider = ({children}) => {
 
   };
 
-  // DECODE FUNCTION
   const decodeToken = (jwtToken) => {
     try {
       return jwtDecode(jwtToken);

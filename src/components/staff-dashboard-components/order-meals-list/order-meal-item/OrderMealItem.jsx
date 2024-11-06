@@ -16,5 +16,4 @@ function OrderMealItem({className, qty, name}) {
     </div>
   )
 }
-
 export default OrderMealItem;

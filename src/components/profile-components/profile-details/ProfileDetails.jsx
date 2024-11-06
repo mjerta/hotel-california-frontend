@@ -46,8 +46,6 @@ function ProfileDetails({className}) {
         />
       </NonActiveForm>
     </div>
-
   )
 }
-
 export default ProfileDetails;

@@ -8,5 +8,4 @@ function NonActiveForm({classname, children}) {
     </form>
   )
 }
-
 export default NonActiveForm;

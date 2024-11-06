@@ -46,5 +46,4 @@ function ManagerDashboard() {
     </>
   )
 }
-
 export default ManagerDashboard;

@@ -12,7 +12,6 @@
     border-radius: var(--default-radius);
   }
 
-
   .asterisk {
     position: relative;
 
@@ -23,7 +22,6 @@
       right: 0;
       color: red;
     }
-
   }
 }
 
@@ -40,7 +38,6 @@
   padding: 1rem;
   overflow-y: auto;
   row-gap: .5rem;
-
 
    input {
      width: 100%;

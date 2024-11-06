@@ -15,7 +15,7 @@ function useUpdateOrder() {
 
     const data = {
       status: status,
-      ...(destination && {destination: destination}) // Add destination only if it's not null or undefined
+      ...(destination && {destination: destination}) // Add destination only if it's not null/undefined
     };
 
     try {
@@ -36,7 +36,7 @@ function useUpdateOrder() {
       } else if (e.response?.status === 403) {
         setError("This endpoint is restricted");
       } else {
-        setError("Something went wrong");
+        setError("Something went wrong. Please try again");
       }
       console.error(e);
     } finally {
@@ -46,5 +46,4 @@ function useUpdateOrder() {
 
   return {loading, error, result, updateOrderStatus};
 }
-
 export default useUpdateOrder;

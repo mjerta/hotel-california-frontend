@@ -35,7 +35,7 @@ const useFilterChart = (inputDateQuery, orders) => {
       const result = Object.values(
         filteredOrders.reduce((acc, obj) => {
           obj.meals.forEach(({name}) => {
-            // If the name is already in the accumulator, increase the count; otherwise, initialize it
+            // If the name already exists in the accumulator, increase its count; if not, set it to 1
             if (acc[name]) {
               acc[name].count += 1;
             } else {
@@ -92,5 +92,4 @@ const useFilterChart = (inputDateQuery, orders) => {
     setMenuItems
   }
   };
-
 export default useFilterChart;

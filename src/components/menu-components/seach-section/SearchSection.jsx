@@ -20,8 +20,6 @@ function SearchSection({className}) {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
     </header>
-
   )
 }
-
 export default SearchSection;

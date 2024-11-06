@@ -16,7 +16,6 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, sta
             params: {orderReference: localOrderReference},
           });
           const data = response.data;
-          // Check if the order status is ORDER_PAYED
           resetOrderAfterStatus("ORDER_PAYED", "orderReference", intervalId, setCurrentOrder, setCurrentLocation, setStatus, data)
         } catch (e) {
           setCurrentOrder([])
@@ -31,7 +30,6 @@ function useLoadOrder(setCurrentOrder, setStatus, setCurrentLocation, token, sta
             },
           });
           const data = response.data;
-          // Check if the order status is ORDER_PAYED
           resetOrderAfterStatus("ORDER_PAYED", "id", intervalId, setCurrentOrder, setCurrentLocation, setStatus, data)
         } catch (e) {
           console.error(e.response.data);

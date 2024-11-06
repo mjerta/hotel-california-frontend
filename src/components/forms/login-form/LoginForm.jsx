@@ -1,4 +1,3 @@
-import "./LoginForm.css"
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {useContext, useState} from "react";
@@ -39,7 +38,6 @@ function LoginForm() {
         login();
         setTimeout(() => {
           const destination = redirectPath || "/";
-          console.log(destination);
           navigate(destination)
         }, 1000)
       } else {

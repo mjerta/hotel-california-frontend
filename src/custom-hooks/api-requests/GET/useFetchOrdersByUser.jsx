@@ -26,7 +26,7 @@ function useFetchOrdersByUser() {
         } else if (e.status === 403) {
           setError("This endpoint is restricted") // later maybe have an constant file with responses I can just call
         } else {
-          setError("Something went wrong on the server")
+          setError("Something went wrong. Please try again")
         }
         console.error(e.message)
       } finally {

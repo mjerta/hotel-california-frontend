@@ -14,5 +14,4 @@ function AddButton({className, onClick, tabIndex}) {
     />
   )
 }
-
 export default AddButton;

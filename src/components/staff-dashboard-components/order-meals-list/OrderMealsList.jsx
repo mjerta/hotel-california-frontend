@@ -17,5 +17,4 @@ function OrderMealsList({className, meals}) {
     </div>
   )
 }
-
 export default OrderMealsList;

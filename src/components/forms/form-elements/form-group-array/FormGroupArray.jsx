@@ -6,7 +6,7 @@ import {Controller, useFieldArray} from "react-hook-form";
 import {useEffect} from "react";
 
 function FormGroupArray({
-                          control, // control from useForm
+                          control,
                           name,
                           labelAndID,
                           labelText,

@@ -20,7 +20,7 @@ function Profile() {
   return (
     <>
       <MainContent
-      className={"main-content-profile-variant"}
+        className={"main-content-profile-variant"}
       >
         <MainContentSection>
           <UserOrderOverview/>
@@ -28,10 +28,9 @@ function Profile() {
         <MainContentSection
         >
           <img className={"large-coin-icon"} src={coinIcon} alt="coin-icon"/>
-          <h1 className={"header-profile-coins"}>{profileData.points} earned!</h1>
-
-
-
+          <h1
+            className={"header-profile-coins"}>{profileData.points} earned!
+          </h1>
         </MainContentSection>
       </MainContent>
       <SideBarToggleButton
@@ -51,5 +50,4 @@ function Profile() {
     </>
   )
 }
-
 export default Profile;

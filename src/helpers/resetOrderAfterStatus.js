@@ -4,7 +4,7 @@ function resetOrderAfterStatus(status, localStorageItem, intervalId, setCurrentO
     setCurrentOrder([]);
     setStatus(null);
     setCurrentLocation(null);
-    localStorage.removeItem(localStorageItem); // Optionally clear local storage
+    localStorage.removeItem(localStorageItem);
     clearInterval(intervalId)
   } else {
     // Update state with fetched data
@@ -13,5 +13,4 @@ function resetOrderAfterStatus(status, localStorageItem, intervalId, setCurrentO
     setCurrentLocation(data.destination.locationNumber);
   }
 }
-
 export default resetOrderAfterStatus;

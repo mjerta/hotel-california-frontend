@@ -1,4 +1,3 @@
-import "./RegisterForm.css"
 import DefaultForm from "../default-form/DefaultForm.jsx";
 import FormGroup from "../form-elements/form-group/FormGroup.jsx";
 import {useForm} from "react-hook-form";

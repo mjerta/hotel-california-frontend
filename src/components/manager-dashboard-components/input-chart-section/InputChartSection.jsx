@@ -15,7 +15,7 @@ function InputChartSection({
                            }) {
 
   useEffect(() => {
-    const initialCheckedState = checkBoxes.map(item => item); // Create an array from menuItems
+    const initialCheckedState = checkBoxes.map(item => item);
     setCheckedItems(initialCheckedState);
   }, [checkBoxes]);
 
@@ -69,5 +69,4 @@ function InputChartSection({
     </div>
   )
 }
-
 export default InputChartSection;

@@ -6,30 +6,27 @@ import hasUserRole from "../helpers/hasUserRole.jsx";
 function PrivateRoute({children, redirectPath, requiredRole}) {
   const location = useLocation();
   const {roles, isAuthenticated} = useContext(AuthContext);
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [Authorizing, setAuthorizing] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     async function checkAuthorization() {
-      let authMessage = ""; // Local variable to hold the message
-      let authorized = false; // Track authorization state locally
+      let authMessage = "";
+      let authorized = false;
       if (!isAuthenticated) {
-        setIsAuthorized(false);
+        setAuthorizing(false);
         authMessage = "You must log in to access this page.";
       } else if (roles && roles.length > 0) {
-        console.log("Authenticated");
         if (location.pathname === "/profile" && hasUserRole("ROLE_STAFF", roles)) {
-          console.log("profile");
-          setIsAuthorized(false);
+          setAuthorizing(false);
           authMessage = "Staff members don't use profiles, log in as a regular user.";
         } else if (hasUserRole(requiredRole, roles)) {
-          console.log("Authorized");
           authorized = true; // Mark as authorized if the required role matches
         } else {
           authMessage = "You are logged in but do not have access to this page. Please use the correct credentials.";
         }
       }
-      setIsAuthorized(authorized); // Set authorization state based on checks
+      setAuthorizing(authorized); // Set authorization state based on checks
       // Check if not authorized and redirect if necessary
       if (!authorized) {
         navigate(redirectPath, {
@@ -42,10 +39,10 @@ function PrivateRoute({children, redirectPath, requiredRole}) {
     }
     void checkAuthorization();
   }, [roles, isAuthenticated, requiredRole]);
-  if (isAuthorized === false) {
+  if (Authorizing === false) {
     return <h1>Authorising...</h1>;
   }
-  return isAuthorized ? children : null;
+  return Authorizing ? children : null;
 }
 
 export default PrivateRoute;

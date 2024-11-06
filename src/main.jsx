@@ -11,7 +11,6 @@ import LocationProvider from "./context/LocationProvider.jsx";
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
-      {/* Provider to keep state of the menu that is open or not*/}
       <AuthenticationProvider>
         <LocationProvider>
           <OverlayProvider>

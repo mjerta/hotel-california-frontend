@@ -55,7 +55,7 @@ const useFetchProfile = (isAuthenticated, token, roles) => {
         } else if (e.response?.status === 403) {
           setError("This endpoint is restricted");
         } else {
-          setError("Something went wrong");
+          setError("Something went wrong. Please try again");
         }
         console.error(e.message);
       } finally {
@@ -68,5 +68,4 @@ const useFetchProfile = (isAuthenticated, token, roles) => {
 
   return {profileData, loading, error};
 };
-
 export default useFetchProfile;

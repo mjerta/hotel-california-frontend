@@ -14,5 +14,4 @@ function TextLineText({className, priceFirstText, priceSecondText, spanTextOne, 
     </div>
   )
 }
-
 export default TextLineText;

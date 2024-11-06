@@ -4,8 +4,6 @@ import OrdersOverview
   from "../../components/staff-dashboard-components/orders-overview/OrdersOverview.jsx";
 
 function StaffDashboard() {
-
-
   return (
     <>
       <MainContent>
@@ -14,5 +12,4 @@ function StaffDashboard() {
     </>
   )
 }
-
 export default StaffDashboard;
