@@ -10,6 +10,7 @@ import useFetchOrderItem
 function FoodMenuOverview({className}) {
   const {status, searchQuery} = useContext(OrderContext);
   const { meals, error, loading} = useFetchMeals();
+  console.log(meals)
   const {addMealToOrder} = useFetchOrderItem();
   const filteredMeals = meals.filter(meal =>
     meal.name.toLowerCase().includes(searchQuery.toLowerCase())
