@@ -5,4 +5,11 @@
   width: 100%;
   border-radius: var(--default-radius);
   overflow: hidden;
+
+  .recharts-responsive-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--default-grey-color);
+  }
 }
