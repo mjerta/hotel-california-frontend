@@ -35,9 +35,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Debug Environment Variables
-        run: env
-
       - name: Build Project
         env:
           VITE_API_URL: ${{ vars.BACKEND_PRODUCTION }}
@@ -53,7 +50,6 @@ jobs:
             --dir dist \
             --site ${{ secrets.NETLIFY_SITE_ID_PRODUCTION }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN_PRODUCTION }} \
-            --prod
 
   build-to-staging:
     if: github.ref == 'refs/heads/develop' || github.event_name == 'workflow_dispatch'
@@ -75,12 +71,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Debug Environment Variables
-        run: |
-          echo "BRANCH_NAME: $BRANCH_NAME"
-          echo "BACKEND_STAGING: ${{ vars.BACKEND_STAGING }}"
-          env
-
       - name: Build Project
         env:
           VITE_API_URL: ${{ vars.BACKEND_STAGING }}
@@ -96,4 +86,3 @@ jobs:
             --dir dist \
             --site ${{ secrets.NETLIFY_SITE_ID_STAGING }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN_STAGING }} \
-            --alias staging
