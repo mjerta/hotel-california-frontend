@@ -77,7 +77,15 @@ jobs:
 
       - name: Deploy to Netlify
         id: netlify_deploy
-        run: netlify deploy \
-          --dir dist \
-          --site ${{ secrets.NETLIFY_SITE_ID_STAGING }} \
-          --auth ${{ secrets.NETLIFY_API_TOKEN_STAGING }} \
+        run: |
+          deploy_flag=""
+          if [ "$BRANCH_NAME" = "main" ]; then
+            deploy_flag="--prod"
+          elif [ "$BRANCH_NAME" = "develop" ]; then
+            deploy_flag="--alias staging"
+          fi
+          netlify deploy \
+            --dir dist \
+            --site ${{ secrets.NETLIFY_SITE_ID }} \
+            --auth ${{ secrets.NETLIFY_API_TOKEN }} \
+            $deploy_flag
