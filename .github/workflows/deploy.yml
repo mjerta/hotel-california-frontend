@@ -18,6 +18,7 @@ jobs:
   deploy-to-production:
     if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
@@ -34,9 +35,12 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Debug Environment Variables
+        run: env
+
       - name: Build Project
         env:
-          VITE_API_URL: ${{ vars.BACKEND_PRODUCTION }} # Use environment variable
+          VITE_API_URL: ${{ vars.BACKEND_PRODUCTION }}
         run: npm run build
 
       - name: Create _redirects File
@@ -45,21 +49,16 @@ jobs:
       - name: Deploy to Netlify
         id: netlify_deploy
         run: |
-          deploy_flag=""
-          if [ "$BRANCH_NAME" = "main" ]; then
-            deploy_flag="--prod"
-          elif [ "$BRANCH_NAME" = "develop" ]; then
-            deploy_flag="--alias staging"
-          fi
           netlify deploy \
             --dir dist \
             --site ${{ secrets.NETLIFY_SITE_ID_PRODUCTION }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN_PRODUCTION }} \
-            $deploy_flag
+            --prod
 
   build-to-staging:
     if: github.ref == 'refs/heads/develop' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
@@ -76,12 +75,15 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: echo vars
-        run: echo ${{ vars.BACKEND_STAGING }}
+      - name: Debug Environment Variables
+        run: |
+          echo "BRANCH_NAME: $BRANCH_NAME"
+          echo "BACKEND_STAGING: ${{ vars.BACKEND_STAGING }}"
+          env
 
       - name: Build Project
         env:
-          VITE_API_URL: ${{ vars.BACKEND_STAGING }} # Use environment variable
+          VITE_API_URL: ${{ vars.BACKEND_STAGING }}
         run: npm run build
 
       - name: Create _redirects File
@@ -90,14 +92,8 @@ jobs:
       - name: Deploy to Netlify
         id: netlify_deploy
         run: |
-          deploy_flag=""
-          if [ "$BRANCH_NAME" = "main" ]; then
-            deploy_flag="--prod"
-          elif [ "$BRANCH_NAME" = "develop" ]; then
-            deploy_flag="--alias staging"
-          fi
           netlify deploy \
             --dir dist \
             --site ${{ secrets.NETLIFY_SITE_ID_STAGING }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN_STAGING }} \
-            $deploy_flag
+            --alias staging
