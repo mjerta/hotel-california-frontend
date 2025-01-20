@@ -44,10 +44,19 @@ jobs:
 
       - name: Deploy to Netlify
         id: netlify_deploy
-        run: netlify deploy \
-          --dir dist \
-          --site ${{ secrets.NETLIFY_SITE_ID_PRODUCTION }} \
-          --auth ${{ secrets.NETLIFY_API_TOKEN_PRODUCTION }} \
+        run: |
+          deploy_flag=""
+          if [ "$BRANCH_NAME" = "main" ]; then
+            deploy_flag="--prod"
+          elif [ "$BRANCH_NAME" = "develop" ]; then
+            deploy_flag="--alias staging"
+          fi
+          netlify deploy \
+            --dir dist \
+            --site ${{ secrets.NETLIFY_SITE_ID_PRODUCTION }} \
+            --auth ${{ secrets.NETLIFY_API_TOKEN_PRODUCTION }} \
+            $deploy_flag
+
   build-to-staging:
     if: github.ref == 'refs/heads/develop' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
